@@ -1,0 +1,24 @@
+@use '../utilities/functions' as *;
+
+// Colours
+$primary-colour: #003DC6;
+$secondary-colour: #111111;
+$tertiary-colour: #FFFFFF;
+
+// Hover state colours
+$on-hover-black: #8D8D8D;
+$on-hover-blue: #83A9FF;
+$on-hover-white: #5E5E5E;
+
+// Fonts
+$font: 'Jost', Arial, sans-serif;
+$line-height: 1.25;
+
+// Padding
+$padding: 1rem;
+$padding-half: 0.5rem;
+$padding-double: 2rem;
+
+// Device Widths
+$tablet-width: rem(800);  // smallest size tablet - 768px
+$desktop-width: rem(1200);
