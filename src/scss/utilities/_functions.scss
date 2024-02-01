@@ -5,3 +5,7 @@
     @return #{math.div($px, $default)}rem;
 }
 
+// Convert pixels to em
+@function em($px, $default: 16) {
+    @return #{math.div($px, $default)}em;
+}
