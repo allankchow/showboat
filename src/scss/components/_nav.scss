@@ -7,4 +7,39 @@ nav {
     ul {
         @include flex-row($gap: rem(126));
     }
+
+    li {
+        font-size: rem(24);
+    }
+
+    .searchInputContainer {
+        $searchInputHeight: 35;
+
+        @include flex-row($align-items: center);
+
+        input {
+            width: rem(240);
+            height: rem($searchInputHeight);
+            border: 1px solid #ccc;
+            border-radius: calc(rem($searchInputHeight) / 2) 0 0 calc(rem($searchInputHeight) / 2);
+            padding: $padding;
+            background-color: $tertiary-colour;
+            
+        }
+    
+        input:focus {
+            outline: none;
+        }
+    
+        button {
+            cursor: pointer;
+            @include flex-row(center, center);
+            height: rem($searchInputHeight);
+            padding: 12px;
+            font-size: rem(16);
+            border: 1px solid #ccc;
+            border-radius: 0 calc(rem($searchInputHeight) / 2) calc(rem($searchInputHeight) / 2) 0;
+        }
+    }
+    
 }

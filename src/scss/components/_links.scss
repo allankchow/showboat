@@ -1,7 +1,14 @@
+@use '../base/variables' as *;
+
 a,
 a:link,
 a:visited,
 a:hover,
 a:active {
     text-decoration: none;
+}
+
+a,
+a:visited {
+    color: $secondary-colour;
 }
