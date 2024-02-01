@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { appTitle } from "../globals/globalVariables";
 
-const FavouritesPage = () => {
+const MyListPage = () => {
 
     useEffect(() => {
-        document.title = `${appTitle} - Favourites`;
+        document.title = `${appTitle} - My List`;
     }, []);
 
     return (
-        <div>Favourites Page</div>
+        <div>My List Page</div>
     )
 }
 
-export default FavouritesPage;
+export default MyListPage;
