@@ -1,4 +1,5 @@
 import Nav from './Nav';
+import MobileNav from './MobileNav';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
                     <div>LOGO PLACEHOLDER</div>
                 </NavLink>
             </div>
+            <MobileNav />
             <Nav />
         </header>
     )

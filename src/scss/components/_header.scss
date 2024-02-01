@@ -4,5 +4,16 @@
 
 header {
     @include flex-row(space-between, center, $padding);
-    padding: $padding rem(70);
+    background-color: $secondary-colour;
+    width: 100%;
+    padding: rem(16) rem(25);
+
+    // Logo placeholder, delete later
+    div {
+        color: white;
+    }
+
+    @include mq(em(1200)) {
+        padding: $padding rem(70);
+    }
 }
