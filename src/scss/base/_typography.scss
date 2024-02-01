@@ -1,0 +1,7 @@
+@use '../base/variables' as *;
+
+body {
+    color: black;
+    font-family: $font;
+    line-height: $line-height;
+}
