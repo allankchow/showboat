@@ -1,0 +1,10 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+nav {
+    
+    ul {
+        @include flex-row($gap: rem(126));
+    }
+}
