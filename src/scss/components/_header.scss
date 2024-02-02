@@ -15,7 +15,7 @@ header {
         color: white;
     }
 
-    @include mq(em(1200)) {
+    @include mq($desktop-medium-width) {
         padding: $padding rem(70);
     }
 }
