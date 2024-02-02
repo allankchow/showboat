@@ -29,8 +29,9 @@ nav {
     li a,
     li a:visited {
         font-size: rem(16);
-        color: white;
+        color: $tertiary-colour;
         padding: 1rem;
+        transition: color $link-hover-animation-time ease-in-out;
     }
 
     li a:hover {
