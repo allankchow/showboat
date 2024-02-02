@@ -33,7 +33,7 @@ const Header = () => {
                     <div>LOGO PLACEHOLDER</div>
                 </NavLink>
             </div>
-            <HamburgerMenu isOpened={showNav} toggleNav={toggleNav}/>
+            <HamburgerMenu showNav={showNav} toggleNav={toggleNav}/>
             <Nav toggleNav={toggleNav}/>
         </header>
     )

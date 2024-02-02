@@ -1,10 +1,10 @@
 
-const HamburgerMenu = ({ showNav, toggleNav}) => {
+const HamburgerMenu = ({ showNav, toggleNav }) => {
 
     return (
         <div className="hamburgerMenuContainer">
             <button 
-                className={`hamburgerMenu ${showNav? 'opened' : ''}`} 
+                className={`hamburgerMenu ${showNav ? 'opened' : ''}`} 
                 onClick={toggleNav}
                 aria-label="Main Menu"
             >
