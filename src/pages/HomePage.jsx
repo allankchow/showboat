@@ -9,6 +9,8 @@ import {
     IMAGE_PATH_ENDPOINT
 } from "../globals/globalVariables";
 
+import Hero from "../components/Hero";
+
 const HomePage = () => {
 
     const [movieData, setMovieData] = useState([]);
@@ -31,12 +33,9 @@ const HomePage = () => {
 
     }, []);
 
-
     return (
         <main>
-            <div className="heroImageContainer">
-                {heroMovie && <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/original${heroMovie.backdrop_path}`} />} 
-            </div>
+            {heroMovie && <Hero movie={heroMovie} />} 
         </main>
     )
 }
