@@ -11,8 +11,8 @@ const AboutPage = () => {
 
     return (
         <>
-            <div class="about">
-                <section class="about-section-01"> 
+            <div className="about">
+                <section className="about-section-01"> 
                     <h2>ABOUT</h2>
                     <h3>Welcome to ShowBoat - More Than a Movie Database </h3>
                     <p>ShowBoat is not just about movies; it's about the stories, the art, and the people behind them. We believe every film has a story and every viewer has a perspective. Our platform is a space for sharing those stories and perspectives, fostering a community that celebrates the art of cinema.</p>
