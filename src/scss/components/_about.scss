@@ -1,13 +1,14 @@
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
 
 
 // -----------------------------------------------------------------------
 // Mobile and Universal Styling
 // -----------------------------------------------------------------------
 .about {
+    padding-top: $mobile-header-height;
     @include flex-column (center, center, 0);
-    // padding: 2.5rem 0;
 }
 
 .about-section-01 {
@@ -59,5 +60,11 @@
         max-width: 60rem;
         padding: 0 10rem;
 
+    }
+}
+
+@include mq($desktop-medium-width){
+    .about{
+        padding-top: $desktop-header-height;
     }
 }
