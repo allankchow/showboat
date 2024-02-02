@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "../components/Header";
-import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import HomePage from "../pages/HomePage";
 import AboutPage from "../pages/AboutPage";
@@ -14,7 +13,6 @@ const AppRouter = () => {
         <BrowserRouter>
             <div>
                 <Header />
-                <Nav />
                 <Routes>
                     <Route path="/" exact element={<HomePage />}></Route>
                     <Route path="/about" exact element={<AboutPage />}></Route>

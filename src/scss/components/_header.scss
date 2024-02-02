@@ -1,0 +1,20 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+header {
+    @include flex-row(space-between, center, $padding);
+    position: relative;
+    background-color: $secondary-colour;
+    width: 100%;
+    height: $header-height;
+    padding: rem(16) rem(25);
+
+    .logoContainer img {
+        height: 100px;
+    }
+
+    @include mq($desktop-medium-width) {
+        padding: $padding rem(70);
+    }
+}

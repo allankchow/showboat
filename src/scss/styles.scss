@@ -3,9 +3,15 @@
 @use './base/reset';
 @use './base/typography';
 
+// Component imports
 @use './components/body';
 @use './components/header';
 @use './components/footer';
+
+@use './components/links';
+@use './components/nav';
+@use './components/hamburgerMenu';
+
 
 
 // Google Font import

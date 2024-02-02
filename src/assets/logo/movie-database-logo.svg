@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 521.68 521.04">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .04em;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-5 {
+        fill: #003dc6;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+
+      .cls-6 {
+        letter-spacing: .1em;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-7 {
+        letter-spacing: .1em;
+      }
+
+      .cls-8 {
+        letter-spacing: .08em;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-5 {
+        font-family: ProximaNova-Black, 'Proxima Nova';
+        font-size: 68.34px;
+        font-weight: 800;
+      }
+
+      .cls-10 {
+        letter-spacing: .07em;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-3" x="171" y="226" width="173" height="88"/>
+    </clipPath>
+  </defs>
+  <g id="showboat">
+    <rect class="cls-2" x="168" y="137" width="177" height="177"/>
+    <rect class="cls-2" x="127" y="137" width="33" height="65"/>
+    <rect class="cls-2" x="127" y="209" width="33" height="65"/>
+    <rect class="cls-2" x="127" y="281" width="33" height="33"/>
+    <rect class="cls-2" x="353" y="137" width="33" height="33"/>
+    <rect class="cls-2" x="353" y="177" width="33" height="66"/>
+    <rect class="cls-2" x="353" y="250" width="33" height="64"/>
+  </g>
+  <g id="showboat2">
+    <g class="cls-9">
+      <circle class="cls-4" cx="257" cy="210" r="60"/>
+    </g>
+  </g>
+  <g id="showboat3">
+    <text class="cls-5" transform="translate(39.48 393.8)"><tspan class="cls-7" x="0" y="0">SH</tspan><tspan class="cls-8" x="106.88" y="0">O</tspan><tspan class="cls-7" x="164.69" y="0">WB</tspan><tspan class="cls-10" x="291.17" y="0">O</tspan><tspan class="cls-1" x="348.3" y="0">A</tspan><tspan class="cls-6" x="399.55" y="0">T</tspan></text>
+    <text/>
+  </g>
+</svg>
