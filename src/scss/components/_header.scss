@@ -19,6 +19,10 @@ header {
         height: 100%;
     }
 
+    @include mq($tablet-width) {
+        background-color: transparent;
+    }
+
     @include mq($desktop-medium-width) {
         height: $desktop-header-height;
         padding: $padding rem(70);

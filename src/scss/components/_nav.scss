@@ -76,6 +76,7 @@ nav {
             top: auto;
             left: auto;
 
+            background-color: transparent;
 
             ul {
                 @include flex-row(flex-end, center, rem(30));
