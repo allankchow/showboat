@@ -1,0 +1,63 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+
+// -----------------------------------------------------------------------
+// Mobile and Universal Styling
+// -----------------------------------------------------------------------
+.about {
+    @include flex-column (center, center, 0);
+    // padding: 2.5rem 0;
+}
+
+.about-section-01 {
+    // mobile and universal styling
+    margin: 0 10px;
+    @include flex-column (center, flex-start, 0);
+    align-content: center;
+    justify-items: center;
+
+    img {
+        width: 100%;
+    }
+    h2{
+        padding: 3rem 0 1rem;
+        display: block;
+        margin: auto;
+    }
+    h3 {
+        margin-top: 1.5rem;
+    }
+    p {
+        margin: 1rem 0;
+    }
+}
+
+// -----------------------------------------------------------------------
+// Tablet Styling
+// -----------------------------------------------------------------------
+@include mq($tablet-width) {
+    .about {
+        color: $tertiary-colour;
+        background: linear-gradient(to bottom, #141414 0%, #1c1c1c 100%);
+    }
+
+    .about-section-01 {
+        max-width: 46rem;
+        padding: 0 3rem;
+        background: linear-gradient(to bottom, #191919 0%, #3d3d3d 100%);
+    }
+}
+
+
+
+// -----------------------------------------------------------------------
+// Desktop Styling
+// -----------------------------------------------------------------------
+@include mq($desktop-small-width){
+    .about-section-01 {
+        max-width: 60rem;
+        padding: 0 10rem;
+
+    }
+}
