@@ -11,10 +11,14 @@ header {
     padding: rem(16) rem(25);
 
     .logoContainer img {
-        height: 100px;
+        height: rem(60);
     }
 
     @include mq($desktop-medium-width) {
         padding: $padding rem(70);
+
+        .logoContainer img {
+            height: rem(80);
+        }
     }
 }
