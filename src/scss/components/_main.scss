@@ -1,5 +1,10 @@
 @use '../base/variables' as *;
+@use '../utilities/mixins' as *;
 
 main {
-    padding-top: $header-height;
+    padding-top: $mobile-header-height;
+
+    @include mq($tablet-width) {
+        padding-top: 0;
+    }
 }
