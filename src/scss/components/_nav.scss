@@ -108,7 +108,7 @@ nav {
         }
     }
 
-    @include mq($desktop-width) {
+    @include mq($desktop-large-width) {
         ul {
             gap: rem(126);
         }
