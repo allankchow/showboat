@@ -1,20 +1,43 @@
 import { useState, useEffect } from "react";
-import { appTitle } from "../globals/globalVariables";
+import { 
+    appTitle,
+    REQUEST_OPTIONS,
+    NOW_PLAYING_ENDPOINT,
+    POPULAR_ENDPOINT,
+    TOP_RATED_ENDPOINT,
+    UPCOMING_ENDPOINT,
+    IMAGE_PATH_ENDPOINT
+} from "../globals/globalVariables";
 
 const HomePage = () => {
 
-    const [movies, setMovies] = useState([]);
+    const [movieData, setMovieData] = useState([]);
+    const [heroMovie, setHeroMovie] = useState({});
 
     useEffect(() => {
         document.title = `${appTitle} - Home`;
+    }, []);
 
-        // Fetch data from Movie API
-        setMovies();
-    }, [])
+    useEffect(() => {
+        const fetchMovies = async() => {
+            const response = await fetch(NOW_PLAYING_ENDPOINT, REQUEST_OPTIONS);
+            let data = await response.json();
+
+            setMovieData(data.results);
+            setHeroMovie(data.results[0]);
+        }
+
+        fetchMovies();
+
+    }, []);
 
 
     return (
-        <div>Home Page</div>
+        <main>
+            <div className="heroImageContainer">
+                {heroMovie && <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/original${heroMovie.backdrop_path}`} />} 
+            </div>
+        </main>
     )
 }
 

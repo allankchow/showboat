@@ -4,21 +4,23 @@
 
 header {
     @include flex-row(space-between, center, $padding);
-    position: relative;
+    position: fixed;
     background-color: $secondary-colour;
     width: 100%;
-    height: $header-height;
+    height: $mobile-header-height;
     padding: rem(16) rem(25);
+    z-index: 100;
+
+    .logoContainer {
+        height: 100%;
+    }
 
     .logoContainer img {
-        height: rem(60);
+        height: 100%;
     }
 
     @include mq($desktop-medium-width) {
+        height: $desktop-header-height;
         padding: $padding rem(70);
-
-        .logoContainer img {
-            height: rem(80);
-        }
     }
 }
