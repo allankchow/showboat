@@ -1,16 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { tabletWidth } from '../globals/globalVariables';
 
 const Nav = ({ toggleNav }) => {
 
-   const closeNav = (e) => {
-        if (window.innerWidth < 800) {
+    const closeNav = (e) => {
+        if (window.innerWidth < tabletWidth) {
             toggleNav();
         } else {
             e.target.blur();
         }
-   }
+    }
 
    // Handle click on the search input to prevent closing the nav
     const handleSearchClick = (e) => {

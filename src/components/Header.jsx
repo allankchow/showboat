@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
 import { NavLink } from 'react-router-dom';
+import { tabletWidth } from '../globals/globalVariables';
 
 const Header = () => {
 
     const [showNav, setShowNav] = useState(false);
 
     useEffect(() => {
-        let mediaQuery = window.matchMedia('(min-width: 800px)');
+        let mediaQuery = window.matchMedia(`(min-width: ${tabletWidth}px)`);
         mediaQuery.addEventListener('change', isDesktop);
 
         return () => mediaQuery.removeEventListener('change', isDesktop);
