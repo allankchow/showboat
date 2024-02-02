@@ -11,10 +11,10 @@ const API_KEY = "b63bdc99aa7cc89152294bd30422e915";
 const REQUEST_OPTIONS = {
     method: 'GET',
     headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer '
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjNiZGM5OWFhN2NjODkxNTIyOTRiZDMwNDIyZTkxNSIsInN1YiI6IjY1YjdmZThlZjYyMWIyMDE3Y2M4MThiMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.AYciPIi5o2TzKba3SQfkrJjnSdsmVjK6rVN1SdXQ0mQ'
     }
-}
+};
 
 // TMDB API endpoints
 const NOW_PLAYING_ENDPOINT = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
