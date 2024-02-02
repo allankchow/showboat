@@ -10,9 +10,8 @@ header {
     height: $header-height;
     padding: rem(16) rem(25);
 
-    // Logo placeholder, delete later
-    div {
-        color: white;
+    .logoContainer img {
+        height: 100px;
     }
 
     @include mq($desktop-medium-width) {

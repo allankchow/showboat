@@ -4,6 +4,7 @@ import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
 import { NavLink } from 'react-router-dom';
 import { tabletWidth } from '../globals/globalVariables';
+import logo from '../assets/logo/movie-database-logo.svg';
 
 const Header = () => {
 
@@ -31,7 +32,8 @@ const Header = () => {
         <header className={showNav ? "show" : ""}>
             <div className="logoContainer">
                 <NavLink to="/">
-                    <div>LOGO PLACEHOLDER</div>
+                    {/* <div>LOGO PLACEHOLDER</div> */}
+                    <img src={logo} alt="Showboat movie database logo" />
                 </NavLink>
             </div>
             <HamburgerMenu showNav={showNav} toggleNav={toggleNav}/>

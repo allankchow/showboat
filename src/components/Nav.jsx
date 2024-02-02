@@ -19,7 +19,6 @@ const Nav = ({ toggleNav }) => {
     }
 
     return (
-        // <nav className={`siteNavigation ${showNav ? 'show' : 'close'}`} onclick={closeNav}>
         <nav className="siteNavigation" onClick={closeNav}>
             <ul>
                 {/* Nav links */}
