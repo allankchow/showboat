@@ -3,18 +3,38 @@
 @use '../utilities/functions' as *;
 
 nav {
+    @include position-absolute($header-height, 0);
+
     width: 100%;
-    display: none;
-    // height: 0;
-    // visibility: hidden;
-    // overflow: hidden;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
     
-    ul {
-        @include flex-row($gap: rem(126));
+    background-color: $secondary-colour;
+    border-radius: 0 0 rem(15) rem(15);
+
+    transition: height 0.5s ease, visibility 0.5s;
+
+    .show & {
+        transition: height 0.5s ease, visibility 0s;
+        visibility: visible;
+        height: 250px;
     }
 
-    li {
-        font-size: rem(24);
+    ul {
+        @include flex-column(space-evenly, center);
+        height: 100%;
+    }
+
+    li a,
+    li a:visited {
+        font-size: rem(16);
+        color: white;
+        padding: 1rem;
+    }
+
+    li a:hover {
+        color: $on-hover-white;
     }
 
     .searchInputContainer {
@@ -44,6 +64,56 @@ nav {
             font-size: rem(16);
             border: 1px solid #ccc;
             border-radius: 0 calc(rem($searchInputHeight) / 2) calc(rem($searchInputHeight) / 2) 0;
+        }
+    }
+
+    @include mq($tablet-width) {
+        & {
+            height: auto;
+            visibility: visible;
+            position: static;
+            top: auto;
+            left: auto;
+
+
+            ul {
+                @include flex-row(flex-end, center, rem(30));
+            }
+
+            .searchInputContainer {
+                input {
+                    width: rem(150);
+                }
+            }
+        }
+    }
+
+    @include mq($desktop-small-width) {
+        ul {
+            gap: rem(71);
+        }
+
+        .searchInputContainer {
+            input {
+                width: rem(200);
+            }
+        }
+    }
+
+    @include mq($desktop-width) {
+        ul {
+            gap: rem(126);
+        }
+        
+        li a,
+        li a:visited {
+            font-size: rem(24);
+        }
+
+        .searchInputContainer {
+            input {
+                width: rem(240);
+            }
         }
     }
     

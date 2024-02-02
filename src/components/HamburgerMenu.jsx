@@ -1,18 +1,11 @@
-import { useState } from "react";
 
-const MobileNav = () => {
-
-    const [isOpened, setIsOpened] = useState(false);
-
-    const handleToggle = () => {
-        setIsOpened(!isOpened);
-    }
+const HamburgerMenu = ({ showNav, toggleNav}) => {
 
     return (
-        <div className="mobileNavContainer">
+        <div className="hamburgerMenuContainer">
             <button 
-                className={`hamburgerMenu ${isOpened? 'opened' : ''}`} 
-                onClick={handleToggle}
+                className={`hamburgerMenu ${showNav? 'opened' : ''}`} 
+                onClick={toggleNav}
                 aria-label="Main Menu"
             >
                 <svg width="100" height="100" viewBox="0 0 100 100">
@@ -25,4 +18,4 @@ const MobileNav = () => {
     )
 }
 
-export default MobileNav;
+export default HamburgerMenu;

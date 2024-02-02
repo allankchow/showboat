@@ -2,10 +2,24 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Nav = () => {
+const Nav = ({ toggleNav }) => {
+
+   const closeNav = (e) => {
+        if (window.innerWidth < 800) {
+            toggleNav();
+        } else {
+            e.target.blur();
+        }
+   }
+
+   // Handle click on the search input to prevent closing the nav
+    const handleSearchClick = (e) => {
+        e.stopPropagation();
+    }
 
     return (
-        <nav className='siteNavigation'>
+        // <nav className={`siteNavigation ${showNav ? 'show' : 'close'}`} onclick={closeNav}>
+        <nav className="siteNavigation" onClick={closeNav}>
             <ul>
                 {/* Nav links */}
                 <li><NavLink to="/">HOME</NavLink></li>
@@ -15,7 +29,13 @@ const Nav = () => {
                 {/* Search input */}
                 <form className="searchInput">
                     <div className='searchInputContainer'>
-                        <input type="text" id="searchInput" name="searchInput" placeholder='Search...'/>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            name="searchInput" 
+                            placeholder='Search...'
+                            onClick={handleSearchClick}
+                        />
                         <button type="submit">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
