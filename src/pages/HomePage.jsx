@@ -14,7 +14,7 @@ import Hero from "../components/Hero";
 const HomePage = () => {
 
     const [movieData, setMovieData] = useState([]);
-    const [heroMovie, setHeroMovie] = useState({});
+    const [heroMovie, setHeroMovie] = useState(null);
 
     useEffect(() => {
         document.title = `${appTitle} - Home`;

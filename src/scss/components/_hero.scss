@@ -49,7 +49,7 @@
         }
 
         .utilityBtnContainer {
-            @include flex-column($gap: calc($padding-half*0.75));
+            @include flex-column($gap: $padding);
 
             .playTrailerBtn {
                 display: inline-block;
