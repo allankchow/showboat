@@ -31,7 +31,7 @@
     }
 
     .heroTextContainer {
-        @include position-absolute(45%, rem(40));
+        @include position-absolute(48%, rem(40));
         transform: translateY(-50%);
         max-width: rem(425);
         color: $tertiary-colour;
