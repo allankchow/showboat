@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
-import AddToListBtn from "./AddToListBtn";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+
+import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
+import AddToListBtn from "./AddToListBtn";
 
 const Hero = ({ movie }) => {
 
@@ -28,17 +30,15 @@ const Hero = ({ movie }) => {
         }
     
         fetchVideos();
-        
     }, [movie]);
 
+    // Open the traile in a new tab
     const openTrailer = () => {
         if (trailer) {
-            console.log(trailer);
             let youtubeUrl = `https://www.youtube.com/watch?v=${trailer.key}`;
             window.open(youtubeUrl, '_blank');
         }
     }
-
 
     return (
         <div className="heroContainer">
@@ -60,7 +60,6 @@ const Hero = ({ movie }) => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
