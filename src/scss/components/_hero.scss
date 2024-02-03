@@ -40,25 +40,82 @@
         z-index: 2;
 
         h1 {
-            // font-size: rem(40);
             font-size: rem(26);
-            // max-width: rem(425);
-
-            margin: $padding 0 $padding-double;
+            margin: $padding 0 calc($padding*1.5);
         }
 
         h3 {
             font-size: rem(16);
         }
 
-        a {
-            display: inline-block;
-            font-size: rem(14);
-            font-weight: 500;
-            color: white;
-            background-color: $primary-colour;
-            padding: calc($padding*0.75) calc($padding*1.5);
-            border-radius: rem(6);
+        .utilityBtnContainer {
+            @include flex-column($gap: calc($padding-half*0.75));
+
+            .playTrailerBtn {
+                display: inline-block;
+                font-size: rem(14);
+                font-weight: 600;
+                color: white;
+                background-color: $primary-colour;
+                margin-top: $padding-half;
+                padding: $padding $padding-double;
+                border: none;
+                border-radius: rem(6);
+
+                transition: color $link-hover-animation-time ease-in-out;
+            }
+
+            .playTrailerBtn:hover {
+                color: $on-hover-black;
+            }
+    
+            .infoAddContainer {
+                @include flex-row($gap: $padding);
+                font-size: rem(20);
+            }
+
+            .infoBtn {
+                transition: color $link-hover-animation-time ease-in-out;
+            }
+
+            .infoBtn:hover {
+                color: $on-hover-white;
+            }
+
+            .infoBtn,
+            .addToListBtn {
+                font-size: rem(24);
+            }
+
+            @include mq($tablet-width) {
+                .playTrailerBtn {
+                    font-size: rem(16);
+                }
+            }
+
+            @include mq($desktop-small-width) {
+                .playTrailerBtn {
+                    font-size: rem(18);
+                }
+            }
+            
+            @include mq($desktop-medium-width) {
+                .playTrailerBtn {
+                    font-size: rem(18);
+                }
+
+                .infoBtn,
+                .addToListBtn {
+                    font-size: rem(28);
+                }
+            }
+    
+            @include mq($desktop-large-width) {
+                .playTrailerBtn {
+                    font-size: rem(24);
+                }
+            }
+
         }
 
         @include mq($tablet-width) {
@@ -73,11 +130,6 @@
             h3 {
                 font-size: rem(18);
             }
-
-            a {
-                font-size: rem(16);
-                font-weight: 500;
-            }
         }
 
         @include mq($desktop-small-width) {
@@ -89,11 +141,6 @@
 
             h3 {
                 font-size: rem(20);
-            }
-
-            a {
-                font-size: rem(18);
-                font-weight: 500;
             }
         }
 
@@ -107,11 +154,6 @@
             h3 {
                 font-size: rem(22);
             }
-
-            a {
-                font-size: rem(18);
-                font-weight: 500;
-            }
         }
 
         @include mq($desktop-large-width) {
@@ -123,11 +165,6 @@
 
             h3 {
                 font-size: rem(24);
-            }
-
-            a {
-                font-size: rem(24);
-                font-weight: 500;
             }
         }
     }

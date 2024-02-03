@@ -1,4 +1,7 @@
 import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
+import AddToListBtn from "./AddToListBtn";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const Hero = ({ movie }) => {
 
@@ -26,10 +29,17 @@ const Hero = ({ movie }) => {
                 <h3>NOW PLAYING:</h3>
                 <h1>{movie.title}</h1>
 
-                <div className="playTrailerBtn">
-                    <a href="/">PLAY TRAILER</a>
+                <div className="utilityBtnContainer">
+                    <button className="playTrailerBtn">PLAY TRAILER</button>
+                    <div className="infoAddContainer">
+                        <div className="infoBtn">
+                            <FontAwesomeIcon icon={faCircleInfo} />
+                        </div>
+                        <AddToListBtn />    
+                    </div>
                 </div>
             </div>
+
         </div>
     )
 }

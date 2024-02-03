@@ -1,0 +1,9 @@
+@use '../base/variables' as *;
+
+.addToListBtn {
+    transition: color $link-hover-animation-time ease-in-out;
+}
+
+.addToListBtn:hover {
+    color: $on-hover-white
+}
