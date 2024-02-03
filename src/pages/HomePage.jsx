@@ -10,10 +10,12 @@ import {
 } from "../globals/globalVariables";
 import MovieTabs from '../components/MovieTabs';
 
+import Hero from "../components/Hero";
+
 const HomePage = () => {
 
     const [movieData, setMovieData] = useState([]);
-    const [heroMovie, setHeroMovie] = useState({});
+    const [heroMovie, setHeroMovie] = useState(null);
 
     useEffect(() => {
         document.title = `${appTitle} - Home`;
@@ -32,12 +34,9 @@ const HomePage = () => {
 
     }, []);
 
-
     return (
         <main>
-            <div className="heroImageContainer">
-                {heroMovie && <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/original${heroMovie.backdrop_path}`} />} 
-            </div>
+            {heroMovie && <Hero movie={heroMovie} />} 
 
             <MovieTabs />
 
