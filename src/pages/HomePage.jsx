@@ -8,6 +8,7 @@ import {
     UPCOMING_ENDPOINT,
     IMAGE_PATH_ENDPOINT
 } from "../globals/globalVariables";
+import MovieTabs from '../components/MovieTabs';
 
 const HomePage = () => {
 
@@ -37,6 +38,9 @@ const HomePage = () => {
             <div className="heroImageContainer">
                 {heroMovie && <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/original${heroMovie.backdrop_path}`} />} 
             </div>
+
+            <MovieTabs />
+
         </main>
     )
 }
