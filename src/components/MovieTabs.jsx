@@ -28,8 +28,8 @@ function MovieTabs() {
             posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w500${movie.poster_path}` : null,
             title: movie.title,
             releaseDate: movie.release_date,
-            voteAverage: movie.vote_average,
-            overview: movie.overview,
+            voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
+            overview: movie.overview,   
         }));
     }
 
@@ -43,6 +43,8 @@ function MovieTabs() {
                 const data = await response.json();
                 const transformedMovies = transformMoviesData(data.results);
                 setMovies(transformedMovies); // Set the transformed movies into the state
+                console.log("Current tab:", currentTab);
+                console.log("Fetching from endpoint:", endpoint);
             } catch (error) {
                 console.error("Error fetching data: ", error);
             }
@@ -75,20 +77,25 @@ function MovieTabs() {
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
                     movies.map((movie, index) => (
-                        <div key={index}>
+                        <div className="movie-item" key={index}>
                             {movie.posterPath ? (
+                                // scenario 1: poster found
                                 <img src={movie.posterPath} alt={`Poster for ${movie.title}`} />
                             ) : (
-                                <div>No Image Available</div> // Placeholder if no poster
+                                // scenario 2: no poster found
+                                <div className="no-image">No Image Available</div> // Placeholder if no poster
                             )}
-                            <h3>{movie.title}</h3>
-                            <p>Release Date: {movie.releaseDate}</p>
-                            <p>Vote Average: {movie.voteAverage}</p>
-                            <p>{movie.overview}</p>
+                            <div className = "overlay">
+                                <h3>{movie.title}</h3>
+                                <p>Release Date: {movie.releaseDate}</p>
+                                <p>Vote Average: {movie.voteAverage}</p>
+                                <p>{movie.overview}</p>
+                            </div>
                         </div>
                         ))
+                ) : (
                     // scenario 2: no movies in the movies array
-                    ) : (<p>No movies found!</p>)}
+                    <p>No movies found!</p>)}
             </div>
         </div>
     );

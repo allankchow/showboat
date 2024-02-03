@@ -39,7 +39,6 @@ const HomePage = () => {
             {heroMovie && <Hero movie={heroMovie} />} 
 
             <MovieTabs />
-
         </main>
     )
 }
