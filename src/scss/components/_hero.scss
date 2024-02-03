@@ -119,7 +119,6 @@
         }
 
         @include mq($tablet-width) {
-
             max-width: rem(475);
             left: rem(100);
 
@@ -167,10 +166,5 @@
                 font-size: rem(24);
             }
         }
-    }
-
-
-    @include mq($tablet-width) {
-        height: 100vh;
     }
 }

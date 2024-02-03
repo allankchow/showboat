@@ -4,7 +4,7 @@
 main {
     padding-top: $mobile-header-height;
 
-    @include mq($tablet-width) {
-        padding-top: 0;
+    @include mq($desktop-medium-width) {
+        padding-top: $desktop-header-height;
     }
 }
