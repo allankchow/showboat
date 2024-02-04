@@ -62,7 +62,7 @@
                 border: none;
                 border-radius: rem(6);
 
-                transition: color $link-hover-animation-time ease-in-out;
+                transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
             }
     
             .infoAddContainer {
@@ -71,7 +71,7 @@
             }
 
             .infoBtn {
-                transition: color $link-hover-animation-time ease-in-out;
+                transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
             }
 
             .infoBtn,
