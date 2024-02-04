@@ -65,9 +65,9 @@
                 transition: color $link-hover-animation-time ease-in-out;
             }
 
-            .playTrailerBtn:hover {
-                color: $on-hover-black;
-            }
+            // .playTrailerBtn:hover {
+            //     color: $on-hover-black;
+            // }
     
             .infoAddContainer {
                 @include flex-row($gap: $padding);
@@ -78,9 +78,13 @@
                 transition: color $link-hover-animation-time ease-in-out;
             }
 
-            .infoBtn:hover {
-                color: $on-hover-white;
-            }
+            // .playTrailerBtn:hover {
+            //     color: $on-hover-black;
+            // }
+
+            // .infoBtn:hover {
+            //     color: $on-hover-white;
+            // }
 
             .infoBtn,
             .addToListBtn {
@@ -96,6 +100,11 @@
             @include mq($desktop-small-width) {
                 .playTrailerBtn {
                     font-size: rem(18);
+                }
+
+                .playTrailerBtn:hover,
+                .infoBtn:hover {
+                    color: $on-hover-black;
                 }
             }
             
