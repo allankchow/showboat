@@ -8,6 +8,7 @@ import {
     UPCOMING_ENDPOINT,
     IMAGE_PATH_ENDPOINT
 } from "../globals/globalVariables";
+import MovieTabs from '../components/MovieTabs';
 
 import Hero from "../components/Hero";
 
@@ -36,6 +37,8 @@ const HomePage = () => {
     return (
         <main>
             {heroMovie && <Hero movie={heroMovie} />} 
+
+            <MovieTabs />
         </main>
     )
 }
