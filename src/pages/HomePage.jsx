@@ -27,7 +27,7 @@ const HomePage = () => {
             let data = await response.json();
 
             setMovieData(data.results);
-            setHeroMovie(data.results[0]);
+            setHeroMovie(data.results[4]);
         }
 
         fetchMovies();
