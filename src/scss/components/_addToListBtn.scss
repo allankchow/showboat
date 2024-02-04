@@ -1,10 +1,12 @@
 @use '../base/variables' as *;
+@use '../utilities/mixins' as *;
 
 .addToListBtn {
-    transition: color $link-hover-animation-time ease-in-out, transform  $link-hover-animation-time ease-in-out;
-}
+    transition: color $link-hover-animation-time ease-in-out;
 
-.addToListBtn:hover {
-    color: $on-hover-white;
-    transform: scale(1.2);
+    @include mq($desktop-small-width) {
+        &:hover {
+            color: $on-hover-white
+        }
+    }
 }
