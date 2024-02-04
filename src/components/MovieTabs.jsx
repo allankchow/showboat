@@ -5,7 +5,6 @@ import {    API_KEY,
             NOW_PLAYING_ENDPOINT, 
             TOP_RATED_ENDPOINT, 
             UPCOMING_ENDPOINT,
-            
         } from '../globals/globalVariables';
 
 function MovieTabs() {
@@ -30,7 +29,7 @@ function MovieTabs() {
             title: movie.title,
             releaseDate: movie.release_date,
             voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
-            overview: movie.overview,   
+            overview: movie.overview.length > 100 ? movie.overview.slice(0, 150) + '...' : movie.overview, // Limit to 100 characters 
         }));
     }
 
@@ -53,7 +52,7 @@ function MovieTabs() {
         fetchMovies();
     }, [currentTab]); // Dependency array to re-fetch data when currentTab changes
 
-    
+
     // useEffect to ensure that the active tab is scrolled into view when it's selected
     useEffect(() => {
         const activeTabElement = tabsRefs.current[currentTab];

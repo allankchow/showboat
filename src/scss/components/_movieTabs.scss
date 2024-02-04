@@ -63,13 +63,18 @@
 }
 
 .tab-content {
-    @include flex-column(center, center, 0);
+    // @include flex-column(center, center, 0);
+    @include flex-row(center, center, em(20));
+    flex-wrap: wrap;
+    @include horizontal-margin-center;
+    margin: 1em em(10);
+
     .movie-item {
         // setting container size
         position: relative;
-        width: em(300);
+        width: em(220); // SET IMAGE SIZE HERE!!!
         height: auto;
-        // overflow: hidden;
+        overflow: hidden;
 
 
         img,
@@ -106,3 +111,21 @@
 // -----------------------------------------------------------------------
 // Tablet+ Styling
 // -----------------------------------------------------------------------
+
+@include mq($tablet-width) {
+    .tab-content{
+        @include flex-row(center, center, em(20));
+        flex-wrap: wrap;
+        max-width: em(800); 
+        @include horizontal-margin-center;
+    }
+} 
+
+// -----------------------------------------------------------------------
+// Desktop+ Styling
+// -----------------------------------------------------------------------
+@include mq($desktop-large-width) {
+    .tab-content{
+        max-width: em(1000); 
+    }
+} 
