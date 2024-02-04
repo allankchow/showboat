@@ -2,7 +2,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-import { API_KEY, MOVIE_ENDPOINT, IMAGE_PATH_ENDPOINT } from '../globals/globalVariables';
+import { 
+    API_KEY, 
+    MOVIE_ENDPOINT, 
+    IMAGE_PATH_ENDPOINT
+} from "../globals/globalVariables";
+
+import { parseVideos } from "../globals/utilityFunctions";
 
 const MoviePage = () => {
 
@@ -47,7 +53,8 @@ const MoviePage = () => {
     const parseCast = (cast) => {
         let parsedCast = [];
         for (let i = 0; i < cast.length; i++) {
-            parsedCast.push({
+            parsedCast.push(
+                {
                     name: cast[i].name,
                     character: cast[i].character
                 }
@@ -66,6 +73,7 @@ const MoviePage = () => {
         return {
             title: movie.original_title,
             backdrop: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
+            poster: `${IMAGE_PATH_ENDPOINT}/original${movie.poster_path}`,
             rating: movie.vote_average.toFixed(1),
             releaseDate: movie.release_date,
             runtime: minutesToHourMinutes(movie.runtime),
@@ -73,26 +81,47 @@ const MoviePage = () => {
             overview: movie.overview,
             certification: parseCertification(movie.release_dates.results),
             cast: parseCast(movie.credits.cast),
+            trailer: parseVideos(movie.videos),
         };
     }
 
     useEffect(() => {
         // Fetch the movie
         const fetchMovie = async () => {
-            const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits`;
+            try {
+                const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits,videos`;
+    
+                const response = await fetch(fetchUrl);
+                const data = await response.json();
+    
+                setMovie(parseMovie(data));
+            } catch (err) {
+                console.error("Error fetching movie: ", err.message);
+            }
 
-            const response = await fetch(fetchUrl);
-            const data = await response.json();
-            setMovie(parseMovie(data));
         }
 
         fetchMovie();
     }, []); 
 
     
-
+    // console.log(movie)
     return (
-        <div>Movie Page {id}</div>
+        <main>
+            <section className="movieInfoPage">
+                {movie 
+                    ? (
+                        <>
+                            <h1>{movie.title}</h1>
+
+                        </>
+                    )
+                    : (
+                        <h1>404 ERROR</h1>
+                    )
+                }
+            </section>
+        </main>
     )
 }
 
