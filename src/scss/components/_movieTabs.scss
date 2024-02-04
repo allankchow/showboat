@@ -11,13 +11,23 @@
     padding: 3rem 0;
     position: relative;
 
+    // horizontal overflow scrolling styling
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap; 
+    scrollbar-width: none; // hide scrollbar in firefox
+    -ms-overflow-style: none; // hide scrollbar in ie and edge
+
+    &::-webkit-scrollbar {
+        display: none; // hide scrollbar in WebKit browsers like chrome and Safari
+    }
 
     &:after {
         // gray bar
         content: '';
         position: absolute;
         bottom: 2em;
-        width: em(491) ;
+        width: em(491);
         height: em(3);
         background-color: rgb(212, 212, 212);
         z-index: 1;
@@ -92,3 +102,7 @@
         }
     }
 }
+
+// -----------------------------------------------------------------------
+// Tablet+ Styling
+// -----------------------------------------------------------------------

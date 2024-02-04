@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -10,6 +10,11 @@ import {    API_KEY,
 
 function MovieTabs() {
 
+    // initialize states
+    const [currentTab, setCurrentTab] = useState('popular');
+    const [movies, setMovies] = useState([]);
+    const tabsRefs = useRef({}); // initializing with empty object
+
     // endpoints object
     const tabs = {
         popular: POPULAR_ENDPOINT,
@@ -18,13 +23,9 @@ function MovieTabs() {
         upcoming: UPCOMING_ENDPOINT,
     };
 
-    // initialize states
-    const [currentTab, setCurrentTab] = useState('popular');
-    const [movies, setMovies] = useState([]);
-
+    // extracts only useful data from fetched api movies data
     const transformMoviesData = (movies) => {
         return movies.map(movie => ({
-            // extract useful data from fetched api movies data
             posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w500${movie.poster_path}` : null,
             title: movie.title,
             releaseDate: movie.release_date,
@@ -50,8 +51,20 @@ function MovieTabs() {
             }
         };
         fetchMovies();
-        
     }, [currentTab]); // Dependency array to re-fetch data when currentTab changes
+
+    
+    // useEffect to ensure that the active tab is scrolled into view when it's selected
+    useEffect(() => {
+        const activeTabElement = tabsRefs.current[currentTab];
+        if(activeTabElement) {
+            activeTabElement.scrollIntoView({
+                behavior: 'smooth', 
+                block: 'nearest',       // vertical alignment
+                inline: 'start'         // horizontal alignment
+            });
+        }
+    }, [currentTab]);
 
 
     // helper function to determine if tab active
@@ -62,11 +75,12 @@ function MovieTabs() {
         <div>
             <div className ="tabs">
                 {/* iterate over tabs object and use them to dynamically create tabs */}
-                {Object.keys(tabs).map((tab) => (
+                {Object.keys(tabs).map((tab, index) => (
                     <button 
-                        key={tab} 
-                        className={isActive(tab) ? 'active' : ''} 
-                        onClick={() => setCurrentTab(tab)}
+                        key={tab}
+                        ref={element => (tabsRefs.current[tab] = element)} //Assign DOM element to the tabRefs object
+                        className={isActive(tab) ? 'active' : ''} //adds class "active" if tab is active
+                        onClick={() => setCurrentTab(tab)} 
                     >
                         {tab.replace('_', ' ').toUpperCase()}
                     </button>
