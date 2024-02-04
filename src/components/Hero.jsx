@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
+import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "./AddToListBtn";
 
 const Hero = ({ movie }) => {
@@ -13,18 +14,11 @@ const Hero = ({ movie }) => {
     useEffect(() => {
         const fetchVideos = async() => {
             // Get the movie videos
-            let videosLink = `https://api.themoviedb.org/3/movie/${movie.id}/videos`;
-            let response = await fetch(videosLink, REQUEST_OPTIONS);
-            let videos = await response.json();
+            const videosLink = `https://api.themoviedb.org/3/movie/${movie.id}/videos`;
+            const response = await fetch(videosLink, REQUEST_OPTIONS);
+            const videos = await response.json();
             
-            // The results contain an array of video objects
-            videos = videos.results;
-            // Get only the trailers
-            let trailerVideos = videos.filter(video => video.type === 'Trailer');
-            // If there are more than 1 trailers, get the last one (which is the offical trailer)
-            let trailerVideo = (trailerVideos.length > 0) 
-                                    ? trailerVideos[trailerVideos.length - 1]
-                                    : null;
+            const trailerVideo = parseVideos(videos);
             
             setTrailer(trailerVideo);
         }
