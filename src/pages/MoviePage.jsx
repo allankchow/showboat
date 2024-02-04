@@ -13,6 +13,7 @@ const MoviePage = () => {
     
     const [movie, setMovie] = useState(null);
 
+    // Convert runtime in minutes to "xh ym" format
     const minutesToHourMinutes = (seconds) => {
         const hours = Math.floor(seconds/60);
         const minutes = Math.floor(seconds % 60);
@@ -20,10 +21,47 @@ const MoviePage = () => {
         return `${hours}h ${minutes}m`;
     }
 
+    // Return an array of genres
     const parseGenres = (genres) => {
         return genres.map(genre => genre.name);
     }
 
+    // Extract the movie certification rating
+    const parseCertification = (certifications) => {
+        let certification = null;
+        const countryInfo = certifications.find(country => country.iso_3166_1 === "US");
+        if (countryInfo) {
+
+            for (let i = 0; i < countryInfo.release_dates.length; i++) {
+                const releaseDateInfo = countryInfo.release_dates[i];
+                certification = releaseDateInfo.certification;
+
+                if (certification) break;
+            }
+        }
+
+        return certification;
+    }
+
+    // Parse the first 8 cast members
+    const parseCast = (cast) => {
+        let parsedCast = [];
+        for (let i = 0; i < cast.length; i++) {
+            parsedCast.push({
+                    name: cast[i].name,
+                    character: cast[i].character
+                }
+            )
+
+            if (i===8) {
+                break;
+            }
+        }
+
+        return parsedCast;
+    }
+
+    // Extract required information from movie object
     const parseMovie = (movie) => {
         return {
             title: movie.original_title,
@@ -33,36 +71,22 @@ const MoviePage = () => {
             runtime: minutesToHourMinutes(movie.runtime),
             genres: parseGenres(movie.genres),
             overview: movie.overview,
+            certification: parseCertification(movie.release_dates.results),
+            cast: parseCast(movie.credits.cast),
         };
     }
 
     useEffect(() => {
+        // Fetch the movie
         const fetchMovie = async () => {
-            const response = await fetch(`${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}`);
+            const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits`;
+
+            const response = await fetch(fetchUrl);
             const data = await response.json();
             setMovie(parseMovie(data));
-
-            console.log(parseMovie(data))
-        }
-
-        const fetchCertification = async () => {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${API_KEY}`);
-            const data = await response.json();
-            const certifications = data.results;
-
-            const countryInfo = certifications.find(country => country.iso_3166_1 === "US");
-            if (countryInfo) {
-                countryInfo.release_dates.forEach(releaseDateInfo => {
-                    const certification = releaseDateInfo.certification;
-                    if (certification) {
-                        setMovie({...movie, certification: certification});
-                    }
-                });
-            }
         }
 
         fetchMovie();
-        fetchCertification();
     }, []); 
 
     
