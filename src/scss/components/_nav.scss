@@ -2,7 +2,7 @@
 @use '../utilities/mixins' as *;
 @use '../utilities/functions' as *;
 
-nav {
+.siteNavigation {
     @include position-absolute($mobile-header-height, 0);
 
     width: 100%;
