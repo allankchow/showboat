@@ -64,10 +64,6 @@
 
                 transition: color $link-hover-animation-time ease-in-out;
             }
-
-            // .playTrailerBtn:hover {
-            //     color: $on-hover-black;
-            // }
     
             .infoAddContainer {
                 @include flex-row($gap: $padding);
@@ -77,14 +73,6 @@
             .infoBtn {
                 transition: color $link-hover-animation-time ease-in-out;
             }
-
-            // .playTrailerBtn:hover {
-            //     color: $on-hover-black;
-            // }
-
-            // .infoBtn:hover {
-            //     color: $on-hover-white;
-            // }
 
             .infoBtn,
             .addToListBtn {
