@@ -1,0 +1,75 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.movieInfoPage {
+
+    // @include flex-column(center, center);
+
+    .heroSection {
+
+        .headerContainer {
+            @include flex-row(flex-start, center, $padding);
+    
+            .addToListBtn {
+                font-size: rem(24);
+            }
+    
+            h1 {
+                font-size: rem(24);
+            }
+        }
+
+        h3 {
+            font-size: rem(20);
+            font-weight: semi-bold;
+            margin-bottom: $padding;
+        }
+    }
+    
+    .movieInfoWrapper {       
+        @include horizontal-margin-center;
+        width: clamp(rem(300), 100%, rem(490));
+        padding: 0 10px;
+    }
+
+    .belowHeroSection {
+        @include flex-column(center, flex-start);
+        margin-top: $padding;
+
+        .rowWrapper {
+            @include flex-row(flex-start, center, rem(25));
+        }
+    }
+    
+    .ratingContainer {
+        @include flex-row(flex-start, center, rem(20));
+        
+        .rating {
+            font-size: rem(30);
+        }
+    }
+
+    .genreContainer {
+        @include flex-row(flex-start, center, rem(15));
+        margin-top: $padding-half;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+
+        scrollbar-width: none; // hide scrollbar in firefox
+        -ms-overflow-style: none; // hide scrollbar in ie and edge
+
+        &::-webkit-scrollbar {
+            display: none; // hide scrollbar in WebKit browsers like chrome and Safari
+        }
+    }
+
+    .dateContainer {
+        @include flex-row(space-between, center);
+        width: 100%;
+        margin-top: $padding-half;
+        font-weight: 500;
+    }
+
+}

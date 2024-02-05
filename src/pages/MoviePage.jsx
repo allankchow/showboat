@@ -1,14 +1,16 @@
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
 import { 
     API_KEY, 
     MOVIE_ENDPOINT, 
-    IMAGE_PATH_ENDPOINT
-} from "../globals/globalVariables";
+    IMAGE_PATH_ENDPOINT,
+    tabletWidth,
+    desktopMediumWidth
 
+} from "../globals/globalVariables";
 import { parseVideos } from "../globals/utilityFunctions";
+import AddToListBtn from "../components/AddToListBtn";
 
 const MoviePage = () => {
 
@@ -18,6 +20,7 @@ const MoviePage = () => {
     // const id = "933131";
     
     const [movie, setMovie] = useState(null);
+    const [layout, setLayout] = useState(null);
 
     // Convert runtime in minutes to "xh ym" format
     const minutesToHourMinutes = (seconds) => {
@@ -30,6 +33,13 @@ const MoviePage = () => {
     // Return an array of genres
     const parseGenres = (genres) => {
         return genres.map(genre => genre.name);
+    }
+
+    const parseDate = (date) => {
+        const dateObject = new Date(date);
+        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+
+        return dateObject.toLocaleDateString('en-US', options);
     }
 
     // Extract the movie certification rating
@@ -72,12 +82,13 @@ const MoviePage = () => {
     const parseMovie = (movie) => {
         return {
             title: movie.original_title,
-            backdrop: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
-            poster: `${IMAGE_PATH_ENDPOINT}/original${movie.poster_path}`,
+            backdrop_path: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
+            poster_path: `${IMAGE_PATH_ENDPOINT}/original${movie.poster_path}`,
             rating: movie.vote_average.toFixed(1),
-            releaseDate: movie.release_date,
+            releaseDate: parseDate(movie.release_date),
             runtime: minutesToHourMinutes(movie.runtime),
             genres: parseGenres(movie.genres),
+            // genres: ["Comedy", "Family", "Fantasy", "Sci-fi", "LOOOOL"],
             overview: movie.overview,
             certification: parseCertification(movie.release_dates.results),
             cast: parseCast(movie.credits.cast),
@@ -85,6 +96,7 @@ const MoviePage = () => {
         };
     }
 
+    // Movie data fetching
     useEffect(() => {
         // Fetch the movie
         const fetchMovie = async () => {
@@ -102,25 +114,92 @@ const MoviePage = () => {
         }
 
         fetchMovie();
-    }, []); 
+    }, []);
 
-    
-    // console.log(movie)
+
+    // Device layout based on window width
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < tabletWidth) {
+                setLayout("mobile");
+            } else if (screenWidth >= tabletWidth && screenWidth < desktopMediumWidth) {
+                setLayout("tablet");
+            } else {
+                setLayout("desktop");
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+
+    }, []);
+
     return (
-        <main>
-            <section className="movieInfoPage">
-                {movie 
-                    ? (
-                        <>
-                            <h1>{movie.title}</h1>
+        <main className="movieInfoPage">
+            {movie 
+                ? <>
+                    {layout === "mobile" && (
+                        <>  
+                            <section className="heroSection">
+                                <div className="heroContainer">
+                                    <div className="heroImageContainer">
+                                        <img className="heroImage" src={movie.backdrop_path} alt={movie.title} /> 
+                                    </div>
 
+                                    <div className="heroTextContainer">
+                                        <div className="headerContainer">
+                                            <h1>{movie.title}</h1>
+                                            <AddToListBtn />
+                                        </div>
+                                        <h3>Overview</h3>
+                                        <p>{movie.overview}</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <div className="movieInfoWrapper">
+                                <section className="belowHeroSection">
+                                    <div className="rowWrapper">
+                                        <div className="ratingContainer">
+                                            <p className="rating">{movie.rating}</p>
+                                            <p className="certification">{movie.certification}</p>
+                                        </div>
+                                    </div>
+                                    <div className="genreContainer">
+                                        {
+                                            (movie.genres.length > 0)
+                                                ? movie.genres.map(genre => (
+                                                    <p key={genre} className="genre">{genre}</p>
+                                                ))
+                                               : <p className="genre">Genre N/A</p>
+                                        }
+                                    </div>
+                                    <div className="dateContainer">
+                                        <p>{movie.releaseDate}</p>
+                                        <p>{movie.runtime}</p>
+                                    </div>
+                                </section>
+                            </div>
+                            
                         </>
-                    )
-                    : (
-                        <h1>404 ERROR</h1>
-                    )
-                }
-            </section>
+                    )}
+                    
+                    {/* TODO */}
+                    {/* {layout === "tablet" && (
+                        <h1>Tablet</h1>
+                    )}
+
+                    {layout === "desktop" && (
+                        <h1>Desktop</h1>
+                    )} */}
+                </>
+
+                : (
+                    <h1>404 ERROR</h1>
+                )
+            }
         </main>
     )
 }

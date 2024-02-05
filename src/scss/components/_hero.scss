@@ -35,7 +35,7 @@
         transform: translateY(-50%);
         max-width: rem(425);
         color: $tertiary-colour;
-        padding: $padding;
+        padding: $padding $padding-double $padding $padding;
 
         z-index: 2;
 
