@@ -17,10 +17,10 @@ const REQUEST_OPTIONS = {
 };
 
 // TMDB API endpoints
-const NOW_PLAYING_ENDPOINT = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-const POPULAR_ENDPOINT = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-const TOP_RATED_ENDPOINT = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-const UPCOMING_ENDPOINT = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+const NOW_PLAYING_ENDPOINT = "https://api.themoviedb.org/3/movie/now_playing?language=en-US";
+const POPULAR_ENDPOINT = "https://api.themoviedb.org/3/movie/popular?language=en-US";
+const TOP_RATED_ENDPOINT = "https://api.themoviedb.org/3/movie/top_rated?language=en-US";
+const UPCOMING_ENDPOINT = "https://api.themoviedb.org/3/movie/upcoming?language=en-US";
 
 const IMAGE_PATH_ENDPOINT = "https://image.tmdb.org/t/p";
 const MOVIE_ENDPOINT = "https://api.themoviedb.org/3/movie";
