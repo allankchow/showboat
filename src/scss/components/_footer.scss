@@ -1,0 +1,98 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+footer {
+    @include flex-column($justify-content: center, $align-items: center);
+    background-color: $secondary-colour;
+    padding: 1rem;
+    color: $tertiary-colour;
+    font-size: 1.5rem;
+    font-weight: 400;
+    height: 450px;
+    margin-top: 3rem;
+
+    .footerContent {
+        @include flex-column($justify-content: center, $align-items: center, $gap: 1rem);
+
+        .footerLogoSocials {
+            @include flex-column($justify-content: center, $align-items: center);
+            flex-wrap: wrap;
+            
+            img {
+                width: 100px;
+                margin-bottom: 1rem;
+            }
+            .footerSocials {
+                display: flex;
+                
+                a {
+                    width: 32px;
+                    margin: 0.5rem;
+                }
+        
+                svg {
+                    width: 32px;
+                    height: 32px;
+                    color: $tertiary-colour;
+                }
+    
+                .faTwitter {
+                    width: 32px;
+                    margin: 0;
+                }
+            }
+        }
+    
+        .footerLinks {
+            @include flex-row($gap: 3rem);
+    
+            a {
+                color: $tertiary-colour;
+                text-decoration: none;
+            }
+    
+            .footerNav {
+                @include flex-column;
+                gap: 0.5rem;
+            }
+        
+            .footerCategory {
+                @include flex-column;
+                gap: 0.5rem;
+            }
+        }
+    }
+
+    hr {
+        color: $tertiary-colour;
+        width: 245px;
+        margin: 3rem 0 1rem 0;
+    }
+
+// Tablet (800px)
+    @include mq($tablet-width) {
+        .footerContent {
+            @include flex-row($justify-content: flex-start, $align-items: flex-start, $gap: 4rem);
+
+            .footerLogoSocials {
+                img {
+                    margin: 0;
+                }
+
+                .footerSocials {
+                    display: flex;
+                    padding-top: 1rem;
+                }
+            }
+
+            .footerLinks {
+                @include flex-row($justify-content: center, $align-items: flex-start, $gap: 4rem);
+                padding: 0;
+            }
+        }
+
+        hr {
+            width: 600px;
+        }
+    }
+}

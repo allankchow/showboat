@@ -2,7 +2,7 @@
 @use '../utilities/mixins' as *;
 @use '../utilities/functions' as *;
 
-nav {
+.siteNavigation {
     @include position-absolute($mobile-header-height, 0);
 
     width: 100%;
@@ -76,6 +76,7 @@ nav {
             top: auto;
             left: auto;
 
+            background-color: transparent;
 
             ul {
                 @include flex-row(flex-end, center, rem(30));
