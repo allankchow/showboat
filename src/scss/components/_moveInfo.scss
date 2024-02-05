@@ -1,0 +1,173 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.movieInfoPage {
+
+    .heroSection {
+
+        .headerContainer {
+            @include flex-row(flex-start, center, $padding);
+    
+            .addToListBtn {
+                font-size: rem(24);
+            }
+    
+            h1 {
+                font-size: rem(24);
+            }
+        }
+
+    }
+    
+    h3 {
+        font-size: rem(20);
+        font-weight: semi-bold;
+        margin-bottom: $padding;
+    }
+
+    .movieInfoWrapper {       
+        @include horizontal-margin-center;
+        width: clamp(rem(300), 100%, rem(490));
+        padding: 0 10px;
+    }
+
+    .belowHeroSection {
+        @include flex-column(center, flex-start);
+        margin-top: $padding;
+
+        .rowWrapper {
+            @include flex-row(flex-start, center, rem(25));
+        }
+    }
+    
+    .ratingContainer {
+        @include flex-row(flex-start, center, rem(20));
+        
+        .rating {
+            font-size: rem(30);
+        }
+    }
+
+    .genreContainer {
+        @include flex-row(flex-start, center, rem(15));
+        margin-top: $padding-half;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+
+        scrollbar-width: none; // hide scrollbar in firefox
+        -ms-overflow-style: none; // hide scrollbar in ie and edge
+
+        &::-webkit-scrollbar {
+            display: none; // hide scrollbar in WebKit browsers like chrome and Safari
+        }
+    }
+
+    .dateContainer {
+        @include flex-row(space-between, center);
+        width: 100%;
+        margin-top: $padding;
+        font-weight: 500;
+    }
+
+    .moviePosterContainer {
+        @include horizontal-margin-center;
+        margin-top: rem(30);
+        
+        img {
+            border-radius: rem(12);
+        }
+    }
+
+    .trailerContainer {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;   // Aspect ratio of 16:9
+        margin-top: rem(16);
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .castContainer {
+        margin-top: rem(30);
+        width: 100%;
+    }
+    
+    .cast {
+        display: grid;
+        grid-auto-flow: column;
+        gap: rem(20);
+        overflow-x: auto;
+        overflow-y: hidden;
+        
+        .actorCard {
+            border-radius: rem(6);
+            background-color: $tertiary-colour;
+            width: rem(100);
+            
+            img {
+                height: rem(150);
+                border-radius: rem(6) rem(6) 0 0;
+            }
+            
+            .actor {
+                padding: rem(5) rem(8) rem(8);
+                height: 100%;
+                width: 100%;
+
+                .actorName {
+                    color: $secondary-colour;
+                    font-weight: 400;
+                    margin-bottom: rem(4);
+                }
+    
+                .actorCharacter {
+                    font-size: rem(14);
+                    font-weight: 300;
+                    color: #606060;
+                }
+            }
+        }
+    }
+
+    @include mq($tablet-width) {
+        .heroTextContainer {
+            @include flex-row(space-between, center);
+            padding: $padding;
+            width: clamp(rem(750), 100%, rem(800));
+            max-width: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .textWrapper {
+                width: rem(400);
+            }
+
+            .moviePosterContainer {
+                margin: 0;
+            }
+        }
+    }
+
+    @include mq($desktop-medium-width) {
+        .heroTextContainer {
+            width: rem(1000);
+
+            .textWrapper {
+                width: rem(600);
+            }
+        }
+
+        .movieInfoWrapper {       
+            width: rem(1000);
+        }
+    }
+}

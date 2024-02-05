@@ -1,0 +1,10 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+
+main {
+    padding-top: $mobile-header-height;
+
+    @include mq($desktop-medium-width) {
+        padding-top: $desktop-header-height;
+    }
+}

@@ -1,0 +1,12 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.certification {
+    color: $tertiary-colour;
+    background-color: $certication-colour;
+    padding: rem(4) rem(12);
+    min-width: rem(70);
+    text-align: center;
+    border-radius: rem(4);
+}

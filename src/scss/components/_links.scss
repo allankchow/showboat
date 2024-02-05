@@ -1,5 +1,14 @@
-@use 'variables' as *;
+@use '../base/variables' as *;
 
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
     text-decoration: none;
+}
+
+a,
+a:visited {
+    color: $secondary-colour;
 }

@@ -3,9 +3,25 @@
 @use './base/reset';
 @use './base/typography';
 
+// Component imports
 @use './components/body';
+@use './components/main';
 @use './components/header';
 @use './components/footer';
+@use './components/hero';
+
+@use './components/links';
+@use './components/nav';
+@use './components/hamburgerMenu';
+@use './components/addToListBtn';
+@use './components/heroTextContainer';
+
+@use './components/about';
+@use './components/movieTabs';
+
+@use './components/moveInfo';
+@use './components/certification';
+@use './components/genre';
 
 
 // Google Font import

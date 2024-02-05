@@ -10,6 +10,10 @@ $on-hover-black: #8D8D8D;
 $on-hover-blue: #83A9FF;
 $on-hover-white: #5E5E5E;
 
+// Text background colours
+$certication-colour: #7F7F7F;
+$genre-colour: #CFCFCF;
+
 // Fonts
 $font: 'Jost', Arial, sans-serif;
 $line-height: 1.25;
@@ -19,6 +23,15 @@ $padding: 1rem;
 $padding-half: 0.5rem;
 $padding-double: 2rem;
 
+// Components
+$mobile-header-height: rem(80);
+$desktop-header-height: rem(100);
+
+// Animations
+$link-hover-animation-time: 0.3s;
+
 // Device Widths
-$tablet-width: rem(800);  // smallest size tablet - 768px
-$desktop-width: rem(1200);
+$tablet-width: em(768);
+$desktop-small-width: em(1000);
+$desktop-medium-width: em(1200);
+$desktop-large-width: em(1400);

@@ -1,0 +1,26 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+header {
+    @include flex-row(space-between, center, $padding);
+    position: fixed;
+    background-color: $secondary-colour;
+    width: 100%;
+    height: $mobile-header-height;
+    padding: rem(16) rem(25);
+    z-index: 100;
+
+    .logoContainer {
+        height: 100%;
+    }
+
+    .logoContainer img {
+        height: 100%;
+    }
+
+    @include mq($desktop-medium-width) {
+        height: $desktop-header-height;
+        padding: $padding rem(70);
+    }
+}
