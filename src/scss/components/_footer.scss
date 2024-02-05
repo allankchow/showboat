@@ -2,56 +2,97 @@
 @use '../utilities/mixins' as *;
 
 footer {
+    @include flex-column($justfy-content: center, $align-items: center);
     background-color: $secondary-colour;
-    @include flex-column($justfy-content: center, $align-items: center, $gap: 0);
     padding: 3rem 1rem 1rem 1rem;
     color: $tertiary-colour;
     font-size: 1.5rem;
     font-weight: 400;
 
-    .footerLogo img {
-        width: 100px;
-        margin: 1rem;
-    }
 
-    .footerSocials {
-       @include flex-row;
+    .footerContent {
+        @include flex-column($justfy-content: center, $align-items: center, $gap: 1rem);
 
-        a {
-            width: 32px;
-            margin: 0.5rem;
-        }
-
-        svg {
-            width: 32px;
-            height: 32px;
-            color: $tertiary-colour;
-        }
-    }
-
-    .footerLinks {
-        @include flex-row($justfy-content: flex-start, $align-items: flex-start, $gap: 3rem);
-        padding: 1rem;
-
-        a {
-            color: $tertiary-colour;
-            text-decoration: none;
-        }
-
-        .footerNav {
-            @include flex-column;
-            gap: 0.5rem;
+        .footerLogoSocials {
+            @include flex-column($justfy-content: center, $align-items: center);
+            flex-wrap: wrap;
+            
+            img {
+                width: 100px;
+                margin: 1rem;
+            }
+            .footerSocials {
+                display: flex;
+                
+                a {
+                    width: 32px;
+                    margin: 0.5rem;
+                }
+        
+                svg {
+                    width: 32px;
+                    height: 32px;
+                    color: $tertiary-colour;
+                }
+    
+                .faTwitter {
+                    width: 32px;
+                    margin: 0;
+                }
+            }
         }
     
-        .footerCategory {
-            @include flex-column;
-            gap: 0.5rem;
+        .footerLinks {
+            @include flex-row($gap: 3rem);
+            padding: 1rem;
+    
+            a {
+                color: $tertiary-colour;
+                text-decoration: none;
+            }
+    
+            .footerNav {
+                @include flex-column;
+                gap: 0.5rem;
+            }
+        
+            .footerCategory {
+                @include flex-column;
+                gap: 0.5rem;
+            }
         }
     }
 
     hr {
         color: $tertiary-colour;
-        width: 15rem;
+        width: 250px;
         margin: 3rem 1rem 1rem 1rem;
+    }
+
+// Tablet (800px)
+    @include mq($tablet-width) {
+        .footerContent {
+            @include flex-row($justfy-content: flex-start, $align-items: flex-start, $gap: 4rem);
+
+            .footerLogoSocials {
+                img {
+                    margin: 0;
+                }
+
+                .footerSocials {
+                    display: flex;
+                    padding-top: 1rem;
+                }
+            }
+
+            .footerLinks {
+                @include flex-row($justfy-content: center, $align-items: flex-start, $gap: 4rem);
+                padding: 0;
+            }
+        }
+
+        hr {
+            width: 600px;
+        }
     }
 }

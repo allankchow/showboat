@@ -9,31 +9,33 @@ const Footer = () => {
 
     return (
         <footer className="footer">
-            <div className="footerLogo">
-                <img src="/src/assets/logo/movie-database-logo-no-text.png" alt="Site Logo" />
-            </div>
-            <div className="footerSocials">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faInstagram} />
-                </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-                    <img src={faTwitter} alt="x-twitter icon" />
-                </a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faFacebookSquare} />
-                </a>
-            </div>
-            <div className="footerLinks">
-                <div className="footerNav">
-                    <a href="#">Home</a>
-                    <a href="#">My List</a>
-                    <a href="#">About</a>
+            <div className="footerContent">
+                <div className="footerLogoSocials">
+                    <img src="/src/assets/logo/movie-database-logo-no-text.png" alt="Site Logo" />
+                    <div className="footerSocials">
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                            <FontAwesomeIcon icon={faInstagram} />
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                            <img className="faTwitter" src={faTwitter} alt="x-twitter icon" />
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                            <FontAwesomeIcon icon={faFacebookSquare} />
+                        </a>
+                    </div>
                 </div>
-                <div className="footerCategory">
-                    <a href="#">Popular</a>
-                    <a href="#">Now Playing</a>
-                    <a href="#">Top Rated</a>
-                    <a href="#">Upcoming</a>
+                <div className="footerLinks">
+                    <div className="footerNav">
+                        <a href="#">Home</a>
+                        <a href="#">My List</a>
+                        <a href="#">About</a>
+                    </div>
+                    <div className="footerCategory">
+                        <a href="#">Popular</a>
+                        <a href="#">Now Playing</a>
+                        <a href="#">Top Rated</a>
+                        <a href="#">Upcoming</a>
+                    </div>
                 </div>
             </div>
             <hr />
