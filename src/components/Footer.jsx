@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookSquare,} from '@fortawesome/free-brands-svg-icons';
 import faTwitter from '../assets/x-twitter-white.svg';
@@ -26,15 +27,15 @@ const Footer = () => {
                 </div>
                 <div className="footerLinks">
                     <div className="footerNav">
-                        <a href="#">Home</a>
-                        <a href="#">My List</a>
-                        <a href="#">About</a>
+                            <Link to="/">Home</Link>
+                            <Link to="/mylist">My List</Link>
+                            <Link to="/about">About</Link>
                     </div>
                     <div className="footerCategory">
-                        <a href="#">Popular</a>
-                        <a href="#">Now Playing</a>
-                        <a href="#">Top Rated</a>
-                        <a href="#">Upcoming</a>
+                        <Link to="#">Popular</Link>
+                        <Link to="#">Now Playing</Link>
+                        <Link to="#">Top Rated</Link>
+                        <Link to="#">Upcoming</Link>
                     </div>
                 </div>
             </div>
