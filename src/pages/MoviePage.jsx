@@ -9,6 +9,7 @@ import {
     desktopMediumWidth
 
 } from "../globals/globalVariables";
+
 import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
@@ -17,10 +18,7 @@ import TabletDesktopInfo from "../components/TabletDesktopInfo";
 
 const MoviePage = () => {
 
-    // const { id } = useParams();
-    const id = "787699";
-    // const id = "572802";
-    // const id = "933131";
+    const { id } = useParams();
     
     const [movie, setMovie] = useState(null);
     const [layout, setLayout] = useState(null);
@@ -66,11 +64,16 @@ const MoviePage = () => {
     const parseCast = (cast) => {
         let parsedCast = [];
         for (let i = 0; i < cast.length; i++) {
+            let profilePath = "";
+            (!cast[i].profile_path)
+                ? profilePath = null
+                : profilePath = `${IMAGE_PATH_ENDPOINT}/w185/${cast[i].profile_path}`;
+
             parsedCast.push(
                 {
                     name: cast[i].name,
                     character: cast[i].character,
-                    picture: `${IMAGE_PATH_ENDPOINT}/w185/${cast[i].profile_path}`
+                    picture: profilePath,
                 }
             )
 
@@ -109,8 +112,6 @@ const MoviePage = () => {
     
                 const response = await fetch(fetchUrl);
                 const data = await response.json();
-
-                console.log(data)
     
                 setMovie(parseMovie(data));
             } catch (err) {
@@ -142,8 +143,6 @@ const MoviePage = () => {
         return () => window.removeEventListener('resize', handleResize);
 
     }, []);
-
-    // console.log(movie);
 
     return (
         <main className="movieInfoPage">
