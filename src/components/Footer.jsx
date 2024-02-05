@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import faTwitter from '../assets/x-twitter.svg';
+import { faInstagram, faFacebookSquare,} from '@fortawesome/free-brands-svg-icons';
+import faTwitter from '../assets/x-twitter-white.svg';
 
 
 
@@ -20,7 +20,7 @@ const Footer = () => {
                     <img src={faTwitter} alt="x-twitter icon" />
                 </a>
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                    <FontAwesomeIcon icon={faFacebook} />
+                    <FontAwesomeIcon icon={faFacebookSquare} />
                 </a>
             </div>
             <div className="footerLinks">
