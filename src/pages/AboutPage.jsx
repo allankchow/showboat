@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { appTitle } from "../globals/globalVariables";
 
+import aboutImage01 from '../assets/images/about-image-01.jpg';
+import tmdbAttributionLogo from '../assets/images/tmdb-attribute-logo.svg';
 import aboutImage from '../assets/images/about-image.jpg';
 
 const AboutPage = () => {
@@ -21,6 +23,11 @@ const AboutPage = () => {
                     <img src={aboutImage} alt="Person watching shows"/>
                     <h3>Join Us:</h3>
                     <p>Whether you're a casual viewer or a hardcore cinephile, ShowBoat welcomes you aboard this cinematic voyage. Explore, engage, and be enthralled. The world of movies awaits you!</p>
+
+                    <div className="tmdbAttribution">
+                        <img src={tmdbAttributionLogo} alt="TMDB Logo" />
+                        <p>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+                    </div>
                 </section>
             </div>
         </>
