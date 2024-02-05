@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AddToListBtn from "./AddToListBtn";
 
-const MovieItem = () => {
+function MovieItem({ movie }) {
     return (
         <div className="movie-item" key={movie.id}>
             {movie.posterPath ? (
