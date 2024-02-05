@@ -1,0 +1,138 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.heroTextContainer {
+    @include position-absolute(48%, rem(40));
+    transform: translateY(-50%);
+    max-width: rem(425);
+    color: $tertiary-colour;
+    padding: $padding $padding-double $padding $padding;
+
+    z-index: 2;
+
+    h1 {
+        font-size: rem(26);
+        margin: $padding 0 calc($padding*1.5);
+    }
+
+    h3 {
+        font-size: rem(16);
+    }
+
+    .utilityBtnContainer {
+        @include flex-column($gap: $padding);
+
+        .playTrailerBtn {
+            display: inline-block;
+            font-size: rem(14);
+            font-weight: 600;
+            color: white;
+            background-color: $primary-colour;
+            margin-top: $padding-half;
+            padding: $padding $padding-double;
+            border: none;
+            border-radius: rem(6);
+
+            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+        }
+
+        .infoAddContainer {
+            @include flex-row($gap: $padding);
+            font-size: rem(20);
+        }
+
+        .infoBtn {
+            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+        }
+
+        .infoBtn,
+        .addToListBtn {
+            font-size: rem(24);
+        }
+
+        @include mq($tablet-width) {
+            .playTrailerBtn {
+                font-size: rem(16);
+            }
+        }
+
+        @include mq($desktop-small-width) {
+            .playTrailerBtn {
+                font-size: rem(18);
+            }
+
+            .playTrailerBtn:hover,
+            .infoBtn:hover {
+                color: $on-hover-black;
+            }
+        }
+        
+        @include mq($desktop-medium-width) {
+            .playTrailerBtn {
+                font-size: rem(18);
+            }
+
+            .infoBtn,
+            .addToListBtn {
+                font-size: rem(28);
+            }
+        }
+
+        @include mq($desktop-large-width) {
+            .playTrailerBtn {
+                font-size: rem(24);
+            }
+        }
+
+    }
+
+    @include mq($tablet-width) {
+        max-width: rem(475);
+        left: rem(100);
+
+        h1 {
+            font-size: rem(28);
+        }
+
+        h3 {
+            font-size: rem(18);
+        }
+    }
+
+    @include mq($desktop-small-width) {
+        left: rem(125);
+
+        h1 {
+            font-size: rem(32);
+        }
+
+        h3 {
+            font-size: rem(20);
+        }
+    }
+
+    @include mq($desktop-medium-width) {
+        left: rem(150);
+
+        h1 {
+            font-size: rem(40);
+        }
+
+        h3 {
+            font-size: rem(22);
+        }
+    }
+
+    @include mq($desktop-large-width) {
+        left: rem(200);
+
+        h1 {
+            font-size: rem(48);
+        }
+
+        h3 {
+            font-size: rem(24);
+        }
+    }
+}

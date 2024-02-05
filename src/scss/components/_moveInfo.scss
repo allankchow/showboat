@@ -4,8 +4,6 @@
 
 .movieInfoPage {
 
-    // @include flex-column(center, center);
-
     .heroSection {
 
         .headerContainer {
@@ -131,8 +129,13 @@
                     color: #606060;
                 }
             }
+        }
+    }
 
-            
+    @include mq($tablet-width) {
+        .heroTextContainer {
+            max-width: rem(400);
+            left: rem(75);
         }
     }
 
