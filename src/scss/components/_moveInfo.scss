@@ -114,6 +114,8 @@
             
             img {
                 height: rem(150);
+                width: rem(100);
+                object-fit: cover;
                 border-radius: rem(6) rem(6) 0 0;
             }
             

@@ -41,7 +41,7 @@ const MobileInfo = ({ movie, AddToListBtn, Actor }) => {
                     </div>
 
                     <div className="moviePosterContainer">
-                        <img src={movie.posterPath} />
+                        <img src={movie.posterPath} alt={`Movie poster for ${movie.title}`}/>
                     </div>
 
                     {movie.trailer && (
