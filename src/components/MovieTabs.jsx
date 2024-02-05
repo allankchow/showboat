@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -13,6 +14,8 @@ function MovieTabs() {
     const [currentTab, setCurrentTab] = useState('popular');
     const [movies, setMovies] = useState([]);
     const tabsRefs = useRef({}); // initializing with empty object
+    const [displayCount, setDisplayCount] = useState(12); // number of movies to be displayed
+    const [currentPage, setCurrentPage] = useState(1);
 
     // endpoints object
     const tabs = {
@@ -25,7 +28,8 @@ function MovieTabs() {
     // extracts only useful data from fetched api movies data
     const transformMoviesData = (movies) => {
         return movies.map(movie => ({
-            posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w500${movie.poster_path}` : null,
+            posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
+            id: movie.id,
             title: movie.title,
             releaseDate: movie.release_date,
             voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
@@ -34,24 +38,34 @@ function MovieTabs() {
     }
 
     // useEffect to fetch and update movie api data
-    useEffect(() => {
+    useEffect (() => {
         const fetchMovies = async () => {
-            const endpoint = tabs[currentTab]; // Use the selected tab to determine the endpoint
-            const url = `${endpoint}&api_key=${API_KEY}`;
+            const endpoint = `${tabs[currentTab]}&api_key=${API_KEY}&page=${currentPage}`;
+            {console.log(endpoint)}
             try {
-                const response = await fetch(url);
+                const response = await fetch(endpoint);
                 const data = await response.json();
-                const transformedMovies = transformMoviesData(data.results);
-                setMovies(transformedMovies); // Set the transformed movies into the state
-                console.log("Current tab:", currentTab);
-                console.log("Fetching from endpoint:", endpoint);
+                setMovies(prevMovies => {
+                    const allMovies = [...prevMovies, ...transformMoviesData(data.results)];
+
+                    // filter out movie duplicates
+                    const uniqueMovies = allMovies.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
+                    return uniqueMovies;
+                }); 
             } catch (error) {
-                console.error("Error fetching data: ", error);
+                console.error("Error fetching data:", error);
             }
         };
         fetchMovies();
-    }, [currentTab]); // Dependency array to re-fetch data when currentTab changes
+    }, [currentTab, currentPage]);
 
+    // useEffect to change page back to 1 on tab switch
+    useEffect(() => {
+        // Reset movies and page number when changing tabs
+        setMovies([]);
+        setCurrentPage(1);
+        setDisplayCount(12);
+    }, [currentTab]);
 
     // useEffect to ensure that the active tab is scrolled into view when it's selected
     useEffect(() => {
@@ -68,6 +82,12 @@ function MovieTabs() {
 
     // helper function to determine if tab active
     const isActive = (tab) => currentTab === tab;
+
+    // called on "see more" button click
+    const handleSeeMore = () => {
+        setCurrentPage(prevPage => prevPage + 1);
+        setDisplayCount(prevDisplayCount => prevDisplayCount + 12);
+    }
 
     // start of jsx
     return(
@@ -89,8 +109,8 @@ function MovieTabs() {
             <div className="tab-content">
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
-                    movies.map((movie, index) => (
-                        <div className="movie-item" key={index}>
+                    movies.slice(0, displayCount).map((movie) => (
+                        <div className="movie-item" key={movie.id}>
                             {movie.posterPath ? (
                                 // scenario 1: poster found
                                 <img src={movie.posterPath} alt={`Poster for ${movie.title}`} />
@@ -103,12 +123,19 @@ function MovieTabs() {
                                 <p>Release Date: {movie.releaseDate}</p>
                                 <p>Vote Average: {movie.voteAverage}</p>
                                 <p>{movie.overview}</p>
+                                <Link to={`/movie/${movie.id}`}>More Info</Link>
                             </div>
                         </div>
                         ))
                 ) : (
                     // scenario 2: no movies in the movies array
                     <p>No movies found!</p>)}
+            </div>
+            <div>
+                {/* show see more button if the movies array is greater than 12 */}
+                {displayCount < movies.length && (
+                    <button onClick={handleSeeMore}>See More</button>
+                )}
             </div>
         </div>
     );
