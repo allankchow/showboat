@@ -23,17 +23,20 @@ const Footer = () => {
                     <FontAwesomeIcon icon={faFacebook} />
                 </a>
             </div>
-            <div className="footerNav">
-                <a href="#">Home</a>
-                <a href="#">My List</a>
-                <a href="#">About</a>
+            <div className="footerLinks">
+                <div className="footerNav">
+                    <a href="#">Home</a>
+                    <a href="#">My List</a>
+                    <a href="#">About</a>
+                </div>
+                <div className="footerCategory">
+                    <a href="#">Popular</a>
+                    <a href="#">Now Playing</a>
+                    <a href="#">Top Rated</a>
+                    <a href="#">Upcoming</a>
+                </div>
             </div>
-            <div className="footerCategory">
-                <a href="#">Popular</a>
-                <a href="#">Now Playing</a>
-                <a href="#">Top Rated</a>
-                <a href="#">Upcoming</a>
-            </div>
+            <hr />
             <div className="footerCopyright">@2023 Showboat</div>
         </footer>
     )
