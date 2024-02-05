@@ -11,6 +11,7 @@ import {
 } from "../globals/globalVariables";
 import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
+import Actor from "../components/Actor";
 
 const MoviePage = () => {
 
@@ -66,7 +67,8 @@ const MoviePage = () => {
             parsedCast.push(
                 {
                     name: cast[i].name,
-                    character: cast[i].character
+                    character: cast[i].character,
+                    picture: `${IMAGE_PATH_ENDPOINT}/w185/${cast[i].profile_path}`
                 }
             )
 
@@ -105,6 +107,8 @@ const MoviePage = () => {
     
                 const response = await fetch(fetchUrl);
                 const data = await response.json();
+
+                console.log(data)
     
                 setMovie(parseMovie(data));
             } catch (err) {
@@ -137,7 +141,7 @@ const MoviePage = () => {
 
     }, []);
 
-    console.log(movie);
+    // console.log(movie);
 
     return (
         <main className="movieInfoPage">
@@ -203,6 +207,11 @@ const MoviePage = () => {
 
                                     <div className="castContainer">
                                         <h3>Cast</h3>
+                                        <div className="cast">
+                                            {movie.cast.map(actor => (
+                                                <Actor key={actor.name} actor={actor} />
+                                            ))}
+                                        </div>
                                     </div>
                                 </section>
                             </div>

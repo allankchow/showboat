@@ -95,6 +95,45 @@
 
     .castContainer {
         margin-top: rem(30);
+        width: 100%;
+    }
+    
+    .cast {
+        display: grid;
+        grid-auto-flow: column;
+        gap: rem(20);
+        overflow-x: auto;
+        overflow-y: hidden;
+        
+        .actorCard {
+            border-radius: rem(6);
+            background-color: $tertiary-colour;
+            width: rem(100);
+            
+            img {
+                height: rem(150);
+                border-radius: rem(6) rem(6) 0 0;
+            }
+            
+            .actor {
+                padding: rem(5) rem(8) rem(8);
+                height: 100%;
+                width: 100%;
+
+                .actorName {
+                    font-weight: 400;
+                    margin-bottom: rem(4);
+                }
+    
+                .actorCharacter {
+                    font-size: rem(14);
+                    font-weight: 300;
+                    color: #606060;
+                }
+            }
+
+            
+        }
     }
 
 }
