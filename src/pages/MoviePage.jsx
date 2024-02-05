@@ -13,7 +13,7 @@ import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import MobileInfo from "../components/MobileInfo";
-import TabletInfo from "../components/TabletInfo";
+import TabletDesktopInfo from "../components/TabletDesktopInfo";
 
 const MoviePage = () => {
 
@@ -86,7 +86,7 @@ const MoviePage = () => {
     const parseMovie = (movie) => {
         return {
             title: movie.original_title,
-            backdropPath: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
+            backdropPath: `${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`,
             posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
             rating: movie.vote_average.toFixed(1),
             releaseDate: parseDate(movie.release_date),
@@ -150,17 +150,12 @@ const MoviePage = () => {
             {movie 
                 ? <>
                     {layout === "mobile" && (
-                        <MobileInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor}/>
+                        <MobileInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor} />
                     )}
                     
-                    {layout === "tablet" && (
-                        <TabletInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor}/>
+                    {(layout === "tablet" || layout === "desktop") && (
+                        <TabletDesktopInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor} />
                     )}
-
-                    {/* TODO */}
-                    {/* {layout === "desktop" && (
-                        <h1>Desktop</h1>
-                    )} */}
                 </>
 
                 : (

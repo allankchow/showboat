@@ -37,7 +37,7 @@ const Hero = ({ movie }) => {
     return (
         <div className="heroContainer">
             <div className="heroImageContainer">
-                <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`} alt={movie.title} /> 
+                <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`} alt={movie.title} /> 
             </div>
 
             <div className="heroTextContainer">

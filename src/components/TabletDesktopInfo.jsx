@@ -1,4 +1,4 @@
-const TabletInfo = ({ movie, AddToListBtn, Actor }) => {
+const TabletDesktopInfo = ({ movie, AddToListBtn, Actor }) => {
     
     return (
         <>
@@ -75,4 +75,4 @@ const TabletInfo = ({ movie, AddToListBtn, Actor }) => {
     )
 }
 
-export default TabletInfo;
+export default TabletDesktopInfo;

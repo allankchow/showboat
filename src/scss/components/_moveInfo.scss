@@ -74,6 +74,10 @@
     .moviePosterContainer {
         @include horizontal-margin-center;
         margin-top: rem(30);
+        
+        img {
+            border-radius: rem(12);
+        }
     }
 
     .trailerContainer {
@@ -119,6 +123,7 @@
                 width: 100%;
 
                 .actorName {
+                    color: $secondary-colour;
                     font-weight: 400;
                     margin-bottom: rem(4);
                 }
