@@ -7,7 +7,7 @@ const parseVideos = (videos) => {
     let trailerVideo = (trailerVideos.length > 0) 
                             ? trailerVideos[trailerVideos.length - 1]
                             : null;
-    return trailerVideo;
+    return trailerVideo.key;
 }
 
 export { parseVideos };

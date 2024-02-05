@@ -14,9 +14,14 @@
 @use './components/nav';
 @use './components/hamburgerMenu';
 @use './components/addToListBtn';
+@use './components/heroTextContainer';
 
 @use './components/about';
 @use './components/movieTabs';
+
+@use './components/moveInfo';
+@use './components/certification';
+@use './components/genre';
 
 
 // Google Font import

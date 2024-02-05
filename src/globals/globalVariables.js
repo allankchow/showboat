@@ -23,6 +23,7 @@ const TOP_RATED_ENDPOINT = "https://api.themoviedb.org/3/movie/top_rated?languag
 const UPCOMING_ENDPOINT = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
 const IMAGE_PATH_ENDPOINT = "https://image.tmdb.org/t/p";
+const MOVIE_ENDPOINT = "https://api.themoviedb.org/3/movie";
 
 export { 
     appTitle,
@@ -30,11 +31,12 @@ export {
     desktopSmallWidth,
     desktopMediumWidth,
     desktopLargeWidth,
+    API_KEY,
     REQUEST_OPTIONS,
     NOW_PLAYING_ENDPOINT,
     POPULAR_ENDPOINT,
     TOP_RATED_ENDPOINT,
     UPCOMING_ENDPOINT,
-    API_KEY,
-    IMAGE_PATH_ENDPOINT
+    IMAGE_PATH_ENDPOINT,
+    MOVIE_ENDPOINT
 }
