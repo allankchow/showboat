@@ -7,6 +7,7 @@ import {    API_KEY,
             TOP_RATED_ENDPOINT, 
             UPCOMING_ENDPOINT,
         } from '../globals/globalVariables';
+import MovieItem from './MovieItem';
 
 function MovieTabs() {
 
@@ -110,23 +111,9 @@ function MovieTabs() {
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
                     movies.slice(0, displayCount).map((movie) => (
-                        <div className="movie-item" key={movie.id}>
-                            {movie.posterPath ? (
-                                // scenario 1: poster found
-                                <img src={movie.posterPath} alt={`Poster for ${movie.title}`} />
-                            ) : (
-                                // scenario 2: no poster found
-                                <div className="no-image">No Image Available</div> // Placeholder if no poster
-                            )}
-                            <div className = "overlay">
-                                <h3>{movie.title}</h3>
-                                <p>Release Date: {movie.releaseDate}</p>
-                                <p>Vote Average: {movie.voteAverage}</p>
-                                <p>{movie.overview}</p>
-                                <Link to={`/movie/${movie.id}`}>More Info</Link>
-                            </div>
-                        </div>
-                        ))
+                        // pass movie object as a prop to MovieItem
+                        <MovieItem key={movie.id} movie={movie}/> 
+                    ))
                 ) : (
                     // scenario 2: no movies in the movies array
                     <p>No movies found!</p>)}
