@@ -148,7 +148,6 @@
             transform: translate(-50%, -50%);
 
             .textWrapper {
-
                 width: rem(400);
             }
 
@@ -158,4 +157,17 @@
         }
     }
 
+    @include mq($desktop-medium-width) {
+        .heroTextContainer {
+            width: rem(1000);
+
+            .textWrapper {
+                width: rem(600);
+            }
+        }
+
+        .movieInfoWrapper {       
+            width: rem(1000);
+        }
+    }
 }
