@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { appTitle } from "../globals/globalVariables";
 
-import aboutImage01 from '../assets/images/about-image-01.jpg';
 import tmdbAttributionLogo from '../assets/images/tmdb-attribute-logo.svg';
 import aboutImage from '../assets/images/about-image.jpg';
 
