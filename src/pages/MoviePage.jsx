@@ -183,12 +183,12 @@ const MoviePage = () => {
                                         <p>{movie.runtime}</p>
                                     </div>
 
-                                    <div className="moviePoster">
+                                    <div className="moviePosterContainer">
                                         <img src={movie.posterPath} />
                                     </div>
 
                                     {movie.trailer && (
-                                        <div className="trailer">
+                                        <div className="trailerContainer">
                                             <iframe
                                                 title={`${movie.title} Trailer`}
                                                 width="100%"
@@ -198,9 +198,12 @@ const MoviePage = () => {
                                                 allowFullScreen
                                             >
                                             </iframe>
-
                                         </div>
                                     )}
+
+                                    <div className="castContainer">
+                                        <h3>Cast</h3>
+                                    </div>
                                 </section>
                             </div>
                             
