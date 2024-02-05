@@ -13,6 +13,7 @@ import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import MobileInfo from "../components/MobileInfo";
+import TabletInfo from "../components/TabletInfo";
 
 const MoviePage = () => {
 
@@ -152,12 +153,12 @@ const MoviePage = () => {
                         <MobileInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor}/>
                     )}
                     
-                    {/* TODO */}
-                    {/* {layout === "tablet" && (
-                        <h1>Tablet</h1>
+                    {layout === "tablet" && (
+                        <TabletInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor}/>
                     )}
 
-                    {layout === "desktop" && (
+                    {/* TODO */}
+                    {/* {layout === "desktop" && (
                         <h1>Desktop</h1>
                     )} */}
                 </>

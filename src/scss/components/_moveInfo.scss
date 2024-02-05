@@ -134,8 +134,22 @@
 
     @include mq($tablet-width) {
         .heroTextContainer {
-            max-width: rem(400);
-            left: rem(75);
+            @include flex-row(space-between, center);
+            padding: $padding;
+            width: clamp(rem(750), 100%, rem(800));
+            max-width: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .textWrapper {
+
+                width: rem(400);
+            }
+
+            .moviePosterContainer {
+                margin: 0;
+            }
         }
     }
 
