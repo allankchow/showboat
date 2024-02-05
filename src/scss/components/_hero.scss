@@ -1,10 +1,31 @@
-.heroImageContainer {
-    height: 100vh;
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.heroContainer {
+    position: relative;
+    height: calc(100vh - $mobile-header-height);
     overflow: hidden;
 
-    .heroImage {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent),
+                    linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+        z-index: 1;
+    }
+
+    .heroImageContainer {
+        height: 100%;
+    
+        .heroImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }
