@@ -82,8 +82,8 @@ const MoviePage = () => {
     const parseMovie = (movie) => {
         return {
             title: movie.original_title,
-            backdrop_path: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
-            poster_path: `${IMAGE_PATH_ENDPOINT}/original${movie.poster_path}`,
+            backdropPath: `${IMAGE_PATH_ENDPOINT}/original${movie.backdrop_path}`,
+            posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
             rating: movie.vote_average.toFixed(1),
             releaseDate: parseDate(movie.release_date),
             runtime: minutesToHourMinutes(movie.runtime),
@@ -137,6 +137,8 @@ const MoviePage = () => {
 
     }, []);
 
+    console.log(movie);
+
     return (
         <main className="movieInfoPage">
             {movie 
@@ -146,7 +148,7 @@ const MoviePage = () => {
                             <section className="heroSection">
                                 <div className="heroContainer">
                                     <div className="heroImageContainer">
-                                        <img className="heroImage" src={movie.backdrop_path} alt={movie.title} /> 
+                                        <img className="heroImage" src={movie.backdropPath} alt={movie.title} /> 
                                     </div>
 
                                     <div className="heroTextContainer">
@@ -180,6 +182,25 @@ const MoviePage = () => {
                                         <p>{movie.releaseDate}</p>
                                         <p>{movie.runtime}</p>
                                     </div>
+
+                                    <div className="moviePoster">
+                                        <img src={movie.posterPath} />
+                                    </div>
+
+                                    {movie.trailer && (
+                                        <div className="trailer">
+                                            <iframe
+                                                title={`${movie.title} Trailer`}
+                                                width="100%"
+                                                height="100%"
+                                                src={`https://www.youtube.com/embed/${movie.trailer}`}
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            >
+                                            </iframe>
+
+                                        </div>
+                                    )}
                                 </section>
                             </div>
                             

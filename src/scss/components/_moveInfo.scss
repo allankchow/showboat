@@ -68,8 +68,27 @@
     .dateContainer {
         @include flex-row(space-between, center);
         width: 100%;
-        margin-top: $padding-half;
+        margin-top: $padding;
         font-weight: 500;
+    }
+
+    .moviePoster {
+        @include horizontal-margin-center;
+        margin-top: rem(21);
+    }
+
+    .trailer {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;   // Aspect ratio of 16:9
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 
 }
