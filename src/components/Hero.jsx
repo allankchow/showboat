@@ -36,7 +36,7 @@ const Hero = ({ movie, myList }) => {
         }
     }
     
-    const movieObj = createMovieObject(movie);
+    const movieItemObj = createMovieObject(movie);
 
     return (
         <div className="heroContainer">
@@ -54,7 +54,7 @@ const Hero = ({ movie, myList }) => {
                         <div className="infoBtn">
                             <FontAwesomeIcon icon={faCircleInfo} />
                         </div>
-                        <AddToListBtn movieObj={movieObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
+                        <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
                     </div>
                 </div>
             </div>

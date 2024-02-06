@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { useSelector } from 'react-redux';
 
 import { 
     API_KEY, 
@@ -9,6 +10,7 @@ import {
     desktopMediumWidth
 
 } from "../globals/globalVariables";
+import { createMovieObject } from "../globals/utilityFunctions";
 
 import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
@@ -16,12 +18,18 @@ import Actor from "../components/Actor";
 import MobileInfo from "../components/MobileInfo";
 import TabletDesktopInfo from "../components/TabletDesktopInfo";
 
+
 const MoviePage = () => {
 
+    // Get the movie id from the query string
     const { id } = useParams();
     
     const [movie, setMovie] = useState(null);
+    const [movieItemObj, setMovieItemObj] = useState(null);
     const [layout, setLayout] = useState(null);
+
+    // get myList movies from local storage
+    const myList = useSelector((state) => state.myList.items);
 
     // Convert runtime in minutes to "xh ym" format
     const minutesToHourMinutes = (seconds) => {
@@ -88,6 +96,7 @@ const MoviePage = () => {
     // Extract required information from movie object
     const parseMovie = (movie) => {
         return {
+            id: movie.id,
             title: movie.original_title,
             backdropPath: `${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`,
             posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
@@ -114,6 +123,7 @@ const MoviePage = () => {
                 const data = await response.json();
     
                 setMovie(parseMovie(data));
+                setMovieItemObj(createMovieObject(data));
             } catch (err) {
                 console.error("Error fetching movie: ", err.message);
             }
@@ -149,11 +159,11 @@ const MoviePage = () => {
             {movie 
                 ? <>
                     {layout === "mobile" && (
-                        <MobileInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor} />
+                        <MobileInfo movie={movie} movieItemObj={movieItemObj} myList={myList} AddToListBtn={AddToListBtn} Actor={Actor} />
                     )}
                     
                     {(layout === "tablet" || layout === "desktop") && (
-                        <TabletDesktopInfo movie={movie} AddToListBtn={AddToListBtn} Actor={Actor} />
+                        <TabletDesktopInfo movie={movie} movieItemObj={movieItemObj} myList={myList} AddToListBtn={AddToListBtn} Actor={Actor} />
                     )}
                 </>
 

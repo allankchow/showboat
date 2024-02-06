@@ -2,14 +2,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { faSquareMinus } from "@fortawesome/free-solid-svg-icons";
 
-const AddToListBtn = ({ movieObj, isInMyList, handleClick }) => {
+const AddToListBtn = ({ movieItemObj, isInMyList, handleClick }) => {
 
     const handleAddToList = () => {
-        handleClick(true, movieObj);
+        handleClick(true, movieItemObj);
     }
 
     const handleRemovFromList = () => {
-        handleClick(false, movieObj);
+        handleClick(false, movieItemObj);
     }
 
     return (

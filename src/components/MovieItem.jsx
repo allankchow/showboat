@@ -23,7 +23,7 @@ function MovieItem({ movie, isInMyList }) {
                 <p>Vote Average: {movie.voteAverage}</p>
                 <p>{movie.overview}</p>
                 <Link to={`/movie/${movie.id}`}>More Info</Link>
-                <AddToListBtn movieObj={movie} isInMyList={isInMyList} handleClick={handleMyListClick}/>
+                <AddToListBtn movieItemObj={movie} isInMyList={isInMyList} handleClick={handleMyListClick}/>
             </div>
         </div>
     )
