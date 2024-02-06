@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -11,10 +10,7 @@ import {    API_KEY,
 import { isInMyList } from '../globals/utilityFunctions';
 import MovieItem from './MovieItem';
 
-function MovieTabs() {
-
-    // get myList movies from local storage
-    const myList = useSelector((state) => state.myList.items);
+function MovieTabs({ myList }) {
 
     // initialize states
     const [currentTab, setCurrentTab] = useState('popular');

@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
+import useMyListHandler from '../hooks/useMyListHandler';
 import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
-import { parseVideos } from "../globals/utilityFunctions";
+import { parseVideos, createMovieObject, isInMyList } from "../globals/utilityFunctions";
 import AddToListBtn from "./AddToListBtn";
 
-const Hero = ({ movie }) => {
+const Hero = ({ movie, myList }) => {
 
     const [trailer, setTrailer] = useState(null);
+    const { handleMyListClick } = useMyListHandler();
 
     useEffect(() => {
         const fetchVideos = async() => {
@@ -33,6 +35,8 @@ const Hero = ({ movie }) => {
             window.open(youtubeUrl, '_blank');
         }
     }
+    
+    const movieObj = createMovieObject(movie);
 
     return (
         <div className="heroContainer">
@@ -50,7 +54,7 @@ const Hero = ({ movie }) => {
                         <div className="infoBtn">
                             <FontAwesomeIcon icon={faCircleInfo} />
                         </div>
-                        <AddToListBtn />    
+                        <AddToListBtn movieObj={movieObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
                     </div>
                 </div>
             </div>

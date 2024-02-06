@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToList, removeFromList } from "../features/myList/myListSlice";
-import useMyListHandler from '../hooks/useMyListHandler';
 
+import useMyListHandler from '../hooks/useMyListHandler';
 import AddToListBtn from "./AddToListBtn";
 
 function MovieItem({ movie, isInMyList }) {
