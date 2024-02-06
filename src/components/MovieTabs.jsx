@@ -126,7 +126,7 @@ function MovieTabs() {
             <div>
                 {/* show see more button if the movies array is greater than 12 */}
                 {displayCount < movies.length && (
-                    <button onClick={handleSeeMore}>See More</button>
+                    <button className = "see-more-btn" onClick={handleSeeMore}>See More</button>
                 )}
             </div>
         </div>
