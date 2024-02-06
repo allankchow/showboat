@@ -37,7 +37,8 @@ function MovieTabs() {
         return movies.map(movie => ({
             posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
             id: movie.id,
-            title: movie.title,
+            // title: movie.title,
+            title: movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title, //limit title characters 
             releaseDate: formatDate(movie.release_date),
             voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
             overview: movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview, // Limit to 100 characters 
