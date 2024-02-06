@@ -10,4 +10,10 @@ const parseVideos = (videos) => {
     return trailerVideo.key;
 }
 
-export { parseVideos };
+const isInMyList = (myList, id) => {
+    if (myList.length === 0) return false;
+
+    return myList.some(movie => movie.id === id);
+}
+
+export { parseVideos, isInMyList };

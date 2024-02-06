@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -7,9 +8,13 @@ import {    API_KEY,
             TOP_RATED_ENDPOINT, 
             UPCOMING_ENDPOINT,
         } from '../globals/globalVariables';
+import { isInMyList } from '../globals/utilityFunctions';
 import MovieItem from './MovieItem';
 
 function MovieTabs() {
+
+    // get myList movies
+    const myList = useSelector((state) => state.myList.items);
 
     // initialize states
     const [currentTab, setCurrentTab] = useState('popular');
@@ -112,7 +117,7 @@ function MovieTabs() {
                     // scenario 1: there is atleast a movie in the movies array
                     movies.slice(0, displayCount).map((movie) => (
                         // pass movie object as a prop to MovieItem
-                        <MovieItem key={movie.id} movie={movie}/> 
+                        <MovieItem key={movie.id} movie={movie} isInMyList={isInMyList(myList, movie.id)}/> 
                     ))
                 ) : (
                     // scenario 2: no movies in the movies array

@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { APP_STORAGE_NAME } from "../globals/globalVariables"; 
+import { APP_STORAGE_NAME } from "../../globals/globalVariables"; 
 
 const getMyListFromLocalStorage = () => {
     const myList = localStorage.getItem(APP_STORAGE_NAME);
-    if (favs !== null) {
+    if (myList !== null) {
         return {
             items: JSON.parse(myList)
         }

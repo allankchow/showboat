@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import AddToListBtn from "./AddToListBtn";
 
-function MovieItem({ movie }) {
+function MovieItem({ movie, isInMyList }) {
     return (
         <div className="movie-item" key={movie.id}>
             {movie.posterPath ? (
