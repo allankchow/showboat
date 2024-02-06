@@ -10,6 +10,7 @@ const parseVideos = (videos) => {
     return trailerVideo.key;
 }
 
+// This function checks whether a movie is in myList or not
 const isInMyList = (myList, id) => {
     if (myList.length === 0) return false;
 

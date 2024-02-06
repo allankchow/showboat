@@ -13,7 +13,7 @@ import MovieItem from './MovieItem';
 
 function MovieTabs() {
 
-    // get myList movies
+    // get myList movies from local storage
     const myList = useSelector((state) => state.myList.items);
 
     // initialize states

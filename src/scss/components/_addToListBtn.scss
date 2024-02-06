@@ -1,7 +1,14 @@
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
 
 .addToListBtn {
+    font-size: rem(24);
+    color: $tertiary-colour;
+    background: none;
+    border: none;
+    outline: none;
+
     transition: color $link-hover-animation-time ease-in-out;
 
     @include mq($desktop-small-width) {

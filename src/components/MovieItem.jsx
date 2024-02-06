@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { addToList, removeFromList } from "../features/myList/myListSlice";
+import useMyListHandler from '../hooks/useMyListHandler';
 
 import AddToListBtn from "./AddToListBtn";
 
 function MovieItem({ movie, isInMyList }) {
+
+    const { handleMyListClick } = useMyListHandler();
+
     return (
         <div className="movie-item" key={movie.id}>
             {movie.posterPath ? (
@@ -20,7 +25,7 @@ function MovieItem({ movie, isInMyList }) {
                 <p>Vote Average: {movie.voteAverage}</p>
                 <p>{movie.overview}</p>
                 <Link to={`/movie/${movie.id}`}>More Info</Link>
-                <AddToListBtn />
+                <AddToListBtn movieObj={movie} isInMyList={isInMyList} handleClick={handleMyListClick}/>
             </div>
         </div>
     )
