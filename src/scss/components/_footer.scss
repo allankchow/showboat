@@ -9,7 +9,6 @@ footer {
     font-size: 1.5rem;
     font-weight: 400;
     height: 450px;
-    margin-top: 3rem;
 
     .footerContent {
         @include flex-column($justify-content: center, $align-items: center, $gap: 1rem);
