@@ -63,12 +63,30 @@
 }
 
 .tab-content {
-    // @include flex-column(center, center, 0);
     @include flex-row(center, center, em(20));
     flex-wrap: wrap;
     @include horizontal-margin-center;
     margin: 1em em(10);
     
+}
+
+.see-more-btn {
+    @include flex-row(center,center,0);
+    padding: em(10) em(20);
+    margin: em(30) auto em(35);
+    background-color: $primary-colour; 
+    color: $tertiary-colour; 
+    border: none; 
+    border-radius: em(5);
+    font-size: 1.2rem;
+    cursor: pointer; 
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    
+    &:hover, &:focus {
+        background-color: rgb(27, 53, 114); //some dark blue
+        text-decoration: none; 
+    }
 }
 
 // -----------------------------------------------------------------------
