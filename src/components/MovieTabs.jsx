@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -26,15 +25,22 @@ function MovieTabs() {
         upcoming: UPCOMING_ENDPOINT,
     };
 
+    // changes to desired date format
+    function formatDate(date) {
+        date = new Date(date);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options); //localize date
+    }
+
     // extracts only useful data from fetched api movies data
     const transformMoviesData = (movies) => {
         return movies.map(movie => ({
             posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
             id: movie.id,
             title: movie.title,
-            releaseDate: movie.release_date,
+            releaseDate: formatDate(movie.release_date),
             voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
-            overview: movie.overview.length > 100 ? movie.overview.slice(0, 150) + '...' : movie.overview, // Limit to 100 characters 
+            overview: movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview, // Limit to 100 characters 
         }));
     }
 
@@ -111,8 +117,7 @@ function MovieTabs() {
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
                     movies.slice(0, displayCount).map((movie) => (
-                        // pass movie object as a prop to MovieItem
-                        <MovieItem key={movie.id} movie={movie}/> 
+                        <MovieItem key={movie.id} movie={movie}/>  // pass movie object as a prop to MovieItem
                     ))
                 ) : (
                     // scenario 2: no movies in the movies array
