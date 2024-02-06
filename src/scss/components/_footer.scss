@@ -4,11 +4,11 @@
 footer {
     @include flex-column($justify-content: center, $align-items: center);
     background-color: $secondary-colour;
-    padding: 3rem 1rem 1rem 1rem;
+    padding: 1rem;
     color: $tertiary-colour;
     font-size: 1.5rem;
     font-weight: 400;
-
+    height: 450px;
 
     .footerContent {
         @include flex-column($justify-content: center, $align-items: center, $gap: 1rem);
@@ -19,7 +19,7 @@ footer {
             
             img {
                 width: 100px;
-                margin: 1rem;
+                margin-bottom: 1rem;
             }
             .footerSocials {
                 display: flex;
@@ -44,7 +44,6 @@ footer {
     
         .footerLinks {
             @include flex-row($gap: 3rem);
-            padding: 1rem;
     
             a {
                 color: $tertiary-colour;
@@ -65,8 +64,8 @@ footer {
 
     hr {
         color: $tertiary-colour;
-        width: 250px;
-        margin: 3rem 1rem 1rem 1rem;
+        width: 245px;
+        margin: 3rem 0 1rem 0;
     }
 
 // Tablet (800px)
