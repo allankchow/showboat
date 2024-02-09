@@ -65,9 +65,12 @@
                 font-size: rem(18);
             }
 
-            .playTrailerBtn:hover,
-            .infoBtn:hover {
+            .playTrailerBtn:hover {
                 background-color: $on-hover-bg-blue;
+            }
+
+            .infoBtn:hover {
+                color: $on-hover-white;
             }
         }
         
