@@ -31,7 +31,7 @@ function MovieItem({ movie }) {
                 <p>{movie.overview}</p>
                 <div className = "bottom-buttons">
                     <Link to={`/movie/${movie.id}`}>More Info</Link>
-                    <AddToListBtn />
+                    <AddToListBtn size="2x" />
                 </div>
             </div>
         </div>

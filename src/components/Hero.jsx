@@ -50,7 +50,7 @@ const Hero = ({ movie }) => {
                         <div className="infoBtn">
                             <FontAwesomeIcon icon={faCircleInfo} />
                         </div>
-                        <AddToListBtn />    
+                        <AddToListBtn size="1x" />    
                     </div>
                 </div>
             </div>
