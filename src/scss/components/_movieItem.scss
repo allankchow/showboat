@@ -94,11 +94,11 @@
             padding: 0.5em 1em;
             margin-top: 0.5rem;
             text-align: center;
-            transition: background-color 0.2s ease;
+            transition: $link-hover-animation-time;
 
 
             &:hover {
-                background-color: darken($primary-colour, 10%);
+                background-color: $on-hover-bg-blue;
             }
         }
 

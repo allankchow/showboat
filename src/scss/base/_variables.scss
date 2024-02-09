@@ -9,6 +9,7 @@ $tertiary-colour: #FFFFFF;
 $on-hover-black: #8D8D8D;
 $on-hover-blue: #83A9FF;
 $on-hover-white: #5E5E5E;
+$on-hover-bg-blue: darken($primary-colour, 10%);
 
 // Text background colours
 $certication-colour: #7F7F7F;
@@ -28,7 +29,7 @@ $mobile-header-height: rem(80);
 $desktop-header-height: rem(100);
 
 // Animations
-$link-hover-animation-time: 0.3s;
+$link-hover-animation-time: 0.2s;
 
 // Device Widths
 $tablet-width: em(768);

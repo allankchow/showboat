@@ -33,8 +33,9 @@
             padding: $padding $padding-double;
             border: none;
             border-radius: rem(6);
-
-            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            cursor: pointer;
+            // transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            transition: $link-hover-animation-time;
         }
 
         .infoAddContainer {
@@ -43,7 +44,9 @@
         }
 
         .infoBtn {
-            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            // transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            cursor: pointer;
+            transition: $link-hover-animation-time;
         }
 
         .infoBtn,
@@ -64,7 +67,7 @@
 
             .playTrailerBtn:hover,
             .infoBtn:hover {
-                color: $on-hover-black;
+                background-color: $on-hover-bg-blue;
             }
         }
         
