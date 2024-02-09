@@ -3,6 +3,7 @@
 
 .addToListBtn {
     transition: color $link-hover-animation-time ease-in-out;
+    cursor: pointer;
 
     @include mq($desktop-small-width) {
         &:hover {

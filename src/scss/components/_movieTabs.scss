@@ -77,14 +77,13 @@
     background-color: $primary-colour; 
     color: $tertiary-colour; 
     border: none; 
-    border-radius: em(5);
-    font-size: 1.2rem;
+    // border-radius: em(5);
+    font-size: 1rem;
     cursor: pointer; 
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: $link-hover-animation-time;
     
     &:hover, &:focus {
-        background-color: rgb(27, 53, 114); //some dark blue
+        background-color: darken($primary-colour, 10%);
         text-decoration: none; 
     }
 }
