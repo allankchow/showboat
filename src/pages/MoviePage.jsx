@@ -97,14 +97,13 @@ const MoviePage = () => {
     const parseMovie = (movie) => {
         return {
             id: movie.id,
-            title: movie.original_title,
+            title: movie.title,
             backdropPath: `${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`,
             posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
             rating: movie.vote_average.toFixed(1),
             releaseDate: parseDate(movie.release_date),
             runtime: minutesToHourMinutes(movie.runtime),
             genres: parseGenres(movie.genres),
-            // genres: ["Comedy", "Family", "Fantasy", "Sci-fi", "LOOOOL"],
             overview: movie.overview,
             certification: parseCertification(movie.release_dates.results),
             cast: parseCast(movie.credits.cast),
