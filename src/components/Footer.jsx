@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebookSquare,} from '@fortawesome/free-brands-svg-icons';
-import faTwitter from '../assets/x-twitter-white.svg';
+import { faInstagram, faFacebookSquare, faXTwitter} from '@fortawesome/free-brands-svg-icons';
 
 
 
@@ -18,7 +17,7 @@ const Footer = () => {
                             <FontAwesomeIcon icon={faInstagram} />
                         </a>
                         <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-                            <img className="faTwitter" src={faTwitter} alt="x-twitter icon" />
+                            <FontAwesomeIcon icon={faXTwitter} />   
                         </a>
                         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faFacebookSquare} />

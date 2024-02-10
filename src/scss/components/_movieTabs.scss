@@ -27,7 +27,7 @@
         content: '';
         position: absolute;
         bottom: 2em;
-        width: em(491);
+        width: em(575);
         height: em(3);
         background-color: rgb(212, 212, 212);
         z-index: 1;
@@ -36,11 +36,16 @@
     button {
         background: none;
         border: none;
-        font-size: 1rem;
+        font-size: rem(20);
         font-family: $font;
         cursor: pointer;
         position: relative;
         font-weight: 400;
+        transition: $link-hover-animation-time;
+
+        &:hover {
+            color: $on-hover-blue;
+        }
     }
 
     .active {
@@ -51,10 +56,10 @@
             // blue bar (active tab)
             content: '';
             position: absolute;
-            bottom: -1rem;
+            bottom: -(rem(16));
             left:0;
             width: 100%;
-            height: em(3);
+            height: rem(3);
             background-color: $primary-colour;
             cursor:auto;
             z-index: 2;
