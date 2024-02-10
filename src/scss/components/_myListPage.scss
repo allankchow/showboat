@@ -21,7 +21,7 @@
     .my-list {
         @include flex-column(flex-start, flex-start, 3rem);
         width: 692px;
-        margin: auto;
+        margin: 3rem auto 29rem;
 
         .movie-list {
              @include flex-row-wrap(flex-start, flex-start, 1rem);
