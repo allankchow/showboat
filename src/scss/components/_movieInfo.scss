@@ -9,9 +9,9 @@
         .headerContainer {
             @include flex-row(flex-start, center, $padding);
     
-            .addToListBtn {
-                font-size: rem(24);
-            }
+            // .addToListBtn {
+            //     font-size: rem(24);
+            // }
     
             h1 {
                 font-size: rem(24);
@@ -148,6 +148,10 @@
 
             .moviePosterContainer {
                 margin: 0;
+            }
+
+            .addToListBtn {
+                font-size: rem(28);
             }
         }
     }
