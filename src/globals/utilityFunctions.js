@@ -30,4 +30,14 @@ const createMovieObject = (movie) => {
     }
 }
 
-export { parseVideos, isInMyList, createMovieObject };
+const scrollToTop = (e) => {
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+export { 
+    parseVideos, 
+    isInMyList, 
+    createMovieObject,
+    scrollToTop,
+};

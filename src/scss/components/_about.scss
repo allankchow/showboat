@@ -7,7 +7,6 @@
 // Mobile and Universal Styling
 // -----------------------------------------------------------------------
 .about {
-    padding-top: $mobile-header-height;
     @include flex-column (center, center, 0);
 }
 
@@ -17,12 +16,14 @@
     @include flex-column (center, flex-start, 0);
     align-content: center;
     justify-items: center;
+    padding-top: 3rem;
 
     img {
         width: 100%;
     }
     h2{
         padding: 3rem 0 1rem;
+        padding-bottom: 1rem;
         display: block;
         margin: auto;
     }
@@ -36,7 +37,7 @@
     .tmdbAttribution {
         @include flex-column(center, center, 0);
         margin: auto;
-        padding-top: 1rem;
+        padding: 1rem 0 3rem;
 
         img {
             width: 250px;

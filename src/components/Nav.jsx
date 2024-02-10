@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { tabletWidth } from '../globals/globalVariables';
 
-const Nav = ({ toggleNav }) => {
+const Nav = ({ toggleNav, scrollToTop }) => {
 
     const closeNav = (e) => {
         if (window.innerWidth < tabletWidth) {
@@ -22,9 +22,9 @@ const Nav = ({ toggleNav }) => {
         <nav className="siteNavigation" onClick={closeNav}>
             <ul>
                 {/* Nav links */}
-                <li><NavLink to="/">HOME</NavLink></li>
-                <li><NavLink to="/my-list">MY LIST</NavLink></li>
-                <li><NavLink to="/about">ABOUT</NavLink></li>
+                <li><NavLink to="/" onClick={scrollToTop}>HOME</NavLink></li>
+                <li><NavLink to="/my-list" onClick={scrollToTop}>MY LIST</NavLink></li>
+                <li><NavLink to="/about" onClick={scrollToTop}>ABOUT</NavLink></li>
 
                 {/* Search input */}
                 <form className="searchInput">
