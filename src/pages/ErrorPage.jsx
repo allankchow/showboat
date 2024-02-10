@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { appTitle } from "../globals/globalVariables";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
 
@@ -8,7 +8,13 @@ const ErrorPage = () => {
     }, []);
 
     return (
-        <div>Error Page</div>
+        <main class="errorPage">
+            <h1>404 Error</h1>
+            <h3>Oops! We cant find the page you're looking for.</h3>
+            <p>The page you tried to request doesn't exist!</p>
+
+            <Link to="/">Back to Home</Link>
+        </main>
     )
 }
 

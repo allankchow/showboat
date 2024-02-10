@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 
 import { tabletWidth } from '../globals/globalVariables';
+import { scrollToTop } from "../globals/utilityFunctions";
+
 import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
 
@@ -13,6 +15,7 @@ const Header = () => {
     const logo = "/src/assets/logo/movie-database-logo.png";
     const logoHover = "/src/assets/logo/movie-database-logo-hover.png"
 
+    // Add an event listener which watches the screen width 
     useEffect(() => {
         let mediaQuery = window.matchMedia(`(min-width: ${tabletWidth}px)`);
         mediaQuery.addEventListener('change', isDesktop);
@@ -34,17 +37,17 @@ const Header = () => {
     return (
         <header className={showNav ? "show" : ""}>
             <div className="logoContainer">
-                <NavLink to="/">
+                <NavLink to="/" onClick={scrollToTop}>
                     <img 
                         src={logoSrc} 
-                        alt="Site Logo" 
+                        alt="Showboat movie database logo" 
                         onMouseOver={() => setLogoSrc(logoHover)}
                         onMouseLeave={() => setLogoSrc(logo)}
                     />
                 </NavLink>
             </div>
-            <HamburgerMenu showNav={showNav} toggleNav={toggleNav}/>
-            <Nav toggleNav={toggleNav}/>
+            <HamburgerMenu showNav={showNav} toggleNav={toggleNav} />
+            <Nav toggleNav={toggleNav} scrollToTop={scrollToTop} />
         </header>
     )
 }
