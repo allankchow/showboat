@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
@@ -52,9 +53,10 @@ const Hero = ({ movie, myList }) => {
                     <button className="playTrailerBtn" onClick={trailer ? openTrailer : null}>PLAY TRAILER</button>
                     <div className="infoAddContainer">
                         <div className="infoBtn">
-                            <FontAwesomeIcon icon={faCircleInfo} />
+                            <Link to={`/movie/${movie.id}`}>
+                                <FontAwesomeIcon icon={faCircleInfo} />
+                            </Link>
                         </div>
-
                         <AddToListBtn size="1x" movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
                     </div>
                 </div>
