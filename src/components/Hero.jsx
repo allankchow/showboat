@@ -28,10 +28,10 @@ const Hero = ({ movie, myList }) => {
         fetchVideos();
     }, [movie]);
 
-    // Open the traile in a new tab
+    // Open the trailer in a new tab
     const openTrailer = () => {
         if (trailer) {
-            let youtubeUrl = `https://www.youtube.com/watch?v=${trailer.key}`;
+            let youtubeUrl = `https://www.youtube.com/watch?v=${trailer}`;
             window.open(youtubeUrl, '_blank');
         }
     }
