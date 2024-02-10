@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import posterPlaceholder from "../assets/images/poster-placeholder.png";
 import useMyListHandler from "../hooks/useMyListHandler";
 import AddToListBtn from "./AddToListBtn";
 import Rating from "./Rating";
@@ -15,7 +16,7 @@ function MovieItem({ movie, isInMyList }) {
                 <img src={movie.posterPath} alt={`Poster for ${movie.title}`} />
             ) : (
                 // scenario 2: no poster found
-                <div className="no-image">No Image Available</div> // Placeholder if no poster
+                <img src={posterPlaceholder} alt="No movie poster" />
             )}
             <div className="overlay">
                 <Rating rating={movie.voteAverage} />

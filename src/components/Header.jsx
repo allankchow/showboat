@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 
 import { tabletWidth } from '../globals/globalVariables';
-import logo from '../assets/logo/movie-database-logo.png';
 import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
 
 const Header = () => {
 
     const [showNav, setShowNav] = useState(false);
+    const [logoSrc, setLogoSrc] = useState("/src/assets/logo/movie-database-logo.png");
+
+    const logo = "/src/assets/logo/movie-database-logo.png";
+    const logoHover = "/src/assets/logo/movie-database-logo-hover.png"
 
     useEffect(() => {
         let mediaQuery = window.matchMedia(`(min-width: ${tabletWidth}px)`);
@@ -32,7 +35,12 @@ const Header = () => {
         <header className={showNav ? "show" : ""}>
             <div className="logoContainer">
                 <NavLink to="/">
-                    <img src={logo} alt="Showboat movie database logo" />
+                    <img 
+                        src={logoSrc} 
+                        alt="Site Logo" 
+                        onMouseOver={() => setLogoSrc(logoHover)}
+                        onMouseLeave={() => setLogoSrc(logo)}
+                    />
                 </NavLink>
             </div>
             <HamburgerMenu showNav={showNav} toggleNav={toggleNav}/>

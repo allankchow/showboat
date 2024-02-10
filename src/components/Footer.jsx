@@ -2,16 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookSquare, faXTwitter} from '@fortawesome/free-brands-svg-icons';
+import { useState } from 'react';
 
 
 
 const Footer = () => {
+    const [logoSrc, setLogoSrc] = useState("/src/assets/logo/movie-database-logo-no-text.png");
+
+    const logo = "/src/assets/logo/movie-database-logo-no-text.png";
+    const logoHover = "/src/assets/logo/movie-database-logo-no-text-hover.png"
 
     return (
         <footer className="footer">
             <div className="footerContent">
                 <div className="footerLogoSocials">
-                    <img src="/src/assets/logo/movie-database-logo-no-text.png" alt="Site Logo" />
+                    <Link to="/">
+                        <img 
+                            src={logoSrc} 
+                            alt="Site Logo" 
+                            onMouseOver={() => setLogoSrc(logoHover)}
+                            onMouseLeave={() => setLogoSrc(logo)}
+                        />
+                    </Link>
                     <div className="footerSocials">
                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faInstagram} />

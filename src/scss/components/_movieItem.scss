@@ -54,8 +54,10 @@
             transition: $link-hover-animation-time;
 
 
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: $on-hover-bg-blue;
+                color: $on-hover-white;
             }
         }
 
