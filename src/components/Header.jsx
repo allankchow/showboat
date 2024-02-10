@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 
 import { tabletWidth } from '../globals/globalVariables';
+import { scrollToTop } from "../globals/utilityFunctions";
+
 import logo from '../assets/logo/movie-database-logo.png';
 import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
@@ -18,11 +20,6 @@ const Header = () => {
         return () => mediaQuery.removeEventListener('change', isDesktop);
 
     }, []);
-
-    const scrollToTop = (e) => {
-        // Scroll to the top of the page
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
 
     const toggleNav = () => {
         setShowNav(!showNav);
