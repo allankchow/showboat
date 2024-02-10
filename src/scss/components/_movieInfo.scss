@@ -9,10 +9,6 @@
         .headerContainer {
             @include flex-row(flex-start, center, $padding);
     
-            .addToListBtn {
-                font-size: rem(24);
-            }
-    
             h1 {
                 font-size: rem(24);
             }
@@ -34,7 +30,7 @@
 
     .belowHeroSection {
         @include flex-column(center, flex-start);
-        margin-top: $padding;
+        padding: calc($padding-double*2) 0;
 
         .rowWrapper {
             @include flex-row(flex-start, center, rem(25));
@@ -148,6 +144,10 @@
 
             .moviePosterContainer {
                 margin: 0;
+            }
+
+            .addToListBtn {
+                font-size: rem(28);
             }
         }
     }

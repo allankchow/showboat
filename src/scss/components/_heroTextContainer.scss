@@ -39,7 +39,6 @@
 
         .infoAddContainer {
             @include flex-row($gap: $padding);
-            font-size: rem(20);
         }
 
         .infoBtn {
