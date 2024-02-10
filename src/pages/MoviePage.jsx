@@ -13,6 +13,7 @@ import { createMovieObject } from "../globals/utilityFunctions";
 import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
+import Rating from "../components/Rating";
 
 import useMyListHandler from '../hooks/useMyListHandler'
 import { isInMyList } from "../globals/utilityFunctions";
@@ -202,7 +203,7 @@ const MoviePage = () => {
                             <section className="belowHeroSection">
                                 <div className="rowWrapper">
                                     <div className="ratingContainer">
-                                        <p className="rating">{movie.rating}</p>
+                                        <Rating rating={movie.rating} />
                                         <p className="certification">{movie.certification}</p>
                                     </div>
                                 </div>
