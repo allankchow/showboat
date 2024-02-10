@@ -1,0 +1,24 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.errorPage {
+    @include flex-column(center, center, $padding);
+    height: calc(100vh - $footer-height); /* Set the height to 100% of the viewport height */
+
+    a {
+        margin-top: $padding;
+        font-size: 1.3rem;
+        color: $tertiary-colour;
+        background-color: $primary-colour;
+        padding: 1rem;
+        border-radius: rem(6);
+        transition: background-color $link-hover-animation-time ease-in-out;
+    }
+
+    a:hover {
+        background-color: $on-hover-bg-blue;
+    }
+
+
+}

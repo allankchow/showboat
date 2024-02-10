@@ -9,7 +9,7 @@ footer {
     color: $tertiary-colour;
     font-size: rem(20);
     font-weight: 300;
-    height: 450px;
+    height: $footer-height;
 
     .footerContent {
         @include flex-column($justify-content: center, $align-items: center, $gap: 1rem);
