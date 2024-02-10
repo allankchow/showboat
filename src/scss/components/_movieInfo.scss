@@ -30,7 +30,7 @@
 
     .belowHeroSection {
         @include flex-column(center, flex-start);
-        margin: calc($padding-double*2) 0;
+        padding: calc($padding-double*2) 0;
 
         .rowWrapper {
             @include flex-row(flex-start, center, rem(25));
