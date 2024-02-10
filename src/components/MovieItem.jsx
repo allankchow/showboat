@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import useMyListHandler from '../hooks/useMyListHandler';
+import useMyListHandler from "../hooks/useMyListHandler";
 import AddToListBtn from "./AddToListBtn";
+import Rating from "./Rating";
+
 
 function MovieItem({ movie, isInMyList }) {
-
     const { handleMyListClick } = useMyListHandler();
 
     return (
@@ -17,29 +18,22 @@ function MovieItem({ movie, isInMyList }) {
                 // scenario 2: no poster found
                 <div className="no-image">No Image Available</div> // Placeholder if no poster
             )}
-            <div className = "overlay">
-                <div className="rating-circle">
-                    <span className="rating-number">{movie.voteAverage}</span>
-                    <div className="circle-backdrop">
-                        <div 
-                            className="circle-fill" 
-                            style={{ 
-                                background: `conic-gradient(#003DC6 ${movie.voteAverage * 10}%, transparent 0)` 
-                            }}
-                        >
-                            <div className ="circle-inner-fill"></div>
-                        </div>
-                    </div>
-                </div>
+            <div className="overlay">
+                <Rating movie={movie} />
                 <p>{movie.releaseDate}</p>
                 <h3>{movie.title}</h3>
                 <p>{movie.overview}</p>
-                <div className = "bottom-buttons">
-                  <Link to={`/movie/${movie.id}`}>More Info</Link>
-                  <AddToListBtn size="2x" movieItemObj={movie} isInMyList={isInMyList} handleClick={handleMyListClick}/>
+                <div className="bottom-buttons">
+                    <Link to={`/movie/${movie.id}`}>More Info</Link>
+                    <AddToListBtn
+                        size="1x"
+                        movieItemObj={movie}
+                        isInMyList={isInMyList}
+                        handleClick={handleMyListClick}
+                    />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export default MovieItem;

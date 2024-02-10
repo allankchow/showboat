@@ -1,13 +1,14 @@
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
 
 footer {
     @include flex-column($justify-content: center, $align-items: center);
     background-color: $secondary-colour;
     padding: 1rem;
     color: $tertiary-colour;
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: rem(20);
+    font-weight: 300;
     height: 450px;
 
     .footerContent {
@@ -27,22 +28,17 @@ footer {
                 a {
                     width: 32px;
                     margin: 0.5rem;
-                    // transition: $link-hover-animation-time;
-
-                    // &:hover {
-                    //     color: $on-hover-white;
-                    // }
                 }
         
                 svg {
                     width: 32px;
                     height: 32px;
                     color: $tertiary-colour;
-                }
-    
-                .faTwitter {
-                    width: 32px;
-                    margin: 0;
+                    transition: $link-hover-animation-time;
+
+                    &:hover {
+                        color: $on-hover-white;
+                    }
                 }
             }
         }
