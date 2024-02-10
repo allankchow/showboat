@@ -18,7 +18,7 @@ function MovieItem({ movie, isInMyList }) {
                 <div className="no-image">No Image Available</div> // Placeholder if no poster
             )}
             <div className="overlay">
-                <Rating movie={movie} />
+                <Rating rating={movie.voteAverage} />
                 <p>{movie.releaseDate}</p>
                 <h3>{movie.title}</h3>
                 <p>{movie.overview}</p>

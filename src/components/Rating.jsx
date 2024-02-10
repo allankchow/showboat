@@ -1,15 +1,15 @@
 import React from "react";
 
-function Rating({ movie }) {
+function Rating({ rating }) {
     return (
         <div className="rating-circle">
-            <span className="rating-number">{movie.voteAverage}</span>
+            <span className="rating-number">{rating}</span>
             <div className="circle-backdrop">
                 <div
                     className="circle-fill"
                     style={{
                         background: `conic-gradient(#003DC6 ${
-                            movie.voteAverage * 10
+                            rating * 10
                         }%, transparent 0)`,
                     }}
                 >
