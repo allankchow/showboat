@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { 
     appTitle,
     REQUEST_OPTIONS,
@@ -16,6 +17,9 @@ const HomePage = () => {
 
     const [movieData, setMovieData] = useState([]);
     const [heroMovie, setHeroMovie] = useState(null);
+
+    // get myList movies from local storage
+    const myList = useSelector((state) => state.myList.items);
 
     useEffect(() => {
         document.title = `${appTitle} - Home`;
@@ -36,9 +40,9 @@ const HomePage = () => {
 
     return (
         <main>
-            {heroMovie && <Hero movie={heroMovie} />} 
+            {heroMovie && <Hero movie={heroMovie} myList={myList}/>} 
 
-            <MovieTabs />
+            <MovieTabs myList={myList}/>
         </main>
     )
 }

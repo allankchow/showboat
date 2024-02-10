@@ -1,5 +1,10 @@
-const TabletDesktopInfo = ({ movie, AddToListBtn, Actor }) => {
+import useMyListHandler from '../hooks/useMyListHandler'
+import { isInMyList } from "../globals/utilityFunctions";
+
+const TabletDesktopInfo = ({ movie, movieItemObj, myList, AddToListBtn, Actor }) => {
     
+    const { handleMyListClick } = useMyListHandler();
+
     return (
         <>
             <section className="heroSection">
@@ -12,7 +17,7 @@ const TabletDesktopInfo = ({ movie, AddToListBtn, Actor }) => {
                         <div className="textWrapper">
                             <div className="headerContainer">
                                 <h1>{movie.title}</h1>
-                                <AddToListBtn />
+                                <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                             </div>
                             <h3>Overview</h3>
                             <p>{movie.overview}</p>

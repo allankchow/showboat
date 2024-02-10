@@ -6,9 +6,10 @@ import {    API_KEY,
             TOP_RATED_ENDPOINT, 
             UPCOMING_ENDPOINT,
         } from '../globals/globalVariables';
+import { isInMyList } from '../globals/utilityFunctions';
 import MovieItem from './MovieItem';
 
-function MovieTabs() {
+function MovieTabs({ myList }) {
 
     // initialize states
     const [currentTab, setCurrentTab] = useState('popular');
@@ -118,7 +119,8 @@ function MovieTabs() {
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
                     movies.slice(0, displayCount).map((movie) => (
-                        <MovieItem key={movie.id} movie={movie}/>  // pass movie object as a prop to MovieItem
+                        // pass movie object as a prop to MovieItem
+                        <MovieItem key={movie.id} movie={movie} isInMyList={isInMyList(myList, movie.id)}/> 
                     ))
                 ) : (
                     // scenario 2: no movies in the movies array

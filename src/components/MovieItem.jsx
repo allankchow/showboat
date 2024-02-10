@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import useMyListHandler from '../hooks/useMyListHandler';
 import AddToListBtn from "./AddToListBtn";
 
-function MovieItem({ movie }) {
+function MovieItem({ movie, isInMyList }) {
+
+    const { handleMyListClick } = useMyListHandler();
+
     return (
         <div className="movie-item" key={movie.id}>
             {movie.posterPath ? (
@@ -30,8 +35,8 @@ function MovieItem({ movie }) {
                 <h3>{movie.title}</h3>
                 <p>{movie.overview}</p>
                 <div className = "bottom-buttons">
-                    <Link to={`/movie/${movie.id}`}>More Info</Link>
-                    <AddToListBtn size="2x" />
+                  <Link to={`/movie/${movie.id}`}>More Info</Link>
+                  <AddToListBtn size="2x" movieItemObj={movie} isInMyList={isInMyList} handleClick={handleMyListClick}/>
                 </div>
             </div>
         </div>

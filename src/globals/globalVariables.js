@@ -25,6 +25,8 @@ const UPCOMING_ENDPOINT = "https://api.themoviedb.org/3/movie/upcoming?language=
 const IMAGE_PATH_ENDPOINT = "https://image.tmdb.org/t/p";
 const MOVIE_ENDPOINT = "https://api.themoviedb.org/3/movie";
 
+const APP_STORAGE_NAME = "myList";
+
 export { 
     appTitle,
     tabletWidth,
@@ -38,5 +40,6 @@ export {
     TOP_RATED_ENDPOINT,
     UPCOMING_ENDPOINT,
     IMAGE_PATH_ENDPOINT,
-    MOVIE_ENDPOINT
+    MOVIE_ENDPOINT,
+    APP_STORAGE_NAME
 }
