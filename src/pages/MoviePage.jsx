@@ -25,12 +25,11 @@ const MoviePage = () => {
     
     const [movie, setMovie] = useState(null);
     const [movieItemObj, setMovieItemObj] = useState(null);
-    // const [layout, setLayout] = useState(null);
     const [isMobile, setIsMobile] = useState(true);
 
     // get myList movies from local storage
     const myList = useSelector((state) => state.myList.items);
-
+    // This custom hook dispatches the actions which add / removes a movie from my list
     const { handleMyListClick } = useMyListHandler();
 
     // Convert runtime in minutes to "xh ym" format
