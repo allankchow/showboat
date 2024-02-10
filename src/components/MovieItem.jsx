@@ -5,7 +5,6 @@ import useMyListHandler from "../hooks/useMyListHandler";
 import AddToListBtn from "./AddToListBtn";
 import Rating from "./Rating";
 
-
 function MovieItem({ movie, isInMyList }) {
     const { handleMyListClick } = useMyListHandler();
 

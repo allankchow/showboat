@@ -1,8 +1,7 @@
 import React from "react";
 
 function Rating({ movie }) {
-
-    return(
+    return (
         <div className="rating-circle">
             <span className="rating-number">{movie.voteAverage}</span>
             <div className="circle-backdrop">
