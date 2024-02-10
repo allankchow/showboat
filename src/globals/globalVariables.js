@@ -25,6 +25,8 @@ const UPCOMING_ENDPOINT = "https://api.themoviedb.org/3/movie/upcoming?language=
 const IMAGE_PATH_ENDPOINT = "https://image.tmdb.org/t/p";
 const MOVIE_ENDPOINT = "https://api.themoviedb.org/3/movie";
 
+const SEARCH_ENDPOINT = "https://api.themoviedb.org/3/search/movie";
+
 const APP_STORAGE_NAME = "myList";
 
 export { 
@@ -41,5 +43,6 @@ export {
     UPCOMING_ENDPOINT,
     IMAGE_PATH_ENDPOINT,
     MOVIE_ENDPOINT,
+    SEARCH_ENDPOINT,
     APP_STORAGE_NAME
 }

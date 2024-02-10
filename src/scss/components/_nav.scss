@@ -39,6 +39,7 @@
     }
 
     .searchInputContainer {
+        position: relative;
         $searchInputHeight: 35;
 
         @include flex-row($align-items: center);
@@ -65,6 +66,28 @@
             font-size: rem(16);
             border: 1px solid #ccc;
             border-radius: 0 calc(rem($searchInputHeight) / 2) calc(rem($searchInputHeight) / 2) 0;
+        }
+    }
+
+    .searchResults {
+        @include flex-column(flex-start, flex-start, 0);
+        position: absolute;
+        padding: 1rem;
+        background-color: $secondary-colour;
+        width: rem(240);
+        height: fit-content;
+        border-radius: rem(6);
+
+        li {
+            border-bottom: 1px solid white;
+            width: 100%;
+            padding: $padding 0;
+        }
+
+        a {
+            font-size: rem(14);
+            padding: 0;
+            width: 100%;
         }
     }
 

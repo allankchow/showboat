@@ -7,9 +7,9 @@ const parseVideos = (videos) => {
     let trailerVideos = videos.filter(video => video.type === 'Trailer');
     // If there are more than 1 trailers, get the last one (which is the offical trailer)
     let trailerVideo = (trailerVideos.length > 0) 
-                            ? trailerVideos[trailerVideos.length - 1]
+                            ? trailerVideos[trailerVideos.length - 1].key
                             : null;
-    return trailerVideo.key;
+    return trailerVideo;
 }
 
 // This function checks whether a movie is in myList or not

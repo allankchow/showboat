@@ -58,7 +58,7 @@ const MoviePage = () => {
         let certification = null;
         const countryInfo = certifications.find(country => country.iso_3166_1 === "US");
         if (countryInfo) {
-
+            console.log(countryInfo)
             for (let i = 0; i < countryInfo.release_dates.length; i++) {
                 const releaseDateInfo = countryInfo.release_dates[i];
                 certification = releaseDateInfo.certification;
@@ -66,6 +66,8 @@ const MoviePage = () => {
                 if (certification) break;
             }
         }
+
+        if (!certification) certification = "N/A";
 
         return certification;
     }
@@ -119,7 +121,6 @@ const MoviePage = () => {
         const fetchMovie = async () => {
             try {
                 const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits,videos`;
-    
                 const response = await fetch(fetchUrl);
                 const data = await response.json();
     
@@ -128,11 +129,10 @@ const MoviePage = () => {
             } catch (err) {
                 console.error("Error fetching movie: ", err.message);
             }
-
         }
 
         fetchMovie();
-    }, []);
+    }, [id]);
 
 
     // Device layout based on window width
@@ -227,19 +227,20 @@ const MoviePage = () => {
                                     </div>
                                 }
             
-                                {movie.trailer && (
-                                    <div className="trailerContainer">
-                                        <iframe
-                                            title={`${movie.title} Trailer`}
-                                            width="100%"
-                                            height="100%"
-                                            src={`https://www.youtube.com/embed/${movie.trailer}`}
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        >
-                                        </iframe>
-                                    </div>
-                                )}
+                               
+                                <div className="trailerContainer">
+                                    <iframe
+                                        title={`${movie.title} Trailer`}
+                                        width="100%"
+                                        height="100%"
+                                        src={`https://www.youtube.com/embed/${movie.trailer}`}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    >
+                                    </iframe>
+                                </div>
+                                    
+                                
             
                                 <div className="castContainer">
                                     <h3>Cast</h3>
