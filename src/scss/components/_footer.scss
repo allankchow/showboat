@@ -1,15 +1,15 @@
 @use '../base/variables' as *;
 @use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
 
 footer {
     @include flex-column($justify-content: center, $align-items: center);
     background-color: $secondary-colour;
     padding: 1rem;
     color: $tertiary-colour;
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: rem(20);
+    font-weight: 300;
     height: 450px;
-    margin-top: 3rem;
 
     .footerContent {
         @include flex-column($justify-content: center, $align-items: center, $gap: 1rem);
@@ -34,11 +34,11 @@ footer {
                     width: 32px;
                     height: 32px;
                     color: $tertiary-colour;
-                }
-    
-                .faTwitter {
-                    width: 32px;
-                    margin: 0;
+                    transition: $link-hover-animation-time;
+
+                    &:hover {
+                        color: $on-hover-white;
+                    }
                 }
             }
         }
@@ -49,6 +49,11 @@ footer {
             a {
                 color: $tertiary-colour;
                 text-decoration: none;
+                transition: $link-hover-animation-time;
+
+                &:hover {
+                    color: $on-hover-white;
+                }
             }
     
             .footerNav {

@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AddToListBtn from "./AddToListBtn";
 
-function MovieItem({ movie }) {
+import useMyListHandler from "../hooks/useMyListHandler";
+import AddToListBtn from "./AddToListBtn";
+import Rating from "./Rating";
+
+
+function MovieItem({ movie, isInMyList }) {
+    const { handleMyListClick } = useMyListHandler();
+
     return (
         <div className="movie-item" key={movie.id}>
             {movie.posterPath ? (
@@ -12,15 +18,22 @@ function MovieItem({ movie }) {
                 // scenario 2: no poster found
                 <div className="no-image">No Image Available</div> // Placeholder if no poster
             )}
-            <div className = "overlay">
+            <div className="overlay">
+                <Rating movie={movie} />
+                <p>{movie.releaseDate}</p>
                 <h3>{movie.title}</h3>
-                <p>Release Date: {movie.releaseDate}</p>
-                <p>Vote Average: {movie.voteAverage}</p>
                 <p>{movie.overview}</p>
-                <Link to={`/movie/${movie.id}`}>More Info</Link>
-                <AddToListBtn />
+                <div className="bottom-buttons">
+                    <Link to={`/movie/${movie.id}`}>More Info</Link>
+                    <AddToListBtn
+                        size="1x"
+                        movieItemObj={movie}
+                        isInMyList={isInMyList}
+                        handleClick={handleMyListClick}
+                    />
+                </div>
             </div>
         </div>
-    )
+    );
 }
 export default MovieItem;

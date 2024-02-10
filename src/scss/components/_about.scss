@@ -32,6 +32,16 @@
     p {
         margin: 1rem 0;
     }
+
+    .tmdbAttribution {
+        @include flex-column(center, center, 0);
+        margin: auto;
+        padding-top: 1rem;
+
+        img {
+            width: 250px;
+        }
+    }
 }
 
 // -----------------------------------------------------------------------

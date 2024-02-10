@@ -1,4 +1,9 @@
-const MobileInfo = ({ movie, AddToListBtn, Actor }) => {
+import useMyListHandler from '../hooks/useMyListHandler'
+import { isInMyList } from "../globals/utilityFunctions";
+
+const MobileInfo = ({ movie, movieItemObj, myList, AddToListBtn, Actor }) => {
+
+    const { handleMyListClick } = useMyListHandler();
     
     return (
         <>
@@ -11,7 +16,7 @@ const MobileInfo = ({ movie, AddToListBtn, Actor }) => {
                     <div className="heroTextContainer">
                         <div className="headerContainer">
                             <h1>{movie.title}</h1>
-                            <AddToListBtn />
+                            <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                         </div>
                         <h3>Overview</h3>
                         <p>{movie.overview}</p>

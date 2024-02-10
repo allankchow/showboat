@@ -33,8 +33,8 @@
             padding: $padding $padding-double;
             border: none;
             border-radius: rem(6);
-
-            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            cursor: pointer;
+            transition: $link-hover-animation-time;
         }
 
         .infoAddContainer {
@@ -43,11 +43,15 @@
         }
 
         .infoBtn {
-            transition: color $link-hover-animation-time ease-in-out, transform $link-hover-animation-time ease-in-out;
+            cursor: pointer;
+            
+            a {
+                transition: color $link-hover-animation-time ease-in-out;
+                color: $tertiary-colour;
+            }
         }
 
-        .infoBtn,
-        .addToListBtn {
+        .infoBtn {
             font-size: rem(24);
         }
 
@@ -62,9 +66,12 @@
                 font-size: rem(18);
             }
 
-            .playTrailerBtn:hover,
-            .infoBtn:hover {
-                color: $on-hover-black;
+            .playTrailerBtn:hover {
+                background-color: $on-hover-bg-blue;
+            }
+
+            .infoBtn a:hover {
+                color: $on-hover-white;
             }
         }
         
