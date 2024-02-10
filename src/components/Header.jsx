@@ -10,6 +10,7 @@ const Header = () => {
 
     const [showNav, setShowNav] = useState(false);
 
+    // Add an event listener which watches the screen width 
     useEffect(() => {
         let mediaQuery = window.matchMedia(`(min-width: ${tabletWidth}px)`);
         mediaQuery.addEventListener('change', isDesktop);
@@ -17,6 +18,11 @@ const Header = () => {
         return () => mediaQuery.removeEventListener('change', isDesktop);
 
     }, []);
+
+    const scrollToTop = (e) => {
+        // Scroll to the top of the page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     const toggleNav = () => {
         setShowNav(!showNav);
@@ -31,12 +37,12 @@ const Header = () => {
     return (
         <header className={showNav ? "show" : ""}>
             <div className="logoContainer">
-                <NavLink to="/">
+                <NavLink to="/" onClick={scrollToTop}>
                     <img src={logo} alt="Showboat movie database logo" />
                 </NavLink>
             </div>
-            <HamburgerMenu showNav={showNav} toggleNav={toggleNav}/>
-            <Nav toggleNav={toggleNav}/>
+            <HamburgerMenu showNav={showNav} toggleNav={toggleNav} />
+            <Nav toggleNav={toggleNav} scrollToTop={scrollToTop} />
         </header>
     )
 }

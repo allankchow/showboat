@@ -37,7 +37,6 @@
     .tmdbAttribution {
         @include flex-column(center, center, 0);
         margin: auto;
-        // padding-top: 1rem;
         padding: 1rem 0 3rem;
 
         img {
