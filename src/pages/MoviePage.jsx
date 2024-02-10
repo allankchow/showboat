@@ -7,16 +7,15 @@ import {
     MOVIE_ENDPOINT, 
     IMAGE_PATH_ENDPOINT,
     tabletWidth,
-    desktopMediumWidth
-
 } from "../globals/globalVariables";
 import { createMovieObject } from "../globals/utilityFunctions";
 
 import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
-import MobileInfo from "../components/MobileInfo";
-import TabletDesktopInfo from "../components/TabletDesktopInfo";
+
+import useMyListHandler from '../hooks/useMyListHandler'
+import { isInMyList } from "../globals/utilityFunctions";
 
 
 const MoviePage = () => {
@@ -26,10 +25,13 @@ const MoviePage = () => {
     
     const [movie, setMovie] = useState(null);
     const [movieItemObj, setMovieItemObj] = useState(null);
-    const [layout, setLayout] = useState(null);
+    // const [layout, setLayout] = useState(null);
+    const [isMobile, setIsMobile] = useState(true);
 
     // get myList movies from local storage
     const myList = useSelector((state) => state.myList.items);
+
+    const { handleMyListClick } = useMyListHandler();
 
     // Convert runtime in minutes to "xh ym" format
     const minutesToHourMinutes = (seconds) => {
@@ -138,11 +140,11 @@ const MoviePage = () => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < tabletWidth) {
-                setLayout("mobile");
-            } else if (screenWidth >= tabletWidth && screenWidth < desktopMediumWidth) {
-                setLayout("tablet");
-            } else {
-                setLayout("desktop");
+                // setLayout("mobile");
+                setIsMobile(true);
+            } else if (screenWidth >= tabletWidth) {
+                // setLayout("tablet");
+                setIsMobile(false);
             }
         };
 
@@ -156,15 +158,101 @@ const MoviePage = () => {
     return (
         <main className="movieInfoPage">
             {movie 
-                ? <>
-                    {layout === "mobile" && (
-                        <MobileInfo movie={movie} movieItemObj={movieItemObj} myList={myList} AddToListBtn={AddToListBtn} Actor={Actor} />
-                    )}
-                    
-                    {(layout === "tablet" || layout === "desktop") && (
-                        <TabletDesktopInfo movie={movie} movieItemObj={movieItemObj} myList={myList} AddToListBtn={AddToListBtn} Actor={Actor} />
-                    )}
-                </>
+                ? (
+                    <>
+                        <section className="heroSection">
+                            <div className="heroContainer">
+                                <div className="heroImageContainer">
+                                    <img className="heroImage" src={movie.backdropPath} alt={movie.title} /> 
+                                </div>
+            
+                                <div className="heroTextContainer">
+            
+                                    {isMobile 
+                                        ? (   // Mobile
+                                            <>
+                                                <div className="headerContainer">
+                                                    <h1>{movie.title}</h1>
+                                                    <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
+                                                </div>
+                                                <h3>Overview</h3>
+                                                <p>{movie.overview}</p>
+                                            </>
+                                        )
+                                        : (   // Tablet/desktop
+                                            <>
+                                                <div className="textWrapper">
+                                                    <div className="headerContainer">
+                                                        <h1>{movie.title}</h1>
+                                                        <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
+                                                    </div>
+                                                    <h3>Overview</h3>
+                                                    <p>{movie.overview}</p>
+                                                </div>
+            
+                                                <div className="moviePosterContainer">
+                                                    <img src={movie.posterPath} />
+                                                </div>
+                                            </>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                        <div className="movieInfoWrapper">
+                            <section className="belowHeroSection">
+                                <div className="rowWrapper">
+                                    <div className="ratingContainer">
+                                        <p className="rating">{movie.rating}</p>
+                                        <p className="certification">{movie.certification}</p>
+                                    </div>
+                                </div>
+                                <div className="genreContainer">
+                                    {
+                                        (movie.genres.length > 0)
+                                            ? movie.genres.map(genre => (
+                                                <p key={genre} className="genre">{genre}</p>
+                                            ))
+                                            : <p className="genre">Genre N/A</p>
+                                    }
+                                </div>
+                                <div className="dateContainer">
+                                    <p>{movie.releaseDate}</p>
+                                    <p>{movie.runtime}</p>
+                                </div>
+            
+                                {isMobile && 
+                                    <div className="moviePosterContainer">
+                                        <img src={movie.posterPath} alt={`Movie poster for ${movie.title}`}/>
+                                    </div>
+                                }
+            
+                                {movie.trailer && (
+                                    <div className="trailerContainer">
+                                        <iframe
+                                            title={`${movie.title} Trailer`}
+                                            width="100%"
+                                            height="100%"
+                                            src={`https://www.youtube.com/embed/${movie.trailer}`}
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        >
+                                        </iframe>
+                                    </div>
+                                )}
+            
+                                <div className="castContainer">
+                                    <h3>Cast</h3>
+                                    <div className="cast">
+                                        {movie.cast.map(actor => (
+                                            <Actor key={actor.name} actor={actor} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </>
+                )
 
                 : (
                     <h1>404 ERROR</h1>
