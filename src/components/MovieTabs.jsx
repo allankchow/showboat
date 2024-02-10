@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -27,15 +26,23 @@ function MovieTabs({ myList }) {
         upcoming: UPCOMING_ENDPOINT,
     };
 
+    // changes to desired date format
+    function formatDate(date) {
+        date = new Date(date);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options); //localize date
+    }
+
     // extracts only useful data from fetched api movies data
     const transformMoviesData = (movies) => {
         return movies.map(movie => ({
             posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
             id: movie.id,
-            title: movie.title,
-            releaseDate: movie.release_date,
+            // title: movie.title,
+            title: movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title, //limit title characters 
+            releaseDate: formatDate(movie.release_date),
             voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
-            overview: movie.overview.length > 100 ? movie.overview.slice(0, 150) + '...' : movie.overview, // Limit to 100 characters 
+            overview: movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview, // Limit to 100 characters 
         }));
     }
 
@@ -122,7 +129,7 @@ function MovieTabs({ myList }) {
             <div>
                 {/* show see more button if the movies array is greater than 12 */}
                 {displayCount < movies.length && (
-                    <button onClick={handleSeeMore}>See More</button>
+                    <button className = "see-more-btn" onClick={handleSeeMore}>See More</button>
                 )}
             </div>
         </div>

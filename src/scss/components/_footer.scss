@@ -27,6 +27,11 @@ footer {
                 a {
                     width: 32px;
                     margin: 0.5rem;
+                    // transition: $link-hover-animation-time;
+
+                    // &:hover {
+                    //     color: $on-hover-white;
+                    // }
                 }
         
                 svg {
@@ -48,6 +53,11 @@ footer {
             a {
                 color: $tertiary-colour;
                 text-decoration: none;
+                transition: $link-hover-animation-time;
+
+                &:hover {
+                    color: $on-hover-white;
+                }
             }
     
             .footerNav {

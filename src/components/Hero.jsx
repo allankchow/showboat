@@ -54,7 +54,8 @@ const Hero = ({ movie, myList }) => {
                         <div className="infoBtn">
                             <FontAwesomeIcon icon={faCircleInfo} />
                         </div>
-                        <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
+
+                        <AddToListBtn size="1x" movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />    
                     </div>
                 </div>
             </div>
