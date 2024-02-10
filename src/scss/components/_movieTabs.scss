@@ -6,15 +6,20 @@
 // -----------------------------------------------------------------------
 // Mobile and Universal Styling
 // -----------------------------------------------------------------------
+.tabs-container {
+    display: flex;
+    justify-content: center;
+}
+
 .tabs {
-    @include flex-row(center, center, em(50));
-    padding: 3rem 0;
+    @include flex-row(flex-start, center, em(50));
+    padding: 3rem 2rem;
     position: relative;
 
     // horizontal overflow scrolling styling
-    display: flex;
     overflow-x: auto;
     white-space: nowrap; 
+    width: max-content;
     scrollbar-width: none; // hide scrollbar in firefox
     -ms-overflow-style: none; // hide scrollbar in ie and edge
 

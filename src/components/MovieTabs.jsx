@@ -101,18 +101,20 @@ function MovieTabs({ myList }) {
     // start of jsx
     return(
         <div>
-            <div className ="tabs">
-                {/* iterate over tabs object and use them to dynamically create tabs */}
-                {Object.keys(tabs).map((tab, index) => (
-                    <button 
-                        key={tab}
-                        ref={element => (tabsRefs.current[tab] = element)} //Assign DOM element to the tabRefs object
-                        className={isActive(tab) ? 'active' : ''} //adds class "active" if tab is active
-                        onClick={() => setCurrentTab(tab)} 
-                    >
-                        {tab.replace('_', ' ').toUpperCase()}
-                    </button>
-                ))}
+            <div className="tabs-container">
+                <div className ="tabs">
+                    {/* iterate over tabs object and use them to dynamically create tabs */}
+                    {Object.keys(tabs).map((tab, index) => (
+                        <button 
+                            key={tab}
+                            ref={element => (tabsRefs.current[tab] = element)} //Assign DOM element to the tabRefs object
+                            className={isActive(tab) ? 'active' : ''} //adds class "active" if tab is active
+                            onClick={() => setCurrentTab(tab)} 
+                        >
+                            {tab.replace('_', ' ').toUpperCase()}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             <div className="tab-content">
