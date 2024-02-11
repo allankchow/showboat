@@ -88,7 +88,7 @@ const MoviePage = () => {
                 }
             )
 
-            if (i===8) {
+            if (i===12) {
                 break;
             }
         }

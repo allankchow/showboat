@@ -73,14 +73,13 @@
     .searchResults {
         @include flex-column(flex-start, flex-start, 0);
         position: absolute;
-        padding: 1rem;
+        padding: 3rem;
         background-color: $secondary-colour;
-        width: rem(240);
+        top: $mobile-header-height;
+        left: 0;
+        right: 0;
         height: fit-content;
         border-radius: 0 0 rem(12) rem(12);
-        z-index: 4;
-
-        top: 100%;
 
         li {
             border-bottom: 1px solid white;
@@ -115,9 +114,9 @@
                 }
             }
 
-            .searchResults {
-                width: rem(200);
-            }
+            // .searchResults {
+            //     width: rem(200);
+            // }
         }
     }
 
@@ -132,9 +131,9 @@
             }
         }
 
-        .searchResults {
-            width: rem(200);
-        }
+        // .searchResults {
+        //     width: rem(200);
+        // }
 
 
     }
@@ -157,9 +156,9 @@
             }
         }
 
-        .searchResults {
-            width: rem(240);
-        }
+        // .searchResults {
+        //     width: rem(240);
+        // }
     }
     
 }

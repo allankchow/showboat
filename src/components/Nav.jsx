@@ -88,7 +88,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
                     {/* Display search results */}
                     {searchResults.length > 0 && (
                         <ul className="searchResults">
-                            {searchResults.map(result => (
+                            {searchResults.slice(0, 5).map(result => (
                                 <li key={result.id}>
                                     <Link 
                                         to={`/movie/${result.id}`}
