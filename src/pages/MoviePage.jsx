@@ -58,7 +58,6 @@ const MoviePage = () => {
         let certification = null;
         const countryInfo = certifications.find(country => country.iso_3166_1 === "US");
         if (countryInfo) {
-            console.log(countryInfo)
             for (let i = 0; i < countryInfo.release_dates.length; i++) {
                 const releaseDateInfo = countryInfo.release_dates[i];
                 certification = releaseDateInfo.certification;
@@ -140,10 +139,8 @@ const MoviePage = () => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < tabletWidth) {
-                // setLayout("mobile");
                 setIsMobile(true);
             } else if (screenWidth >= tabletWidth) {
-                // setLayout("tablet");
                 setIsMobile(false);
             }
         };
