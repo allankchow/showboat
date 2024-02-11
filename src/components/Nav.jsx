@@ -79,6 +79,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
                             onClick={handleSearchClick}
                             onChange={(e) => handleSearchChange(e.target.value)}
                             onBlur={handleSearchBlur}
+                            autoComplete="off"
                         />
                         <button type="submit">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
