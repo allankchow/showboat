@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { useParams, useNavigate  } from 'react-router-dom';
 import {    API_KEY, 
             IMAGE_PATH_ENDPOINT, 
             POPULAR_ENDPOINT, 
@@ -17,6 +18,9 @@ function MovieTabs({ myList }) {
     const tabsRefs = useRef({}); // initializing with empty object
     const [displayCount, setDisplayCount] = useState(12); // number of movies to be displayed
     const [currentPage, setCurrentPage] = useState(1);
+    const { tab } = useParams(); // Get tab parameter from URL
+    const tabContentRef = useRef(null); // used for scrolling tab into view
+    const navigate = useNavigate(); // to change url on tab change
 
     // endpoints object
     const tabs = {
@@ -24,6 +28,12 @@ function MovieTabs({ myList }) {
         now_playing: NOW_PLAYING_ENDPOINT,
         top_rated: TOP_RATED_ENDPOINT,
         upcoming: UPCOMING_ENDPOINT,
+    };
+
+    // called when tabs changed to update url
+    const changeTab = (newTab) => {
+        setCurrentTab(newTab);
+        navigate(`/${newTab}`); // Change the URL to the new tab
     };
 
     // changes to desired date format
@@ -45,6 +55,15 @@ function MovieTabs({ myList }) {
             overview: movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview, // Limit to 100 characters 
         }));
     }
+
+    //useeffect to set tab based on url, and scroll to tab from external page
+    useEffect(() => {
+        if (tab && tabs[tab]) { // Check if the tab exists in your tabs object
+            setCurrentTab(tab);
+            tabContentRef.current.scrollIntoView({ behavior: 'smooth' }); // Scroll to the tab content if coming from an external link
+
+        }
+    }, [tab]);
 
     // useEffect to fetch and update movie api data
     useEffect (() => {
@@ -101,22 +120,23 @@ function MovieTabs({ myList }) {
     // start of jsx
     return(
         <div>
-            <div className="tabs-container">
-                <div className ="tabs">
-                    {/* iterate over tabs object and use them to dynamically create tabs */}
-                    {Object.keys(tabs).map((tab, index) => (
-                        <button 
-                            key={tab}
-                            ref={element => (tabsRefs.current[tab] = element)} //Assign DOM element to the tabRefs object
-                            className={isActive(tab) ? 'active' : ''} //adds class "active" if tab is active
-                            onClick={() => setCurrentTab(tab)} 
-                        >
-                            {tab.replace('_', ' ').toUpperCase()}
-                        </button>
-                    ))}
+            <div className="tab-content" ref={tabContentRef}>
+                <div className="tabs-container">
+                    <div className ="tabs">
+                        {/* iterate over tabs object and use them to dynamically create tabs */}
+                        {Object.keys(tabs).map((tab, index) => (
+                            <button 
+                                key={tab}
+                                ref={element => (tabsRefs.current[tab] = element)} //Assign DOM element to the tabRefs object
+                                className={isActive(tab) ? 'active' : ''} //adds class "active" if tab is active
+                                onClick={() => changeTab(tab)} 
+                            >
+                                {tab.replace('_', ' ').toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
-
             <div className="tab-content">
                 {movies.length > 0 ? (
                     // scenario 1: there is atleast a movie in the movies array
