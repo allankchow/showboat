@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import { 
@@ -14,7 +14,7 @@ import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import Rating from "../components/Rating";
-import posterPlaceholder from "../assets/images/default-profile-picture.png";
+import posterPlaceholder from "../assets/images/poster-placeholder.png";
 
 import useMyListHandler from '../hooks/useMyListHandler'
 import { isInMyList } from "../globals/utilityFunctions";
@@ -24,6 +24,7 @@ const MoviePage = () => {
 
     // Get the movie id from the query string
     const { id } = useParams();
+    const navigate = useNavigate();
     
     const [movie, setMovie] = useState(null);
     const [movieItemObj, setMovieItemObj] = useState(null);
@@ -125,9 +126,14 @@ const MoviePage = () => {
                 const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits,videos`;
                 const response = await fetch(fetchUrl);
                 const data = await response.json();
-    
-                setMovie(parseMovie(data));
-                setMovieItemObj(createMovieObject(data));
+                
+                if (response.ok) {
+                    setMovie(parseMovie(data));
+                    setMovieItemObj(createMovieObject(data));
+                } else {
+                    navigate("/error");   // navigate to error page
+                }
+
             } catch (err) {
                 console.error("Error fetching movie: ", err.message);
             }

@@ -40,9 +40,9 @@ const Nav = ({ toggleNav, scrollToTop }) => {
         // It determines if the focus moves outside of the search input
         const isSearchResultClick = e.relatedTarget && e.relatedTarget.closest('.searchResults');
         
-        // if (!isSearchResultClick) {
-        //     resetSearch();
-        // }
+        if (!isSearchResultClick) {
+            resetSearch();
+        }
     }
 
     // Fetch the search results when the user types into the search input
