@@ -22,7 +22,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
         <nav className="siteNavigation" onClick={closeNav}>
             <ul>
                 {/* Nav links */}
-                <li><NavLink to="/" onClick={scrollToTop}>HOME</NavLink></li>
+                <li><NavLink to="/:tab" onClick={scrollToTop}>HOME</NavLink></li>
                 <li><NavLink to="/my-list" onClick={scrollToTop}>MY LIST</NavLink></li>
                 <li><NavLink to="/about" onClick={scrollToTop}>ABOUT</NavLink></li>
 

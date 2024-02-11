@@ -8,9 +8,10 @@
 .movie-item {
     // setting container size
     position: relative;
-    width: em(220); // SET IMAGE SIZE HERE!!!
-    height: auto;
+    width: rem(220); // SET IMAGE SIZE HERE!!!
+    height: rem(330);
     overflow: hidden;
+    margin-bottom: 0.5rem;
 
 
     img,

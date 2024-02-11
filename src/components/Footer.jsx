@@ -38,15 +38,15 @@ const Footer = () => {
                 </div>
                 <div className="footerLinks">
                     <div className="footerNav">
-                            <Link to="/" onClick={scrollToTop}>Home</Link>
+                            <Link to="/:tab" onClick={scrollToTop}>Home</Link>
                             <Link to="/mylist" onClick={scrollToTop}>My List</Link>
                             <Link to="/about" onClick={scrollToTop}>About</Link>
                     </div>
                     <div className="footerCategory">
-                        <Link to="#">Popular</Link>
-                        <Link to="#">Now Playing</Link>
-                        <Link to="#">Top Rated</Link>
-                        <Link to="#">Upcoming</Link>
+                        <Link to="/popular">Popular</Link>
+                        <Link to="/now_playing">Now Playing</Link>
+                        <Link to="/top_rated">Top Rated</Link>
+                        <Link to="/upcoming">Upcoming</Link>
                     </div>
                 </div>
             </div>
