@@ -48,7 +48,8 @@
         font-weight: 400;
         transition: $link-hover-animation-time;
 
-        &:hover {
+        &:hover,
+        &:focus {
             color: $on-hover-blue;
         }
     }
@@ -92,8 +93,10 @@
     cursor: pointer; 
     transition: $link-hover-animation-time;
     
-    &:hover, &:focus {
-        background-color: darken($primary-colour, 10%);
+    &:hover, 
+    &:focus {
+        background-color: $on-hover-bg-blue;
+        color: $on-hover-white;
         text-decoration: none; 
     }
 }
