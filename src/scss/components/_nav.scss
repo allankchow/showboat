@@ -73,9 +73,8 @@
     .searchResults {
         @include flex-column(flex-start, flex-start, 0);
         position: absolute;
-        padding: 3rem;
+        padding: 2rem 3rem;
         background-color: $secondary-colour;
-        top: $mobile-header-height;
         left: 0;
         right: 0;
         height: fit-content;
@@ -114,9 +113,9 @@
                 }
             }
 
-            // .searchResults {
-            //     width: rem(200);
-            // }
+            .searchResults {
+                top: $mobile-header-height;
+            }
         }
     }
 
@@ -130,12 +129,6 @@
                 width: rem(200);
             }
         }
-
-        // .searchResults {
-        //     width: rem(200);
-        // }
-
-
     }
 
     @include mq($desktop-medium-width) {
@@ -155,10 +148,6 @@
                 width: rem(240);
             }
         }
-
-        // .searchResults {
-        //     width: rem(240);
-        // }
     }
     
 }
