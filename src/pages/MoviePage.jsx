@@ -14,6 +14,7 @@ import { parseVideos } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import Rating from "../components/Rating";
+import posterPlaceholder from "../assets/images/default-profile-picture.png";
 
 import useMyListHandler from '../hooks/useMyListHandler'
 import { isInMyList } from "../globals/utilityFunctions";
@@ -71,7 +72,7 @@ const MoviePage = () => {
         return certification;
     }
 
-    // Parse the first 8 cast members
+    // Parse the first 12 cast members
     const parseCast = (cast) => {
         let parsedCast = [];
         for (let i = 0; i < cast.length; i++) {
@@ -102,7 +103,9 @@ const MoviePage = () => {
             id: movie.id,
             title: movie.title,
             backdropPath: `${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`,
-            posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
+            posterPath: movie.poster_path
+                ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`
+                : posterPlaceholder,
             rating: movie.vote_average.toFixed(1),
             releaseDate: parseDate(movie.release_date),
             runtime: minutesToHourMinutes(movie.runtime),
@@ -173,7 +176,7 @@ const MoviePage = () => {
                                                     <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                                                 </div>
                                                 <h3>Overview</h3>
-                                                <p>{movie.overview}</p>
+                                                <p>{movie.overview ? movie.overview : "N/A"}</p>
                                             </>
                                         )
                                         : (   // Tablet/desktop
@@ -184,7 +187,7 @@ const MoviePage = () => {
                                                         <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                                                     </div>
                                                     <h3>Overview</h3>
-                                                    <p>{movie.overview}</p>
+                                                    <p>{movie.overview ? movie.overview : "N/A"}</p>
                                                 </div>
             
                                                 <div className="moviePosterContainer">
@@ -220,7 +223,7 @@ const MoviePage = () => {
             
                                 {isMobile && 
                                     <div className="moviePosterContainer">
-                                        <img src={movie.posterPath} alt={`Movie poster for ${movie.title}`}/>
+                                        <img src={movie.posterPath} />
                                     </div>
                                 }
             
