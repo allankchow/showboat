@@ -12,6 +12,7 @@
     
     background-color: $secondary-colour;
     border-radius: 0 0 rem(15) rem(15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8);
 
     transition: height 0.5s ease, visibility 0.5s;
 
@@ -79,6 +80,7 @@
         right: 0;
         height: fit-content;
         border-radius: 0 0 rem(12) rem(12);
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8);
 
         li {
             border-bottom: 1px solid white;
@@ -105,16 +107,6 @@
             border: none;
             padding: $padding 0;
         }
-
-        a,
-        button {
-            transition: color $link-hover-animation-time ease-in-out;
-        }
-
-        a:hover,
-        button:hover {
-            color: $on-hover-white;
-        }
     }
 
     @include mq($tablet-width) {
@@ -126,6 +118,7 @@
             left: auto;
 
             background-color: transparent;
+            box-shadow: none;
 
             ul {
                 @include flex-row(flex-end, center, rem(30));
@@ -151,6 +144,18 @@
         .searchInputContainer {
             input {
                 width: rem(200);
+            }
+        }
+
+        .searchResults {
+            a,
+            button {
+                transition: color $link-hover-animation-time ease-in-out;
+            }
+
+            a:hover,
+            button:hover {
+                color: $on-hover-white;
             }
         }
     }

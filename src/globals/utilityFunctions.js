@@ -19,14 +19,22 @@ const isInMyList = (myList, id) => {
     return myList.some(movie => movie.id === id);
 }
 
+
+const parseDate = (date) => {
+    const dateObject = new Date(date);
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+
+    return dateObject.toLocaleDateString('en-US', options);
+}
+
 const createMovieObject = (movie) => {
     return {
         posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
         id: movie.id,
-        title: movie.title,
-        releaseDate: movie.release_date,
+        title: movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title, //limit title characters 
+        releaseDate: parseDate(movie.release_date),
         voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
-        overview: movie.overview.length > 100 ? movie.overview.slice(0, 150) + '...' : movie.overview, // Limit to 100 characters 
+        overview: movie.overview.length > 100 ? movie.overview.slice(0, 100) + '...' : movie.overview, // Limit to 100 characters 
     }
 }
 
@@ -37,7 +45,8 @@ const scrollToTop = (e) => {
 
 export { 
     parseVideos, 
-    isInMyList, 
+    isInMyList,
+    parseDate,
     createMovieObject,
     scrollToTop,
 };

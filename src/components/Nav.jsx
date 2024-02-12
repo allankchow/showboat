@@ -50,9 +50,9 @@ const Nav = ({ toggleNav, scrollToTop }) => {
     // Fetch the search results when the user types into the search input
     const handleSearchChange = async (e) => {
         setSearchQuery(e.target.value);
-        const endPoint = `${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${e.target.value}`;
         try {
-            const response = await fetch(endPoint);
+            const fetchUrl = `${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${e.target.value}`;
+            const response = await fetch(fetchUrl);
             const data = await response.json();
 
             setSearchResults(data.results);

@@ -10,7 +10,7 @@ import {
 } from "../globals/globalVariables";
 import { createMovieObject } from "../globals/utilityFunctions";
 
-import { parseVideos } from "../globals/utilityFunctions";
+import { parseVideos, parseDate } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import Rating from "../components/Rating";
@@ -46,13 +46,6 @@ const MoviePage = () => {
     // Return an array of genres
     const parseGenres = (genres) => {
         return genres.map(genre => genre.name);
-    }
-
-    const parseDate = (date) => {
-        const dateObject = new Date(date);
-        const options = { month: 'long', day: 'numeric', year: 'numeric' };
-
-        return dateObject.toLocaleDateString('en-US', options);
     }
 
     // Extract the movie certification rating
@@ -233,7 +226,6 @@ const MoviePage = () => {
                                     </div>
                                 }
             
-                               
                                 <div className="trailerContainer">
                                     <iframe
                                         title={`${movie.title} Trailer`}

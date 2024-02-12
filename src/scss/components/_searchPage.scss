@@ -1,0 +1,21 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+.searchResults {
+    margin: 0 auto;
+    width: clamp(280px, 80%, 1200px);
+    padding: 3rem 0;
+
+    .headerContainer {
+        p {
+            font-size: rem(14);
+            margin-top: $padding;
+        }
+    }
+
+    .movieContainer {
+        @include flex-row-wrap(flex-start, center, rem(24));
+        margin-top: $padding;
+    }
+}
