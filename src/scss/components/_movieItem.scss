@@ -34,7 +34,6 @@
         opacity: 0;
         @include flex-column(center, left, 0.5rem);
         padding: em(20);
-        margin-bottom: em(5); // fixes the overflow of the overlay background
         transition: opacity 0.3s ease-in-out;
 
         // formatting the overlay content
