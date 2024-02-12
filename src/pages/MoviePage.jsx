@@ -164,7 +164,7 @@ const MoviePage = () => {
                         <section className="heroSection">
                             <div className="heroContainer">
                                 <div className="heroImageContainer">
-                                {movie.backdropPaths ? (
+                                {movie.backdropPath ? (
                                     <img className="heroImage" src={movie.backdropPath} alt={movie.title} />
                                 ) : (
                                     // Ensure the path to your placeholder image is correct and accessible
