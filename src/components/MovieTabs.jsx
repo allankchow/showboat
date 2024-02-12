@@ -58,12 +58,22 @@ function MovieTabs({ myList }) {
 
     //useeffect to set tab based on url, and scroll to tab from external page
     useEffect(() => {
-        if (tab && tabs[tab]) { // Check if the tab exists in your tabs object
+        if (tab && tabs[tab]) {
             setCurrentTab(tab);
-            tabContentRef.current.scrollIntoView({ behavior: 'smooth' }); // Scroll to the tab content if coming from an external link
-
+        } else {
+            navigate('/'); // Redirect to a valid tab if URL param is invalid
+            return;
         }
-    }, [tab]);
+        // Delayed scroll to account for dynamic content loading
+        setTimeout(() => {
+            if (tabContentRef.current) {
+                const position = tabContentRef.current.getBoundingClientRect().top + window.pageYOffset;
+                const offset = 90; // Adjust as needed
+                window.scrollTo({ top: position - offset, behavior: 'smooth' });
+            }
+        }, 100); // Adjust delay as necessary
+    }, [tab, currentTab, navigate]);
+    
 
     // useEffect to fetch and update movie api data
     useEffect (() => {

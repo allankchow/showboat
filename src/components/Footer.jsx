@@ -38,7 +38,7 @@ const Footer = () => {
                 </div>
                 <div className="footerLinks">
                     <div className="footerNav">
-                            <Link to="/:tab" onClick={scrollToTop}>Home</Link>
+                            <Link to="/" onClick={scrollToTop}>Home</Link>
                             <Link to="/mylist" onClick={scrollToTop}>My List</Link>
                             <Link to="/about" onClick={scrollToTop}>About</Link>
                     </div>
