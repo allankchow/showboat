@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +14,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const navigate = useNavigate();   // Nagivate use to different page
 
     const closeNav = (e) => {
         if (window.innerWidth < tabletWidth) {
@@ -38,17 +39,18 @@ const Nav = ({ toggleNav, scrollToTop }) => {
     const handleSearchBlur = (e) => {
         // e.relatedTarget returns the secondary target of the blur event
         // It determines if the focus moves outside of the search input
-        const isSearchResultClick = e.relatedTarget && e.relatedTarget.closest('.searchResults');
-        
-        if (!isSearchResultClick) {
+        const isSearchResultClick = e.relatedTarget && e.relatedTarget.closest(".searchResults");
+        const isSearchClick = e.relatedTarget && e.relatedTarget.closest(".searchSubmit");
+
+        if (!isSearchResultClick && !isSearchClick) {
             resetSearch();
         }
     }
 
     // Fetch the search results when the user types into the search input
-    const handleSearchChange = async (query) => {
-        setSearchQuery(query);
-        const endPoint = `${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${query}`;
+    const handleSearchChange = async (e) => {
+        setSearchQuery(e.target.value);
+        const endPoint = `${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${e.target.value}`;
         try {
             const response = await fetch(endPoint);
             const data = await response.json();
@@ -57,6 +59,15 @@ const Nav = ({ toggleNav, scrollToTop }) => {
         } catch (error) {
             console.error('Error fetching movies:', error);
         }
+    }
+
+    const handleFormSubmit = (e) => {
+        console.log("THIS IS RUNNING")
+        e.preventDefault();
+
+        console.log(e.target.searchInput)
+        navigate(`/search/${e.target.searchInput.value}`);
+        resetSearch();
     }
 
     return (
@@ -68,7 +79,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
                 <li><NavLink to="/about" onClick={scrollToTop}>ABOUT</NavLink></li>
 
                 {/* Search input */}
-                <form className="searchInput">
+                <form className="searchInput" onSubmit={handleFormSubmit}>
                     <div className='searchInputContainer'>
                         <input 
                             type="text" 
@@ -77,11 +88,11 @@ const Nav = ({ toggleNav, scrollToTop }) => {
                             placeholder='Search...'
                             value={searchQuery}
                             onClick={handleSearchClick}
-                            onChange={(e) => handleSearchChange(e.target.value)}
+                            onChange={handleSearchChange}
                             onBlur={handleSearchBlur}
                             autoComplete="off"
                         />
-                        <button type="submit">
+                        <button type="submit" className="searchSubmit">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
@@ -99,6 +110,7 @@ const Nav = ({ toggleNav, scrollToTop }) => {
                                     </Link> 
                                 </li>
                             ))}
+                            <li><button type="submit" className="searchSubmit">See More</button></li>
                         </ul>
                     )}
                 </form>
