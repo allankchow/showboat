@@ -14,8 +14,29 @@
         }
     }
 
-    .movieContainer {
-        @include flex-row-wrap(flex-start, center, rem(24));
-        margin-top: $padding;
+    .buttonContainer {
+        @include flex-row(center, center, $padding);
+        margin-top: $padding-double;
+
+        button {
+            color: $tertiary-colour;
+            background-color: $primary-colour;
+            width: rem(100);
+            padding: $padding-half $padding;
+            border: none;
+            border-radius: rem(6);
+        }
+
+        p {
+            margin: 0;
+            width: 20%;
+            text-align: center
+        }
     }
+
+    .movieContainer {
+        @include flex-row-wrap(center, center, rem(24));
+        margin-top: $padding-double;
+    }
+
 }
