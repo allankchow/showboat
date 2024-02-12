@@ -84,12 +84,36 @@
             border-bottom: 1px solid white;
             width: 100%;
         }
+
+        li:last-child {
+            border: none;
+        }
         
         a {
             display: block;
             font-size: rem(14);
             padding: $padding 0;
             width: 100%;
+        }
+
+        button {
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            color: $tertiary-colour;
+            background: none;
+            border: none;
+            padding: $padding 0;
+        }
+
+        a,
+        button {
+            transition: color $link-hover-animation-time ease-in-out;
+        }
+
+        a:hover,
+        button:hover {
+            color: $on-hover-white;
         }
     }
 

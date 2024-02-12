@@ -61,11 +61,10 @@ const Nav = ({ toggleNav, scrollToTop }) => {
         }
     }
 
+    // Navigates the user to the search results page when search is submitted
     const handleFormSubmit = (e) => {
-        console.log("THIS IS RUNNING")
         e.preventDefault();
 
-        console.log(e.target.searchInput)
         navigate(`/search/${e.target.searchInput.value}`);
         resetSearch();
     }
