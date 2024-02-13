@@ -238,8 +238,6 @@ const MoviePage = () => {
                                     </iframe>
                                 </div>
                                     
-                                
-            
                                 <div className="castContainer">
                                     <h3>Cast</h3>
                                     <div className="cast">
