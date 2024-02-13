@@ -7,12 +7,12 @@
     width: clamp(280px, 80%, 1200px);
     padding: 3rem 0;
 
-    .headerContainer {
-        p {
-            font-size: rem(14);
-            margin-top: $padding;
-        }
+
+    .totalPages {
+        font-size: rem(14);
+        margin-top: $padding;
     }
+    
 
     .buttonContainer {
         @include flex-row(center, center, $padding);
@@ -25,9 +25,11 @@
             padding: $padding-half $padding;
             border: none;
             border-radius: rem(6);
+            transition: background-color $link-hover-animation-time ease-in-out;
         }
 
-        p {
+        .currentPage {
+            font-size: rem(18);
             margin: 0;
             width: 20%;
             text-align: center
@@ -37,6 +39,39 @@
     .movieContainer {
         @include flex-row-wrap(center, center, rem(24));
         margin-top: $padding-double;
+    }
+
+
+
+    @include mq($desktop-small-width) {
+        .buttonContainer {
+
+            button:hover {
+                background-color: $on-hover-bg-blue;
+            }
+        }
+    }
+
+    @include mq($desktop-medium-width) {
+        h1 {
+            font-size: rem(30);
+        }
+
+        .totalPages {
+            font-size: rem(16);
+        }
+
+        .buttonContainer {
+            button {
+                font-size: rem(18);
+                width: rem(125);
+                padding: 0.75rem 1rem;
+            }
+
+            .currentPage {
+                font-size: rem(20);
+            }
+        }
     }
 
 }
