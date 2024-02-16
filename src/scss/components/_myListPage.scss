@@ -7,33 +7,36 @@
 // Mobile and Universal Styling
 // -----------------------------------------------------------------------
 .my-list {
-    @include flex-column(center, center, 3rem);
+    @include flex-column(flex-start, flex-start, 2rem);
+    margin: 0 auto;
+    width: clamp(280px, 80%, 1200px);
+    padding: 3rem 0;
+
+    min-height: calc(100vh - $footer-height - $mobile-header-height);
+
+    h1 {
+        font-size: rem(24);
+    }
 
     .movie-list {
-        @include flex-column(center, center, 2rem);
-    }
-}
-
-// -----------------------------------------------------------------------
-// Tablet Styling
-// -----------------------------------------------------------------------
-@include mq($tablet-width) {
-    .my-list {
-        @include flex-column(flex-start, flex-start, 3rem);
-        width: 692px;
-        margin: 3rem auto 29rem;
-
-        .movie-list {
-             @include flex-row-wrap(flex-start, flex-start, 1rem);
-        }
+        @include flex-row-wrap(center, center, 1.5rem);
     }
 }
 
 // -----------------------------------------------------------------------
 // Desktop Styling
 // -----------------------------------------------------------------------
-@include mq($desktop-small-width) {
+@include mq($desktop-medium-width) {
     .my-list {
-        width: 928px;
+        min-height: calc(100vh - $footer-height - $desktop-header-height);
+
+        h1 {
+            font-size: rem(30);
+        }
+
+        p {
+            font-size: rem(20);
+        }
+
     }
 }
