@@ -1,0 +1,39 @@
+@use '../base/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/functions' as *;
+
+
+// -----------------------------------------------------------------------
+// Mobile and Universal Styling
+// -----------------------------------------------------------------------
+.my-list {
+    @include flex-column(center, center, 3rem);
+
+    .movie-list {
+        @include flex-column(center, center, 2rem);
+    }
+}
+
+// -----------------------------------------------------------------------
+// Tablet Styling
+// -----------------------------------------------------------------------
+@include mq($tablet-width) {
+    .my-list {
+        @include flex-column(flex-start, flex-start, 3rem);
+        width: 692px;
+        margin: 3rem auto 29rem;
+
+        .movie-list {
+             @include flex-row-wrap(flex-start, flex-start, 1rem);
+        }
+    }
+}
+
+// -----------------------------------------------------------------------
+// Desktop Styling
+// -----------------------------------------------------------------------
+@include mq($desktop-small-width) {
+    .my-list {
+        width: 928px;
+    }
+}
