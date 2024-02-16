@@ -2,17 +2,17 @@
 @use '../utilities/mixins' as *;
 @use '../utilities/functions' as *;
 
-.searchResults {
+.searchResultSection {
+    @include flex-column(flex-start, flex-start, 0);
     margin: 0 auto;
     width: clamp(280px, 80%, 1200px);
+    min-height: calc(100vh - $footer-height - $mobile-header-height);
     padding: 3rem 0;
-
 
     .totalPages {
         font-size: rem(14);
         margin-top: $padding;
     }
-    
 
     .buttonContainer {
         @include flex-row(center, center, $padding);
@@ -53,6 +53,8 @@
     }
 
     @include mq($desktop-medium-width) {
+        min-height: calc(100vh - $footer-height - $desktop-header-height);
+
         h1 {
             font-size: rem(30);
         }

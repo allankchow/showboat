@@ -75,6 +75,8 @@
         @include flex-column(flex-start, flex-start, 0);
         position: absolute;
         padding: 2rem 3rem;
+        width: clamp(280px, 80%, 1200px);
+        margin: 0 auto;
         background-color: $secondary-colour;
         left: 0;
         right: 0;

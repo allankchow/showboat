@@ -50,7 +50,7 @@ const SearchPage = () => {
 
     return (
         <main>
-            <section className="searchResults">
+            <section className="searchResultSection">
                 <div className="headerContainer">
                     <h1>Search results for "{searchTerm}"</h1>
                     {resultInfo.totalPages === 0
