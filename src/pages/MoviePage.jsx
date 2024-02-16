@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import { 
@@ -10,10 +10,11 @@ import {
 } from "../globals/globalVariables";
 import { createMovieObject } from "../globals/utilityFunctions";
 
-import { parseVideos } from "../globals/utilityFunctions";
+import { parseVideos, parseDate } from "../globals/utilityFunctions";
 import AddToListBtn from "../components/AddToListBtn";
 import Actor from "../components/Actor";
 import Rating from "../components/Rating";
+import posterPlaceholder from "../assets/images/poster-placeholder.png";
 
 import useMyListHandler from '../hooks/useMyListHandler'
 import { isInMyList } from "../globals/utilityFunctions";
@@ -24,6 +25,7 @@ const MoviePage = () => {
 
     // Get the movie id from the query string
     const { id } = useParams();
+    const navigate = useNavigate();
     
     const [movie, setMovie] = useState(null);
     const [movieItemObj, setMovieItemObj] = useState(null);
@@ -47,19 +49,11 @@ const MoviePage = () => {
         return genres.map(genre => genre.name);
     }
 
-    const parseDate = (date) => {
-        const dateObject = new Date(date);
-        const options = { month: 'long', day: 'numeric', year: 'numeric' };
-
-        return dateObject.toLocaleDateString('en-US', options);
-    }
-
     // Extract the movie certification rating
     const parseCertification = (certifications) => {
         let certification = null;
         const countryInfo = certifications.find(country => country.iso_3166_1 === "US");
         if (countryInfo) {
-
             for (let i = 0; i < countryInfo.release_dates.length; i++) {
                 const releaseDateInfo = countryInfo.release_dates[i];
                 certification = releaseDateInfo.certification;
@@ -68,10 +62,12 @@ const MoviePage = () => {
             }
         }
 
+        if (!certification) certification = "N/A";
+
         return certification;
     }
 
-    // Parse the first 8 cast members
+    // Parse the first 12 cast members
     const parseCast = (cast) => {
         let parsedCast = [];
         for (let i = 0; i < cast.length; i++) {
@@ -88,7 +84,7 @@ const MoviePage = () => {
                 }
             )
 
-            if (i===8) {
+            if (i===12) {
                 break;
             }
         }
@@ -102,7 +98,9 @@ const MoviePage = () => {
             id: movie.id,
             title: movie.title,
             backdropPath: `${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`,
-            posterPath: `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`,
+            posterPath: movie.poster_path
+                ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}`
+                : posterPlaceholder,
             rating: movie.vote_average.toFixed(1),
             releaseDate: parseDate(movie.release_date),
             runtime: minutesToHourMinutes(movie.runtime),
@@ -120,20 +118,23 @@ const MoviePage = () => {
         const fetchMovie = async () => {
             try {
                 const fetchUrl = `${MOVIE_ENDPOINT}/${id}?api_key=${API_KEY}&append_to_response=release_dates,credits,videos`;
-    
                 const response = await fetch(fetchUrl);
                 const data = await response.json();
-    
-                setMovie(parseMovie(data));
-                setMovieItemObj(createMovieObject(data));
+                
+                if (response.ok) {
+                    setMovie(parseMovie(data));
+                    setMovieItemObj(createMovieObject(data));
+                } else {
+                    navigate("/error");   // navigate to error page
+                }
+
             } catch (err) {
                 console.error("Error fetching movie: ", err.message);
             }
-
         }
 
         fetchMovie();
-    }, []);
+    }, [id]);
 
 
     // Device layout based on window width
@@ -141,10 +142,8 @@ const MoviePage = () => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < tabletWidth) {
-                // setLayout("mobile");
                 setIsMobile(true);
             } else if (screenWidth >= tabletWidth) {
-                // setLayout("tablet");
                 setIsMobile(false);
             }
         };
@@ -182,7 +181,7 @@ const MoviePage = () => {
                                                     <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                                                 </div>
                                                 <h3>Overview</h3>
-                                                <p>{movie.overview}</p>
+                                                <p>{movie.overview ? movie.overview : "N/A"}</p>
                                             </>
                                         )
                                         : (   // Tablet/desktop
@@ -193,7 +192,7 @@ const MoviePage = () => {
                                                         <AddToListBtn movieItemObj={movieItemObj} isInMyList={isInMyList(myList, movie.id)} handleClick={handleMyListClick} />
                                                     </div>
                                                     <h3>Overview</h3>
-                                                    <p>{movie.overview}</p>
+                                                    <p>{movie.overview ? movie.overview : "N/A"}</p>
                                                 </div>
             
                                                 <div className="moviePosterContainer">
@@ -229,24 +228,22 @@ const MoviePage = () => {
             
                                 {isMobile && 
                                     <div className="moviePosterContainer">
-                                        <img src={movie.posterPath} alt={`Movie poster for ${movie.title}`}/>
+                                        <img src={movie.posterPath} />
                                     </div>
                                 }
             
-                                {movie.trailer && (
-                                    <div className="trailerContainer">
-                                        <iframe
-                                            title={`${movie.title} Trailer`}
-                                            width="100%"
-                                            height="100%"
-                                            src={`https://www.youtube.com/embed/${movie.trailer}`}
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        >
-                                        </iframe>
-                                    </div>
-                                )}
-            
+                                <div className="trailerContainer">
+                                    <iframe
+                                        title={`${movie.title} Trailer`}
+                                        width="100%"
+                                        height="100%"
+                                        src={`https://www.youtube.com/embed/${movie.trailer}`}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    >
+                                    </iframe>
+                                </div>
+                                    
                                 <div className="castContainer">
                                     <h3>Cast</h3>
                                     <div className="cast">

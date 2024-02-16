@@ -12,13 +12,15 @@
     
     background-color: $secondary-colour;
     border-radius: 0 0 rem(15) rem(15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8);
 
     transition: height 0.5s ease, visibility 0.5s;
 
     .show & {
         transition: height 0.5s ease, visibility 0s;
         visibility: visible;
-        height: 250px;
+        overflow: visible;
+        height: 200px;
     }
 
     ul {
@@ -39,6 +41,7 @@
     }
 
     .searchInputContainer {
+        position: relative;
         $searchInputHeight: 35;
 
         @include flex-row($align-items: center);
@@ -68,6 +71,44 @@
         }
     }
 
+    .searchResults {
+        @include flex-column(flex-start, flex-start, 0);
+        position: absolute;
+        padding: 2rem 3rem;
+        background-color: $secondary-colour;
+        left: 0;
+        right: 0;
+        height: fit-content;
+        border-radius: 0 0 rem(12) rem(12);
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8);
+
+        li {
+            border-bottom: 1px solid white;
+            width: 100%;
+        }
+
+        li:last-child {
+            border: none;
+        }
+        
+        a {
+            display: block;
+            font-size: rem(14);
+            padding: $padding 0;
+            width: 100%;
+        }
+
+        button {
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            color: $tertiary-colour;
+            background: none;
+            border: none;
+            padding: $padding 0;
+        }
+    }
+
     @include mq($tablet-width) {
         & {
             height: auto;
@@ -77,6 +118,7 @@
             left: auto;
 
             background-color: transparent;
+            box-shadow: none;
 
             ul {
                 @include flex-row(flex-end, center, rem(30));
@@ -84,8 +126,12 @@
 
             .searchInputContainer {
                 input {
-                    width: rem(150);
+                    width: rem(200);
                 }
+            }
+
+            .searchResults {
+                top: $mobile-header-height;
             }
         }
     }
@@ -98,6 +144,18 @@
         .searchInputContainer {
             input {
                 width: rem(200);
+            }
+        }
+
+        .searchResults {
+            a,
+            button {
+                transition: color $link-hover-animation-time ease-in-out;
+            }
+
+            a:hover,
+            button:hover {
+                color: $on-hover-white;
             }
         }
     }

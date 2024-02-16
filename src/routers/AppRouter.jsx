@@ -7,6 +7,7 @@ import AboutPage from "../pages/AboutPage";
 import MyListPage from "../pages/MyListPage";
 import MoviePage from "../pages/MoviePage";
 import ErrorPage from "../pages/ErrorPage";
+import SearchPage from "../pages/SearchPage";
 
 const AppRouter = () => {
     return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
                     <Route path="/about" exact element={<AboutPage />}></Route>
                     <Route path="/my-list" exact element={<MyListPage />}></Route>
                     <Route path="/movie/:id" exact element={<MoviePage />}></Route>
+                    <Route path="/search/:searchTerm" exact element={<SearchPage />}></Route>
                     <Route path="*" exact element={<ErrorPage />}></Route>
                 </Routes>
                 <Footer />

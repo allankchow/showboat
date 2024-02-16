@@ -66,6 +66,8 @@
         
         img {
             border-radius: rem(12);
+            height: 450px;
+            width: 300px;
         }
     }
 
@@ -90,15 +92,14 @@
     }
     
     .cast {
-        display: grid;
-        grid-auto-flow: column;
-        gap: rem(20);
+        @include flex-row(flex-start, stretch, rem(20));
         overflow-x: auto;
         overflow-y: hidden;
+        padding-bottom: 1rem;
         
         .actorCard {
             border-radius: rem(6);
-            background-color: $tertiary-colour;
+            background-color: #e3e1e1;
             width: rem(100);
             
             img {
@@ -110,7 +111,7 @@
             
             .actor {
                 padding: rem(5) rem(8) rem(8);
-                height: 100%;
+                height: fit-content;
                 width: 100%;
 
                 .actorName {
