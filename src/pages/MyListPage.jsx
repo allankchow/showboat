@@ -25,7 +25,7 @@ const MyListPage = () => {
             <div className="my-list">
                 <h1>MY LIST</h1>
                 {myLocalList.length === 0 ? (
-                    <p>Sorry you have no movies in your list. Return to the home page to add movies onto your list.</p>
+                    <p className="empty-list" >Sorry you have no movies in your list. Return to the home page to add movies onto your list.</p>
                 ) : (
                     <div className="movie-list">
                         {myLocalList.map(movie => (
