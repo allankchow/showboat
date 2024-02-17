@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 508 347.17">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #003dc6;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-2" x="86.3" y="174.57" width="339.32" height="172.6"/>
+    </clipPath>
+  </defs>
+  <g id="showboat-no-text">
+    <rect class="cls-1" x="80.42" width="347.17" height="347.17"/>
+    <rect class="cls-1" width="64.73" height="127.49"/>
+    <rect class="cls-1" y="141.22" width="64.73" height="127.49"/>
+    <rect class="cls-1" y="282.44" width="64.73" height="64.73"/>
+    <rect class="cls-1" x="443.27" width="64.73" height="64.73"/>
+    <rect class="cls-1" x="443.27" y="78.46" width="64.73" height="129.45"/>
+    <rect class="cls-1" x="443.27" y="221.64" width="64.73" height="125.53"/>
+  </g>
+  <g id="showboat-no-text-2">
+    <g class="cls-4">
+      <circle class="cls-3" cx="254.98" cy="143.19" r="117.68"/>
+    </g>
+  </g>
+</svg>
