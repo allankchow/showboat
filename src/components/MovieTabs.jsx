@@ -112,7 +112,7 @@ function MovieTabs({ myList }) {
             activeTabElement.scrollIntoView({
                 behavior: 'smooth', 
                 block: 'nearest',       // vertical alignment
-                inline: 'start'         // horizontal alignment
+                inline: 'center'         // horizontal alignment
             });
         }
     }, [currentTab]);
