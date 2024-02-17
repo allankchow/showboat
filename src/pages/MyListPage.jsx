@@ -21,10 +21,11 @@ const MyListPage = () => {
 
     return (
         <main>
+            {/* <section className="" */}
             <div className="my-list">
-                <h2>MY LIST</h2>
+                <h1>MY LIST</h1>
                 {myLocalList.length === 0 ? (
-                    <p>Sorry, you have no favourited movies. Return to the home page to add a favourited movie.</p>
+                    <p>Sorry you have no movies in your list. Return to the home page to add movies onto your list.</p>
                 ) : (
                     <div className="movie-list">
                         {myLocalList.map(movie => (
