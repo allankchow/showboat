@@ -16,6 +16,7 @@ const AppRouter = () => {
                 <Header />
                 <Routes>
                     <Route path="/" exact element={<HomePage />}></Route>
+                    <Route path="/:tab" exact element={<HomePage />}></Route>
                     <Route path="/about" exact element={<AboutPage />}></Route>
                     <Route path="/my-list" exact element={<MyListPage />}></Route>
                     <Route path="/movie/:id" exact element={<MoviePage />}></Route>

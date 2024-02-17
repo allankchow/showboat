@@ -43,10 +43,10 @@ const Footer = () => {
                             <Link to="/about" onClick={scrollToTop}>About</Link>
                     </div>
                     <div className="footerCategory">
-                        <Link to="#">Popular</Link>
-                        <Link to="#">Now Playing</Link>
-                        <Link to="#">Top Rated</Link>
-                        <Link to="#">Upcoming</Link>
+                        <Link to="/popular">Popular</Link>
+                        <Link to="/now_playing">Now Playing</Link>
+                        <Link to="/top_rated">Top Rated</Link>
+                        <Link to="/upcoming">Upcoming</Link>
                     </div>
                 </div>
             </div>

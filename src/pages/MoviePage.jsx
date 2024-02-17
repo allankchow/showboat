@@ -18,6 +18,7 @@ import posterPlaceholder from "../assets/images/poster-placeholder.png";
 
 import useMyListHandler from '../hooks/useMyListHandler'
 import { isInMyList } from "../globals/utilityFunctions";
+import backdropPlaceholder from "../assets/images/backdrop-placeholder.png";
 
 
 const MoviePage = () => {
@@ -162,7 +163,12 @@ const MoviePage = () => {
                         <section className="heroSection">
                             <div className="heroContainer">
                                 <div className="heroImageContainer">
-                                    <img className="heroImage" src={movie.backdropPath} alt={movie.title} /> 
+                                {movie.backdropPath ? (
+                                    <img className="heroImage" src={movie.backdropPath} alt={movie.title} />
+                                ) : (
+                                    // Ensure the path to your placeholder image is correct and accessible
+                                    <img className="heroImage" src={backdropPlaceholder} alt="No backdrop found" />
+                                )}
                                 </div>
             
                                 <div className="heroTextContainer">
