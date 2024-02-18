@@ -37,9 +37,18 @@
             transition: $link-hover-animation-time;
         }
 
+        .playTrailerBtn:hover,
+        .playTrailerBtn:focus{
+            background-color: $on-hover-bg-blue;
+            color: $on-hover-white;
+        }
+
         .infoAddContainer {
             @include flex-row($gap: $padding);
+            align-items: center;
         }
+
+
 
         .infoBtn {
             cursor: pointer;
@@ -48,6 +57,11 @@
                 transition: color $link-hover-animation-time ease-in-out;
                 color: $tertiary-colour;
             }
+        }
+
+        .infoBtn a:hover,
+        .infoBtn a:focus {
+            color: $on-hover-white;
         }
 
         .infoBtn {
@@ -65,16 +79,6 @@
                 font-size: rem(18);
             }
 
-            .playTrailerBtn:hover,
-            .playTrailerBtn:focus{
-                background-color: $on-hover-bg-blue;
-                color: $on-hover-white;
-            }
-
-            .infoBtn a:hover,
-            .infoBtn a:focus {
-                color: $on-hover-white;
-            }
         }
         
         @include mq($desktop-medium-width) {
