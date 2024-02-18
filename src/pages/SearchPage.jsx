@@ -57,7 +57,8 @@ const SearchPage = () => {
                         ? <p className="totalPages">Page 0 of {resultInfo.totalPages}</p>
                         : <p className="totalPages">Page {currentPage} of {resultInfo.totalPages}</p>
                     }
-                    {resultInfo.totalPages > 1 && (
+                </div>
+                {resultInfo.totalPages > 1 && (
                         <div className="buttonContainer">
                             <button
                                 onClick={() => handlePageChange(Number(currentPage) - 1)}
@@ -74,7 +75,6 @@ const SearchPage = () => {
                             </button>
                         </div>
                     )}
-                </div>
                 <div className="movieContainer">
                     {searchResults && (
                         searchResults.map(movie => (

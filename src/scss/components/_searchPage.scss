@@ -17,6 +17,7 @@
     .buttonContainer {
         @include flex-row(center, center, $padding);
         margin-top: $padding-double;
+        @include horizontal-margin-center;
 
         button {
             color: $tertiary-colour;
@@ -65,9 +66,9 @@
 
         .buttonContainer {
             button {
-                font-size: rem(18);
+                font-size: rem(16);
                 width: rem(125);
-                padding: 0.75rem 1rem;
+                padding: 0.5rem 0.75rem;
             }
 
             .currentPage {
