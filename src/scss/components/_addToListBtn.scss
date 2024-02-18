@@ -12,11 +12,12 @@
     transition: color $link-hover-animation-time ease-in-out;
     cursor: pointer;
 
-    @include mq($desktop-small-width) {
-        &:hover {
-            color: $on-hover-white
-        }
+
+    &:hover,
+    &:focus {
+        color: $on-hover-white
     }
+    
 
     
 }
