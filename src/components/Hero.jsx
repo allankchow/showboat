@@ -8,6 +8,7 @@ import useMyListHandler from '../hooks/useMyListHandler';
 import { REQUEST_OPTIONS, IMAGE_PATH_ENDPOINT } from "../globals/globalVariables";
 import { parseVideos, createMovieObject, isInMyList } from "../globals/utilityFunctions";
 import AddToListBtn from "./AddToListBtn";
+import backdropPlaceholder from "../assets/images/backdrop-placeholder.png";
 
 const Hero = ({ movie, myList }) => {
 
@@ -42,7 +43,10 @@ const Hero = ({ movie, myList }) => {
     return (
         <div className="heroContainer">
             <div className="heroImageContainer">
-                <img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`} alt={movie.title} /> 
+                {movie.backdrop_path 
+                    ? (<img className="heroImage" src={`${IMAGE_PATH_ENDPOINT}/w1280${movie.backdrop_path}`} alt={movie.title} />)
+                    : (<img className="heroImage" src={backdropPlaceholder} alt="No backdrop image found" />)
+                }
             </div>
 
             <div className="heroTextContainer">

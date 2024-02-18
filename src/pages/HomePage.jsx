@@ -10,12 +10,11 @@ import {
     IMAGE_PATH_ENDPOINT
 } from "../globals/globalVariables";
 import MovieTabs from '../components/MovieTabs';
-
 import Hero from "../components/Hero";
+
 
 const HomePage = () => {
 
-    const [movieData, setMovieData] = useState([]);
     const [heroMovie, setHeroMovie] = useState(null);
 
     // get myList movies from local storage
@@ -29,8 +28,6 @@ const HomePage = () => {
         const fetchMovies = async() => {
             const response = await fetch(NOW_PLAYING_ENDPOINT, REQUEST_OPTIONS);
             let data = await response.json();
-
-            setMovieData(data.results);
             setHeroMovie(data.results[0]);
         }
 
