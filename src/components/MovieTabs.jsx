@@ -7,8 +7,9 @@ import {    API_KEY,
             TOP_RATED_ENDPOINT, 
             UPCOMING_ENDPOINT,
         } from '../globals/globalVariables';
-import { isInMyList } from '../globals/utilityFunctions';
+import { isInMyList, createMovieObject } from '../globals/utilityFunctions';
 import MovieItem from './MovieItem';
+
 
 function MovieTabs({ myList }) {
 
@@ -35,26 +36,6 @@ function MovieTabs({ myList }) {
         setCurrentTab(newTab);
         navigate(`/${newTab}`); // Change the URL to the new tab
     };
-
-    // changes to desired date format
-    function formatDate(date) {
-        date = new Date(date);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString('en-US', options); //localize date
-    }
-
-    // extracts only useful data from fetched api movies data
-    const transformMoviesData = (movies) => {
-        return movies.map(movie => ({
-            posterPath: movie.poster_path ? `${IMAGE_PATH_ENDPOINT}/w300${movie.poster_path}` : null,
-            id: movie.id,
-            // title: movie.title,
-            title: movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title, //limit title characters 
-            releaseDate: formatDate(movie.release_date),
-            voteAverage: movie.vote_average.toFixed(1), // round to 1 decimal place
-            overview: movie.overview.length > 80 ? movie.overview.slice(0, 80) + '...' : movie.overview, // Limit to 100 characters 
-        }));
-    }
 
     //useeffect to set tab based on url, and scroll to tab from external page
     useEffect(() => {
@@ -83,8 +64,9 @@ function MovieTabs({ myList }) {
             try {
                 const response = await fetch(endpoint);
                 const data = await response.json();
+                const transformedMovies = data.results.map(createMovieObject);
                 setMovies(prevMovies => {
-                    const allMovies = [...prevMovies, ...transformMoviesData(data.results)];
+                    const allMovies = [...prevMovies, ...transformedMovies];
 
                     // filter out movie duplicates
                     const uniqueMovies = allMovies.filter((movie, index, self) => index === self.findIndex((m) => m.id === movie.id));
