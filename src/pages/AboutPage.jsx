@@ -14,13 +14,13 @@ const AboutPage = () => {
         <main className="about">
             <section className="about-section-01"> 
                 <h2>ABOUT</h2>
-                <h3>Welcome to ShowBoat - More Than a Movie Database </h3>
-                <p>ShowBoat is not just about movies; it's about the stories, the art, and the people behind them. We believe every film has a story and every viewer has a perspective. Our platform is a space for sharing those stories and perspectives, fostering a community that celebrates the art of cinema.</p>
-                <h3>Our Mission:</h3>
-                <p>To bridge the gap between movie enthusiasts and the vast, colorful world of cinema. Whether it's the adrenaline of blockbuster hits, the raw charm of indie films, the timeless appeal of classic masterpieces, or the innovative spirit of contemporary marvels, ShowBoat is your gateway to the universe of movies.</p>
+                <h3>Welcome Aboard The ShowBoat! - The Ultimate Cinema Voyage </h3>
+                <p>Embark on a journey with ShowBoat, where movies are more than just entertainment; they are voyages into the depths of storytelling, artistry, and the souls behind the scenes. At ShowBoat, we chart the waters of cinema, navigating through the tales each film tells and the myriad perspectives of our audience. Our platform is the deck from which you can dive into the endless ocean of cinematic narratives, a place where stories are shared, discussed, and cherished.</p>
+                <h3>Our Compass</h3>
+                <p>To navigate the vast and vibrant seas of cinema, connecting movie lovers to the rich tapestry of films that span the spectrum from heart-pounding blockbusters to the understated beauty of indie gems, from golden age classics to the cutting-edge of modern storytelling. ShowBoat is your sextant to the stars of the movie universe, guiding you to your next cinematic discovery.</p>
                 <img src={aboutImage} alt="Person watching shows"/>
-                <h3>Join Us:</h3>
-                <p>Whether you're a casual viewer or a hardcore cinephile, ShowBoat welcomes you aboard this cinematic voyage. Explore, engage, and be enthralled. The world of movies awaits you!</p>
+                <h3>Set Sail with ShowBoat</h3>
+                <p>Join us on this grand voyage across the silver screen's horizons. Explore, interact, and immerse yourself in the wonder of movies. Your ticket is booked, and your cabin awaits. The world of cinema beckons—let ShowBoat be your guide to its endless stories and uncharted waters. Welcome aboard, where every film is a journey, and every viewer is a voyager.</p>
 
                 <div className="tmdbAttribution">
                     <img src={tmdbAttributionLogo} alt="TMDB Logo" />

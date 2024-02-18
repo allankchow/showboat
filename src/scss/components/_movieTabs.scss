@@ -1,7 +1,6 @@
-@use '../base/variables' as *;
-@use '../utilities/mixins' as *;
-@use '../utilities/functions' as *;
-
+@use "../base/variables" as *;
+@use "../utilities/mixins" as *;
+@use "../utilities/functions" as *;
 
 // -----------------------------------------------------------------------
 // Mobile and Universal Styling
@@ -20,7 +19,7 @@
     // horizontal overflow scrolling styling
     overflow-x: auto;
     overflow-y: hidden;
-    white-space: nowrap; 
+    white-space: nowrap;
     width: 90vw;
     max-width: 100%;
     scrollbar-width: none; // hide scrollbar in firefox
@@ -36,11 +35,11 @@
 
     &:after {
         // gray bar
-        content: '';
+        content: "";
         position: absolute;
         bottom: 2em;
-        width: em(575);
-        height: em(3);
+        width: rem(498);
+        height: rem(3);
         background-color: rgb(212, 212, 212);
         z-index: 1;
     }
@@ -48,7 +47,7 @@
     button {
         background: none;
         border: none;
-        font-size: rem(20);
+        font-size: rem(16);
         font-family: $font;
         cursor: pointer;
         position: relative;
@@ -64,17 +63,17 @@
     .active {
         color: $primary-colour;
         font-weight: 500;
-        
+
         &:after {
             // blue bar (active tab)
-            content: '';
+            content: "";
             position: absolute;
             bottom: -(rem(16));
-            left:0;
+            left: 0;
             width: 100%;
             height: rem(3);
             background-color: $primary-colour;
-            cursor:auto;
+            cursor: auto;
             z-index: 2;
         }
     }
@@ -85,26 +84,25 @@
     flex-wrap: wrap;
     @include horizontal-margin-center;
     margin: 1em em(10);
-    
 }
 
 .see-more-btn {
-    @include flex-row(center,center,0);
+    @include flex-row(center, center, 0);
     padding: em(10) em(20);
     margin: em(30) auto em(35);
-    background-color: $primary-colour; 
-    color: $tertiary-colour; 
-    border: none; 
+    background-color: $primary-colour;
+    color: $tertiary-colour;
+    border: none;
     border-radius: rem(12);
     font-size: 1.1rem;
-    cursor: pointer; 
+    cursor: pointer;
     transition: $link-hover-animation-time;
-    
-    &:hover, 
+
+    &:hover,
     &:focus {
         background-color: $on-hover-bg-blue;
         color: $on-hover-white;
-        text-decoration: none; 
+        text-decoration: none;
     }
 }
 
@@ -113,19 +111,29 @@
 // -----------------------------------------------------------------------
 
 @include mq($tablet-width) {
-    .tab-content{
+    .tabs {
+        button {
+            font-size: rem(20);
+        }
+
+        &:after {
+            width: rem(585);
+        }
+    }
+
+    .tab-content {
         @include flex-row(center, center, em(20));
         flex-wrap: wrap;
-        max-width: em(800); 
+        max-width: em(800);
         @include horizontal-margin-center;
     }
-} 
+}
 
 // -----------------------------------------------------------------------
 // Desktop+ Styling
 // -----------------------------------------------------------------------
 @include mq($desktop-large-width) {
-    .tab-content{
-        max-width: em(1000); 
+    .tab-content {
+        max-width: em(1000);
     }
-} 
+}
