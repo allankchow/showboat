@@ -95,7 +95,7 @@
     background-color: $primary-colour; 
     color: $tertiary-colour; 
     border: none; 
-    border-radius: 10px;
+    border-radius: rem(12);
     font-size: 1.1rem;
     cursor: pointer; 
     transition: $link-hover-animation-time;
