@@ -51,7 +51,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr />
-            <div className="footerCopyright">@2023 Showboat</div>
+            <div className="footerCopyright">@2023 ShowBoat</div>
         </footer>
     )
 }
