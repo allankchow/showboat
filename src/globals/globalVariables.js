@@ -29,6 +29,9 @@ const SEARCH_ENDPOINT = "https://api.themoviedb.org/3/search/movie";
 
 const APP_STORAGE_NAME = "myList";
 
+const showboat = "showboat";
+const OTHER_GLOBAL = "other-global";
+
 export { 
     appTitle,
     tabletWidth,
@@ -44,5 +47,7 @@ export {
     IMAGE_PATH_ENDPOINT,
     MOVIE_ENDPOINT,
     SEARCH_ENDPOINT,
-    APP_STORAGE_NAME
+    APP_STORAGE_NAME,
+    showboat, 
+    OTHER_GLOBAL,
 }

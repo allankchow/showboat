@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookSquare, faXTwitter} from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
+import logo from "/src/assets/logo/movie-database-logo-no-text.png";
+import logoHover from "/src/assets/logo/movie-database-logo-no-text-hover.png";
 
 import { scrollToTop } from '../globals/utilityFunctions';
 
 const Footer = () => {
     const [logoSrc, setLogoSrc] = useState("/src/assets/logo/movie-database-logo-no-text.png");
-
-    const logo = "/src/assets/logo/movie-database-logo-no-text.png";
-    const logoHover = "/src/assets/logo/movie-database-logo-no-text-hover.png"
 
     return (
         <footer className="footer">

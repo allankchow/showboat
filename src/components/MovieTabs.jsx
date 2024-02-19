@@ -60,7 +60,7 @@ function MovieTabs({ myList }) {
     useEffect (() => {
         const fetchMovies = async () => {
             const endpoint = `${tabs[currentTab]}&api_key=${API_KEY}&page=${currentPage}`;
-            {console.log(endpoint)}
+            // {console.log(endpoint)}
             try {
                 const response = await fetch(endpoint);
                 const data = await response.json();
