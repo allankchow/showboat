@@ -4,10 +4,6 @@ import {
     appTitle,
     REQUEST_OPTIONS,
     NOW_PLAYING_ENDPOINT,
-    POPULAR_ENDPOINT,
-    TOP_RATED_ENDPOINT,
-    UPCOMING_ENDPOINT,
-    IMAGE_PATH_ENDPOINT
 } from "../globals/globalVariables";
 import MovieTabs from '../components/MovieTabs';
 import Hero from "../components/Hero";
