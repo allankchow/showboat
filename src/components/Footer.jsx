@@ -9,7 +9,7 @@ import logoHover from "/src/assets/logo/movie-database-logo-no-text-hover.png";
 import { scrollToTop } from '../globals/utilityFunctions';
 
 const Footer = () => {
-    const [logoSrc, setLogoSrc] = useState("/src/assets/logo/movie-database-logo-no-text.png");
+    const [logoSrc, setLogoSrc] = useState(logo);
 
     return (
         <footer className="footer">
