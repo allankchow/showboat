@@ -9,9 +9,11 @@ import MoviePage from "../pages/MoviePage";
 import ErrorPage from "../pages/ErrorPage";
 import SearchPage from "../pages/SearchPage";
 
+import { showboat } from "../globals/globalVariables.js";
+
 const AppRouter = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={`/${showboat}`}>
             <div>
                 <Header />
                 <Routes>

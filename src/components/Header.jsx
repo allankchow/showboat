@@ -7,13 +7,13 @@ import { scrollToTop } from "../globals/utilityFunctions";
 import Nav from './Nav';
 import HamburgerMenu from './HamburgerMenu';
 
+import logo from "/src/assets/logo/movie-database-logo.png";
+import logoHover from "/src/assets/logo/movie-database-logo-hover.png";
+
 const Header = () => {
 
     const [showNav, setShowNav] = useState(false);
-    const [logoSrc, setLogoSrc] = useState("/src/assets/logo/movie-database-logo.png");
-
-    const logo = "/src/assets/logo/movie-database-logo.png";
-    const logoHover = "/src/assets/logo/movie-database-logo-hover.png"
+    const [logoSrc, setLogoSrc] = useState(logo);
 
     // Add an event listener which watches the screen width 
     useEffect(() => {
